@@ -9,6 +9,13 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-pretendard: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  
+  /* 리브뮤직 디자인 시스템 색상 */
+  --color-primary-purple: #2D265A;
+  --color-background-dark: #17171B;
+  --color-gray-light: #F4F4F4;
+  --color-gray-medium: #D1D5DB;
+  --color-gray-dark: #374151;
 }
 
 @media (prefers-color-scheme: dark) {
