@@ -84,7 +84,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {
             id: "about",
             title: "공연권료란?",
-            href: "/service/performance-fee",
+            href: "/performance-fee",
             items: [],
         },
         {
