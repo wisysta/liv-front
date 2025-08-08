@@ -40,7 +40,7 @@ export default function HealMusicPage() {
                 if (typingText.length + 1 === fullText.length) {
                     setTypingCompleted(true);
                 }
-            }, 30);
+            }, 35);
             return () => clearTimeout(timer);
         }
     }, [typingParagraph.isVisible, typingText, fullText]);
