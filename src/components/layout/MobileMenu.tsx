@@ -66,6 +66,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {
             id: "application",
             title: "공연권 신청안내",
+            href: "/performance-fee/application",
             items: [],
         },
         {
