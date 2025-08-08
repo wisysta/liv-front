@@ -92,16 +92,16 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             title: "기업소개",
             items: [
                 { title: "CEO 인사말", href: "/company/ceo" },
-                { title: "기업비전", href: "#" },
-                { title: "기업연혁", href: "#" },
-                { title: "인재상", href: "#" },
+                { title: "기업비전", href: "/company/vision" },
+                { title: "기업연혁", href: "/company/history" },
+                { title: "인재상", href: "/company/talent" },
             ],
         },
         {
             id: "support",
             title: "고객센터",
             items: [
-                { title: "자주 묻는 질문", href: "#" },
+                { title: "자주 묻는 질문", href: "" },
                 { title: "1:1 문의", href: "#" },
                 { title: "공지사항", href: "#" },
                 { title: "보도자료", href: "#" },

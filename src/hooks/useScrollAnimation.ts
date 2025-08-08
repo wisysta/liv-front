@@ -5,10 +5,15 @@ import { useEffect, useRef, useState } from "react";
 interface UseScrollAnimationOptions {
     threshold?: number;
     delay?: number;
+    rootMargin?: string;
 }
 
 export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
-    const { threshold = 0.1, delay = 0 } = options;
+    const {
+        threshold = 0.1,
+        delay = 0,
+        rootMargin = "0px 0px -50px 0px",
+    } = options;
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef<any>(null);
 
@@ -24,7 +29,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
             },
             {
                 threshold,
-                rootMargin: "0px 0px -50px 0px", // 50px 전에 미리 트리거
+                rootMargin, // 사용자 정의 또는 기본값 사용
             }
         );
 
@@ -38,7 +43,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
                 observer.unobserve(currentElement);
             }
         };
-    }, [threshold, delay]);
+    }, [threshold, delay, rootMargin]);
 
     return { ref, isVisible };
 }

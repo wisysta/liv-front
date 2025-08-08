@@ -41,7 +41,7 @@ export default function CEOPage() {
                                 : "opacity-0 translate-y-8"
                         }`}
                     >
-                        <h1 className="text-3xl lg:text-4xl font-bold text-background-dark mb-4">
+                        <h1 className="text-2xl lg:text-3xl 2xl:text-4xl font-bold text-background-dark mb-4">
                             CEO 인사말
                         </h1>
                     </div>
@@ -50,7 +50,7 @@ export default function CEOPage() {
 
             {/* 메인 콘텐츠 섹션 */}
             <section className="bg-white py-16 lg:pb-24">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="lg:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
                         {/* 좌측 - CEO 이미지 */}
                         <div className="lg:col-span-5">
@@ -74,7 +74,7 @@ export default function CEOPage() {
                         </div>
 
                         {/* 우측 - 메시지 콘텐츠 */}
-                        <div className="lg:col-span-7 py-12 2xl:py-12">
+                        <div className="lg:col-span-7 lg:py-8 2xl:py-12">
                             <div className="space-y-12">
                                 {/* 제목 */}
                                 <div
@@ -85,11 +85,11 @@ export default function CEOPage() {
                                             : "opacity-0 translate-y-8"
                                     }`}
                                 >
-                                    <h2 className="text-2xl lg:text-3xl font-bold text-primary-purple mb-6">
+                                    <h2 className="text-xl lg:text-2xl 2xl:text-3xl font-bold text-primary-purple mb-6">
                                         K-POP DX Enterprise, LIV MUSIC
                                     </h2>
 
-                                    <div className="text-background-dark text-base lg:text-lg leading-relaxed font-semibold mb-6">
+                                    <div className="text-background-dark lg:text-base 2xl:text-lg leading-relaxed font-semibold mb-6">
                                         <p>
                                             주식회사 리브뮤직은
                                             한국음악콘텐츠협회의 사내벤처로
@@ -111,7 +111,7 @@ export default function CEOPage() {
 
                                 {/* 메시지 본문 */}
                                 <div
-                                    className={`text-gray-500 font-medium text-base lg:text-lg leading-relaxed space-y-5 transition-all duration-700 ease-out delay-200 ${
+                                    className={`text-gray-500 font-medium lg:text-base 2xl:text-lg leading-relaxed space-y-5 transition-all duration-700 ease-out delay-200 ${
                                         messageSection.isVisible
                                             ? "opacity-100 translate-y-0"
                                             : "opacity-0 translate-y-8"
@@ -148,7 +148,7 @@ export default function CEOPage() {
                                             : "opacity-0 translate-y-8"
                                     }`}
                                 >
-                                    <div className="text-background-dark text-base lg:text-lg font-semibold">
+                                    <div className="text-background-dark lg:text-base 2xl:text-lg font-semibold">
                                         <p>리브뮤직 대표이사</p>
                                         <p className="text-xl lg:text-2xl font-bold mt-2">
                                             최광호

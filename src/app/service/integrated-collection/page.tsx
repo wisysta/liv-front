@@ -181,7 +181,7 @@ export default function IntegratedCollectionPage() {
                                     }`}
                                 >
                                     <Link
-                                        href="/service/performance-fee"
+                                        href="/performance-fee"
                                         className="inline-flex items-center bg-primary-purple text-white px-12 py-4 rounded-full text-base font-semibold hover:bg-primary-purple/90 transition-colors"
                                     >
                                         공연권 신청안내

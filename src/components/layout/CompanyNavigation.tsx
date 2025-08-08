@@ -28,8 +28,8 @@ export function CompanyNavigation({
                     href={item.href}
                     className={
                         currentPage === item.key
-                            ? "text-lg text-background-dark font-semibold border-b-2 border-primary-purple"
-                            : "text-lg text-gray-500 hover:text-background-dark transition-colors"
+                            ? "text-base 2xl:text-lg text-background-dark font-semibold border-b-2 border-primary-purple"
+                            : "text-base 2xl:text-lg text-gray-500 hover:text-background-dark transition-colors"
                     }
                 >
                     {item.label}
