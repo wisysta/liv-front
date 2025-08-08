@@ -10,7 +10,6 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 export default function HealMusicPage() {
     // 타이핑 애니메이션 상태
     const [typingText, setTypingText] = useState("");
-    const [sectionExpanded, setSectionExpanded] = useState(false);
     const [typingCompleted, setTypingCompleted] = useState(false);
     const fullText =
         "Heal Music은 단순한 라이선스를 넘어,\n건강한 산업 생태계를 함께 만들어가는 상생의 시작점입니다";
@@ -32,26 +31,9 @@ export default function HealMusicPage() {
         false,
     ]);
 
-    // 타이핑 완료 후 스크롤 감지
-    useEffect(() => {
-        if (typingCompleted) {
-            const handleScroll = () => {
-                setSectionExpanded(false);
-            };
-
-            window.addEventListener("scroll", handleScroll);
-            return () => window.removeEventListener("scroll", handleScroll);
-        }
-    }, [typingCompleted]);
-
-    // 타이핑 애니메이션 효과
+    ㅎ; // 타이핑 애니메이션 효과
     useEffect(() => {
         if (typingParagraph.isVisible && typingText.length < fullText.length) {
-            // 타이핑 시작할 때 섹션 확장
-            if (typingText.length === 0) {
-                setSectionExpanded(true);
-            }
-
             const timer = setTimeout(() => {
                 setTypingText(fullText.slice(0, typingText.length + 1));
 
@@ -117,11 +99,7 @@ export default function HealMusicPage() {
             />
 
             {/* 서비스 설명 섹션 */}
-            <section
-                className={`bg-white transition-all duration-1000 ease-out ${
-                    sectionExpanded ? "py-48 lg:py-72" : "py-20 lg:py-32"
-                }`}
-            >
+            <section className="bg-white py-20 lg:py-32">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div
                         ref={sectionContainer.ref}
