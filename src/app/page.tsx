@@ -68,7 +68,7 @@ export default function Home() {
         // 전체 애니메이션이 끝나면 상태 리셋 (1000ms 총 시간)
         setTimeout(() => {
             setIsTransitioning(false);
-        }, 100);
+        }, 1000);
     };
 
     return (
