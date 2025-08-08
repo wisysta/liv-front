@@ -24,7 +24,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
             },
             {
                 threshold,
-                rootMargin: "0px 0px 50px 0px", // 50px 전에 미리 트리거
+                rootMargin: "0px 0px -50px 0px", // 50px 전에 미리 트리거
             }
         );
 

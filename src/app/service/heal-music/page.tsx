@@ -29,8 +29,9 @@ export default function HealMusicPage() {
         false,
         false,
         false,
-    ]); // 타이핑 애니메이션 효과
+    ]);
 
+    // 타이핑 애니메이션 효과
     useEffect(() => {
         if (typingParagraph.isVisible && typingText.length < fullText.length) {
             const timer = setTimeout(() => {
@@ -237,17 +238,21 @@ export default function HealMusicPage() {
                     </h2>
                     <div
                         ref={reasonSection.ref}
-                        className="space-y-6 lg:space-y-8"
+                        className={`space-y-6 lg:space-y-8 transition-all duration-1000 ease-out ${
+                            reasonSection.isVisible
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-12"
+                        }`}
                     >
                         <div
-                            className={`rounded-lg px-6 py-6 2xl:py-8 lg:px-8 2xl:px-10 lg:py-10 transition-all duration-1000 ease-out ${
+                            className={`rounded-lg px-6 py-6 2xl:py-8 lg:px-8 2xl:px-10 lg:py-10 transition-all duration-700 ease-out ${
                                 visibleReasons[0]
-                                    ? "bg-primary-purple"
-                                    : "bg-gray-light"
+                                    ? "bg-primary-purple opacity-100 translate-y-0"
+                                    : "bg-gray-light  translate-y-8"
                             }`}
                         >
                             <h3
-                                className={`text-xl lg:text-2xl font-bold text-left leading-tight transition-colors duration-1000 ${
+                                className={`text-xl lg:text-2xl font-bold text-left leading-tight transition-colors duration-700 ${
                                     visibleReasons[0]
                                         ? "text-white"
                                         : "text-gray-500"
@@ -257,14 +262,14 @@ export default function HealMusicPage() {
                             </h3>
                         </div>
                         <div
-                            className={`rounded-lg px-6 py-6 2xl:py-8 lg:px-8 2xl:px-10 lg:py-10 transition-all duration-1000 ease-out ${
+                            className={`rounded-lg px-6 py-6 2xl:py-8 lg:px-8 2xl:px-10 lg:py-10 transition-all duration-700 ease-out ${
                                 visibleReasons[1]
-                                    ? "bg-primary-purple"
-                                    : "bg-gray-light"
+                                    ? "bg-primary-purple translate-y-0"
+                                    : "bg-gray-light translate-y-8"
                             }`}
                         >
                             <h3
-                                className={`text-xl lg:text-2xl font-semibold text-left leading-tight transition-colors duration-1000 ${
+                                className={`text-xl lg:text-2xl font-semibold text-left leading-tight transition-colors duration-700 ${
                                     visibleReasons[1]
                                         ? "text-white"
                                         : "text-gray-500"
@@ -274,14 +279,14 @@ export default function HealMusicPage() {
                             </h3>
                         </div>
                         <div
-                            className={`rounded-lg px-6 py-6 2xl:py-8 lg:px-8 2xl:px-10 lg:py-10 transition-all duration-1000 ease-out ${
+                            className={`rounded-lg px-6 py-6 2xl:py-8 lg:px-8 2xl:px-10 lg:py-10 transition-all duration-700 ease-out ${
                                 visibleReasons[2]
-                                    ? "bg-primary-purple"
-                                    : "bg-gray-light"
+                                    ? "bg-primary-purple translate-y-0"
+                                    : "bg-gray-light translate-y-8"
                             }`}
                         >
                             <h3
-                                className={`text-xl lg:text-2xl font-semibold text-left leading-tight transition-colors duration-1000 ${
+                                className={`text-xl lg:text-2xl font-semibold text-left leading-tight transition-colors duration-700 ${
                                     visibleReasons[2]
                                         ? "text-white"
                                         : "text-gray-500"
@@ -291,14 +296,14 @@ export default function HealMusicPage() {
                             </h3>
                         </div>
                         <div
-                            className={`rounded-lg px-6 py-6 2xl:py-8 lg:px-8 2xl:px-10 lg:py-10 transition-all duration-1000 ease-out ${
+                            className={`rounded-lg px-6 py-6 2xl:py-8 lg:px-8 2xl:px-10 lg:py-10 transition-all duration-700 ease-out ${
                                 visibleReasons[3]
-                                    ? "bg-primary-purple"
-                                    : "bg-gray-light"
+                                    ? "bg-primary-purple translate-y-0"
+                                    : "bg-gray-light translate-y-8"
                             }`}
                         >
                             <h3
-                                className={`text-xl lg:text-2xl font-semibold text-left leading-tight transition-colors duration-1000 ${
+                                className={`text-xl lg:text-2xl font-semibold text-left leading-tight transition-colors duration-700 ${
                                     visibleReasons[3]
                                         ? "text-white"
                                         : "text-gray-500"
