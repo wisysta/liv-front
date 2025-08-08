@@ -98,7 +98,7 @@ export default function HealMusicPage() {
             />
 
             {/* 서비스 설명 섹션 */}
-            <section className="bg-white py-20 lg:py-32">
+            <section className="bg-white py-24 lg:py-48 2xl:py-60">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div
                         ref={sectionContainer.ref}
@@ -115,7 +115,7 @@ export default function HealMusicPage() {
                         </p>
                         <p
                             ref={typingParagraph.ref}
-                            className="text-lg lg:text-xl 2xl:text-2xl leading-relaxed font-semibold whitespace-pre-line"
+                            className="text-lg lg:text-xl 2xl:text-2xl leading-relaxed font-semibold whitespace-pre-line inline-block min-h-24"
                         >
                             {typingText}
                             {typingText.length < fullText.length && (
