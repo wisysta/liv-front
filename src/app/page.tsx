@@ -94,7 +94,7 @@ export default function Home() {
                 {/* 메인 배경 이미지 */}
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/main-hero-01.jpg"
+                        src="/main-hero.jpg"
                         alt="리브뮤직 메인 배경"
                         fill
                         className={`object-cover object-center transition-transform duration-500 ease-in ${
