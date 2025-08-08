@@ -16,7 +16,7 @@ function ApplicationInfoPage() {
             headerVariant="light"
         >
             {/* Title Section */}
-            <section className="bg-white py-20 lg:py-32 2xl:py-40">
+            <section className="bg-white py-24 lg:py-32">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div
                         ref={titleSection.ref}
