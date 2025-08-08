@@ -12,7 +12,7 @@ export default function HealMusicPage() {
     const [typingText, setTypingText] = useState("");
     const [typingCompleted, setTypingCompleted] = useState(false);
     const fullText =
-        "Heal Music은 단순한 라이선스를 넘어,\n건강한 산업 생태계를 함께 만들어가는 상생의 시작점입니다";
+        "Heal Music은 단순한 라이선스를 넘어,\n건강한 산업 생태계를 함께 만들어가는 상생의 시작점입니다.";
 
     // 스크롤 애니메이션 훅들
     const sectionContainer = useScrollAnimation({ delay: 0 }); // 전체 섹션용
@@ -40,7 +40,7 @@ export default function HealMusicPage() {
                 if (typingText.length + 1 === fullText.length) {
                     setTypingCompleted(true);
                 }
-            }, 35);
+            }, 40);
             return () => clearTimeout(timer);
         }
     }, [typingParagraph.isVisible, typingText, fullText]);
