@@ -29,9 +29,8 @@ export default function HealMusicPage() {
         false,
         false,
         false,
-    ]);
+    ]); // 타이핑 애니메이션 효과
 
-    ㅎ; // 타이핑 애니메이션 효과
     useEffect(() => {
         if (typingParagraph.isVisible && typingText.length < fullText.length) {
             const timer = setTimeout(() => {
