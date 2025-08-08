@@ -133,7 +133,7 @@ export function ServiceHero({
 
                 {/* 상단 네비게이션 */}
                 <div
-                    className={`absolute lg:top-32 2xl:top-40 left-0 right-0 z-[2] text-center text-white transition-all duration-700 ease-out ${
+                    className={`absolute lg:top-32 2xl:top-40 left-0 right-0 z-12 text-center text-white transition-all duration-700 ease-out ${
                         textAnimations.navigation
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 translate-y-8"
