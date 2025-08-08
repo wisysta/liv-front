@@ -40,7 +40,7 @@ export default function IntegratedCollectionPage() {
 
             {/* Simple & Easy 섹션 */}
             <section
-                ref={sectionContainer.ref as any}
+                ref={sectionContainer.ref}
                 className="bg-white py-20 lg:py-32"
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,7 +70,7 @@ export default function IntegratedCollectionPage() {
 
                             <div className="space-y-8">
                                 <h2
-                                    ref={simpleTitle.ref as any}
+                                    ref={simpleTitle.ref}
                                     className={`text-2xl xl:text-3xl font-bold text-background-dark transition-all duration-700 ease-out ${
                                         simpleTitle.isVisible
                                             ? "opacity-100 translate-y-0"
@@ -80,7 +80,7 @@ export default function IntegratedCollectionPage() {
                                     정당한 사용, 간단한 납부
                                 </h2>
                                 <div
-                                    ref={simpleContent.ref as any}
+                                    ref={simpleContent.ref}
                                     className={`space-y-6 text-background-dark lg:text-lg leading-relaxed transition-all duration-700 ease-out ${
                                         simpleContent.isVisible
                                             ? "opacity-100 translate-y-0"
@@ -137,7 +137,7 @@ export default function IntegratedCollectionPage() {
 
                             <div className="space-y-8">
                                 <h2
-                                    ref={easyTitle.ref as any}
+                                    ref={easyTitle.ref}
                                     className={`text-2xl xl:text-3xl font-bold text-background-dark transition-all duration-700 ease-out ${
                                         easyTitle.isVisible
                                             ? "opacity-100 translate-y-0"
@@ -147,7 +147,7 @@ export default function IntegratedCollectionPage() {
                                     통합 창구로 더 편리하게
                                 </h2>
                                 <div
-                                    ref={easyContent.ref as any}
+                                    ref={easyContent.ref}
                                     className={`space-y-6 text-background-dark lg:text-lg leading-relaxed transition-all duration-700 ease-out ${
                                         easyContent.isVisible
                                             ? "opacity-100 translate-y-0"
@@ -173,7 +173,7 @@ export default function IntegratedCollectionPage() {
 
                                 {/* 공연권 신청안내 버튼 */}
                                 <div
-                                    ref={easyButton.ref as any}
+                                    ref={easyButton.ref}
                                     className={`pt-8 transition-all duration-700 ease-out ${
                                         easyButton.isVisible
                                             ? "opacity-100 translate-y-0"

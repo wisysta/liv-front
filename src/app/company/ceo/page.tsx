@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { CompanyNavigation } from "@/components/layout/CompanyNavigation";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -24,7 +23,7 @@ export default function CEOPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* 회사 네비게이션 */}
                     <div
-                        ref={heroSection.ref as any}
+                        ref={heroSection.ref}
                         className={`mb-12 lg:mb-14 2xl:mb-16 transition-all duration-700 ease-out ${
                             heroSection.isVisible
                                 ? "opacity-100 translate-y-0"
@@ -56,7 +55,7 @@ export default function CEOPage() {
                         {/* 좌측 - CEO 이미지 */}
                         <div className="lg:col-span-5">
                             <div
-                                ref={introSection.ref as any}
+                                ref={introSection.ref}
                                 className={`transition-all duration-1000 ease-out ${
                                     introSection.isVisible
                                         ? "opacity-100 scale-100"
@@ -79,7 +78,7 @@ export default function CEOPage() {
                             <div className="space-y-12">
                                 {/* 제목 */}
                                 <div
-                                    ref={messageSection.ref as any}
+                                    ref={messageSection.ref}
                                     className={`transition-all duration-700 ease-out ${
                                         messageSection.isVisible
                                             ? "opacity-100 translate-y-0"
@@ -142,7 +141,7 @@ export default function CEOPage() {
 
                                 {/* 서명 */}
                                 <div
-                                    ref={signatureSection.ref as any}
+                                    ref={signatureSection.ref}
                                     className={`text-right pt-8 transition-all duration-700 ease-out ${
                                         signatureSection.isVisible
                                             ? "opacity-100 translate-y-0"

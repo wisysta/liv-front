@@ -124,7 +124,7 @@ export default function HealMusicPage() {
             >
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div
-                        ref={sectionContainer.ref as any}
+                        ref={sectionContainer.ref}
                         className="space-y-12 lg:space-y-16 text-background-dark"
                     >
                         <p className="text-lg lg:text-xl 2xl:text-2xl leading-relaxed font-normal">
@@ -137,7 +137,7 @@ export default function HealMusicPage() {
                             있는 구조를 고민했습니다
                         </p>
                         <p
-                            ref={typingParagraph.ref as any}
+                            ref={typingParagraph.ref}
                             className="text-lg lg:text-xl 2xl:text-2xl leading-relaxed font-semibold whitespace-pre-line"
                         >
                             {typingText}
@@ -156,7 +156,7 @@ export default function HealMusicPage() {
                         요금 혜택
                     </h2>
                     <div
-                        ref={serviceInfoSection.ref as any}
+                        ref={serviceInfoSection.ref}
                         className={`grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 mb-20 transition-all duration-1000 ease-out ${
                             serviceInfoSection.isVisible
                                 ? "opacity-100 translate-y-0"
@@ -204,10 +204,7 @@ export default function HealMusicPage() {
                     </div>
 
                     {/* 요금 혜택 섹션 */}
-                    <div
-                        ref={benefitSection.ref as any}
-                        className="text-center mb-16"
-                    >
+                    <div ref={benefitSection.ref} className="text-center mb-16">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                             {/* 1년 선납 */}
                             <div
@@ -262,7 +259,7 @@ export default function HealMusicPage() {
                         Heal Music을 선택하는 이유
                     </h2>
                     <div
-                        ref={reasonSection.ref as any}
+                        ref={reasonSection.ref}
                         className="space-y-6 lg:space-y-8"
                     >
                         <div
@@ -347,7 +344,7 @@ export default function HealMusicPage() {
                 />
                 <div className="absolute inset-0 bg-black/20" />
                 <div
-                    ref={ctaSection.ref as any}
+                    ref={ctaSection.ref}
                     className={`relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white transition-all duration-1000 ease-out ${
                         ctaSection.isVisible
                             ? "opacity-100 translate-y-0"

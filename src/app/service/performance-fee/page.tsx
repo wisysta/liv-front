@@ -54,8 +54,8 @@ export default function PerformanceFeePage() {
             <section className="py-16 px-4 max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-2xl font-semibold mb-8 text-white">
-                        매장에서 음악을 트는 행위, 사실은 단순한 '재생'이 아니라
-                        '공연'에 해당
+                        매장에서 음악을 트는 행위, 사실은 단순한
+                        &apos;재생&apos;이 아니라 &apos;공연&apos;에 해당
                         <br />
                         이를 위해 창작자에게 정당한 보상을 지급하는 것
                     </h2>
