@@ -91,7 +91,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             id: "company",
             title: "기업소개",
             items: [
-                { title: "CEO 인사말", href: "#" },
+                { title: "CEO 인사말", href: "/company/ceo" },
                 { title: "기업비전", href: "#" },
                 { title: "기업연혁", href: "#" },
                 { title: "인재상", href: "#" },
@@ -111,10 +111,21 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         },
     ];
 
-    const toggleSection = (sectionId: string) => {
-        // 클라이언트에서만 실행하고, 모바일과 태블릿에서만 토글 기능 사용
+    const handleSectionClick = (section: any) => {
+        // 하위 메뉴가 있고 첫 번째 아이템에 href가 있으면 해당 링크로 이동
+        if (
+            section.items &&
+            section.items.length > 0 &&
+            section.items[0].href
+        ) {
+            window.location.href = section.items[0].href;
+            onClose();
+            return;
+        }
+
+        // 그외의 경우 토글 동작 (클라이언트에서만 실행하고, 모바일과 태블릿에서만)
         if (isClient && isMobile) {
-            setActiveSection(activeSection === sectionId ? null : sectionId);
+            setActiveSection(activeSection === section.id ? null : section.id);
         }
     };
 
@@ -143,7 +154,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         <>
             {/* 백그라운드 오버레이 */}
             <div
-                className={`fixed inset-0 bg-black/60 z-40 transition-opacity duration-300 ${
+                className={`fixed inset-0 bg-black/60 z-200 transition-opacity duration-300 ${
                     isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
                 onClick={onClose}
@@ -151,7 +162,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
             {/* 슬라이드 메뉴 */}
             <div
-                className={`fixed top-0 left-0 h-full w-72 sm:w-80 md:w-96 lg:w-[420px] xl:w-[450px] bg-gray-light z-50 transform transition-transform duration-300 ease-in-out ${
+                className={`fixed top-0 left-0 h-full w-72 sm:w-80 md:w-96 lg:w-[420px] xl:w-[450px] bg-gray-light z-500 transform transition-transform duration-300 ease-in-out ${
                     isOpen ? "translate-x-0" : "-translate-x-full"
                 }`}
             >
@@ -194,7 +205,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                 ) : (
                                     <button
                                         onClick={() =>
-                                            toggleSection(section.id)
+                                            handleSectionClick(section)
                                         }
                                         className="w-full text-left text-background-dark font-semibold text-base lg:text-lg py-[3.5px] sm:py-1 lg:py-1.5 hover:text-primary-purple transition-colors flex items-center justify-between"
                                     >

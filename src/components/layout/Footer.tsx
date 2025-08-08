@@ -7,7 +7,7 @@ export function Footer() {
                 {/* 로고 및 SNS */}
                 <div className="space-y-3 sm:space-y-4">
                     <Image
-                        src="/livmusic-logo-white.png"
+                        src="/livmusic-logo-white.svg"
                         alt="리브뮤직 로고"
                         width={86}
                         height={16}

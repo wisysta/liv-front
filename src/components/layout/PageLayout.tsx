@@ -5,6 +5,7 @@ import { Footer } from "./Footer";
 interface PageLayoutProps {
     children: ReactNode;
     headerOverlay?: boolean; // 헤더가 컨텐츠 위에 오버레이될지 여부 (히어로 섹션 등)
+    headerVariant?: "dark" | "light"; // 헤더 테마 (dark: 흰색 로고/햄버거, light: 검은색 로고/햄버거)
     hideHeader?: boolean; // 헤더를 숨길지 여부
     hideFooter?: boolean; // 푸터를 숨길지 여부
     fullHeight?: boolean; // 전체 화면 높이 사용 여부 (100vh)
@@ -40,6 +41,7 @@ interface PageLayoutProps {
 export function PageLayout({
     children,
     headerOverlay = false,
+    headerVariant = "dark",
     hideHeader = false,
     hideFooter = false,
     fullHeight = false,
@@ -60,7 +62,7 @@ export function PageLayout({
                             : ""
                     }
                 >
-                    <Header />
+                    <Header variant={headerVariant} />
                 </div>
             )}
 
