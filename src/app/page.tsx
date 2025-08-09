@@ -117,7 +117,7 @@ export default function Home() {
                                     : "opacity-0 translate-y-8"
                             }`}
                         >
-                            LIVE MUSIC COMPANY
+                            LIV MUSIC COMPANY
                         </p>
                         <h1
                             className={`text-white text-2xl sm:text-4xl lg:text-4xl 2xl:text-5xl font-semibold leading-tight mb-4 sm:mb-6 lg:mb-12 transition-all duration-700 ease-out ${
