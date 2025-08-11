@@ -80,10 +80,15 @@ export function ScrollInteractionSection() {
         if (!isClient) return {};
 
         // 각 이미지마다 완전히 다른 진폭과 주기 설정
-        const amplitudes = [80, 120, 65, 100]; // 각 이미지별 기본 진폭
-        const frequencies = [0.002, 0.0012, 0.0035, 0.0022]; // 각 이미지별 주기
-        const phases = [0, Math.PI * 0.3, Math.PI * 0.7, Math.PI * 1.8]; // 각 이미지별 위상차
-        const baseOffsets = [50, 0, 0, 0]; // 각 이미지별 기본 위치 오프셋
+        const amplitudes = [45, 120, 65, 100]; // 각 이미지별 기본 진폭
+        const frequencies = [0.0045, 0.0012, 0.0035, 0.0022]; // 각 이미지별 주기
+        const phases = [
+            Math.PI * 1.4,
+            Math.PI * 0.3,
+            Math.PI * 0.7,
+            Math.PI * 1.6,
+        ]; // 각 이미지별 위상차
+        const baseOffsets = [-40, 0, 0, 0]; // 각 이미지별 기본 위치 오프셋
 
         const amplitude = amplitudes[index] || 50;
         const frequency = frequencies[index] || 0.002;
