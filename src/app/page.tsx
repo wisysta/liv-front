@@ -151,7 +151,7 @@ export default function Home() {
                         }`}
                     >
                         <button
-                            onClick={() => handlePageTransition("/calculator")}
+                            // onClick={() => handlePageTransition("/calculator")}
                             className="text-primary-purple font-semibold bg-white py-2.5 sm:py-3 px-6 sm:px-8 rounded-full hover:bg-primary-purple hover:text-white transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
                         >
                             공연권료 계산기
@@ -167,7 +167,9 @@ export default function Home() {
                             서비스 소개
                         </button>
                         <button
-                            onClick={() => handlePageTransition("/support")}
+                            onClick={() =>
+                                handlePageTransition("/customer/faq")
+                            }
                             className="border border-white text-white font-semibold py-2.5 sm:py-3 px-6 sm:px-8 rounded-full hover:bg-white hover:text-gray-900 transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
                         >
                             고객센터

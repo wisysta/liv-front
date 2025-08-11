@@ -17,17 +17,27 @@ export default function IntegratedCollectionPage() {
         if (sectionContainer.isVisible) {
             const timer = setTimeout(() => {
                 setEasyVisible(true);
-            }, 300);
+            }, 1000);
             return () => clearTimeout(timer);
         }
     }, [sectionContainer.isVisible]);
 
     // 개별 텍스트 페이드 인 애니메이션
-    const simpleTitle = useScrollAnimation({ delay: 100 });
+    const simpleTitle = useScrollAnimation({
+        delay: 100,
+        rootMargin: "0px 0px -50px 0px",
+    });
     const simpleContent = useScrollAnimation({ delay: 200 });
     const easyTitle = useScrollAnimation({ delay: 100 });
     const easyContent = useScrollAnimation({ delay: 200 });
     const easyButton = useScrollAnimation({ delay: 300 });
+
+    // simpleTitle이 보이면 우측 Easy 섹션 트리거
+    useEffect(() => {
+        if (simpleTitle.isVisible) {
+            setEasyVisible(true);
+        }
+    }, [simpleTitle.isVisible]);
     return (
         <PageLayout headerOverlay={true} fullHeight={false}>
             <ServiceHero
@@ -116,8 +126,10 @@ export default function IntegratedCollectionPage() {
 
                         {/* 우측 - Easy */}
                         <div
-                            className={`text-center lg:text-left transition-all duration-1200 ease-out opacity-100 ${
-                                easyVisible ? "translate-y-0" : "translate-y-96"
+                            className={`text-center lg:text-left transition-all duration-1200 ease-out ${
+                                easyVisible
+                                    ? "opacity-100 translate-y-0"
+                                    : "opacity-0 translate-y-96"
                             }`}
                         >
                             <div className="relative mb-12">
