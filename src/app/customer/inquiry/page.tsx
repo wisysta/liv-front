@@ -144,7 +144,7 @@ export default function InquiryPage() {
 
             {/* 문의 폼 섹션 */}
             <section className="bg-white py-8 lg:py-12 2xl:py-16">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                     <form onSubmit={handleSubmit} className="space-y-8">
                         {/* 기본 정보 */}
                         <div className="space-y-6">
