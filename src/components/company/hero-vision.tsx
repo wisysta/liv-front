@@ -108,7 +108,7 @@ export function HeroVision() {
 
     return (
         <section
-            className="relative mt-12 lg:mt-24 2xl:mt-32"
+            className="relative mt-12 lg:mt-24 2xl:mt-32 overflow-x-hidden"
             ref={containerRef}
         >
             <div
