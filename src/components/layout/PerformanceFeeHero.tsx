@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 interface PerformanceFeeHeroProps {
@@ -11,7 +12,10 @@ interface PerformanceFeeHeroProps {
         fontWeight?: "normal" | "semibold";
         fontSize?: "base" | "lg";
     }[];
-    laws: string[];
+    laws: {
+        text: string;
+        url: string;
+    }[];
 }
 
 export function PerformanceFeeHero({
@@ -147,14 +151,17 @@ export function PerformanceFeeHero({
                             관계법령
                         </span>
                         {laws.map((law, index) => (
-                            <div
+                            <Link
                                 key={index}
-                                className="bg-white/20 backdrop-blur-sm border border-none rounded-md px-3 py-1.5"
+                                href={law.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-white/20 backdrop-blur-sm border border-none rounded-md px-3 py-1.5 hover:bg-white/30 transition-colors"
                             >
                                 <span className="text-white text-xs font-medium">
-                                    {law}
+                                    {law.text}
                                 </span>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

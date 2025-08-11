@@ -35,10 +35,22 @@ export default function PerformanceFeeInfoPage() {
                     },
                 ]}
                 laws={[
-                    "저작권법 제 2조 3항",
-                    "저작권법 제 17조",
-                    "저작권법 제 76조의 2",
-                    "저작권법 제 83조의 2",
+                    {
+                        text: "저작권법 제 2조 3항",
+                        url: "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/%EC%A0%9C2%EC%A1%B0",
+                    },
+                    {
+                        text: "저작권법 제 17조",
+                        url: "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/%EC%A0%9C17%EC%A1%B0",
+                    },
+                    {
+                        text: "저작권법 제 76조의 2",
+                        url: "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/%EC%A0%9C76%EC%A1%B0%EC%9D%982",
+                    },
+                    {
+                        text: "저작권법 제 83조의 2",
+                        url: "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/%EC%A0%9C83%EC%A1%B0%EC%9D%982",
+                    },
                 ]}
             />
 
@@ -87,22 +99,32 @@ export default function PerformanceFeeInfoPage() {
                                     <span className="text-background-dark text-sm lg:text-base font-semibold">
                                         관계법령
                                     </span>
-                                    <div className="bg-gray-light rounded-md px-3 py-1.5">
+                                    <Link
+                                        href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/%EC%A0%9C136%EC%A1%B0"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="bg-gray-light rounded-md px-3 py-1.5 hover:bg-gray-300 transition-colors"
+                                    >
                                         <span className="text-background-dark text-xs lg:text-sm font-medium">
                                             저작권법 제 136조(벌칙)
                                         </span>
-                                    </div>
+                                    </Link>
                                 </div>
                                 <div className="flex flex-wrap items-center gap-3">
                                     <span className="text-background-dark text-sm lg:text-base font-semibold">
                                         지정공고
                                     </span>
-                                    <div className="bg-gray-light rounded-md px-3 py-1.5">
+                                    <Link
+                                        href="https://mcst.go.kr/kor/s_notice/notice/noticeView.jsp?pSeq=18429"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="bg-gray-light rounded-md px-3 py-1.5 hover:bg-gray-300 transition-colors"
+                                    >
                                         <span className="text-background-dark text-xs lg:text-sm font-medium">
-                                            음악 공연권료 신규 통합징수단체 지정
-                                            공고문
+                                            2025년도 음악저작권 공연권료
+                                            통합징수단체 재지정 공고
                                         </span>
-                                    </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -194,16 +216,26 @@ export default function PerformanceFeeInfoPage() {
                                     <span className="text-background-dark text-sm lg:text-base font-semibold">
                                         관계법령
                                     </span>
-                                    <div className="bg-gray-light rounded-md px-3 py-1.5">
+                                    <Link
+                                        href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95/%EC%A0%9C106%EC%A1%B0"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="bg-gray-light rounded-md px-3 py-1.5 hover:bg-gray-300 transition-colors"
+                                    >
                                         <span className="text-background-dark text-xs lg:text-sm font-medium">
                                             저작권법 제 106조 제3항
                                         </span>
-                                    </div>
-                                    <div className="bg-gray-light rounded-md px-3 py-1.5">
+                                    </Link>
+                                    <Link
+                                        href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%A0%80%EC%9E%91%EA%B6%8C%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C51%EC%A1%B02"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="bg-gray-light rounded-md px-3 py-1.5 hover:bg-gray-300 transition-colors"
+                                    >
                                         <span className="text-background-dark text-xs lg:text-sm font-medium">
                                             시행령 제51조의2
                                         </span>
-                                    </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

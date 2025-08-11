@@ -183,7 +183,7 @@ export function ScrollInteractionSection() {
                         : "opacity-0 translate-y-12"
                 }`}
             >
-                <div className="max-w-4xl mx-auto pb-12">
+                <div className="max-w-4xl mx-auto lg:pb-8 lg:pt-4  2xl:pb-12 2xl:pt-6">
                     <p className="text-xl lg:text-2xl xl:text-3xl leading-relaxed text-white/90 font-medium">
                         리브뮤직은 앞으로도 음악을 사랑하는 사람들과 함께 음악의
                         가치를 지키고

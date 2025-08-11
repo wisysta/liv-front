@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
         deviceSizes: [640, 768, 1024, 1280, 1600],
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
         minimumCacheTTL: 60 * 60 * 24 * 30, // 30일
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "pub-140b0c27bb7341f08664a1177eee1d52.r2.dev",
+                port: "",
+                pathname: "/**",
+            },
+        ],
     },
 
     // 성능 최적화

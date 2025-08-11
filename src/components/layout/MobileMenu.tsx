@@ -102,12 +102,12 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             id: "support",
             title: "고객센터",
             items: [
-                { title: "자주 묻는 질문", href: "" },
-                { title: "1:1 문의", href: "#" },
-                { title: "공지사항", href: "#" },
-                { title: "보도자료", href: "#" },
-                { title: "갤러리", href: "#" },
-                { title: "자료실", href: "#" },
+                { title: "자주 묻는 질문", href: "/customer/faq" },
+                { title: "1:1 문의", href: "/customer/inquiry" },
+                { title: "공지사항", href: "/customer/notice" },
+                { title: "보도자료", href: "/customer/press" },
+                { title: "갤러리", href: "/customer/gallery" },
+                { title: "자료실", href: "/customer/resources" },
             ],
         },
     ];
