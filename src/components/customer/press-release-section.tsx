@@ -43,7 +43,7 @@ export default function PressReleaseSection({
                 `${process.env.NEXT_PUBLIC_API_URL}/api/press-releases/${pressRelease.id}?incrementViews=true`
             );
         } catch (error) {
-            console.error("조회수 증가 오류:", error);
+            console.error("조회수 증가 오류 :", error);
         }
 
         // 외부 링크로 이동
