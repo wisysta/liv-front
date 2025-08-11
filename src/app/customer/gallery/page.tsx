@@ -78,7 +78,7 @@ export default function GalleryPage() {
 
             {/* Content Section */}
             <section className="bg-white py-8 lg:py-12 2xl:py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 lg:mb-12 2xl:mb-16">
                     {loading ? (
                         <GallerySkeleton />
                     ) : error ? (
