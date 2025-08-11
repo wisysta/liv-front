@@ -17,7 +17,7 @@ export default function IntegratedCollectionPage() {
         if (sectionContainer.isVisible) {
             const timer = setTimeout(() => {
                 setEasyVisible(true);
-            }, 100);
+            }, 300);
             return () => clearTimeout(timer);
         }
     }, [sectionContainer.isVisible]);
