@@ -145,40 +145,45 @@ export default function CompanyTalentPage() {
             <section className="bg-white py-16 lg:py-32 2xl:py-48">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12 lg:gap-20 2xl:gap-28">
-                        {TALENT_DATA.map((talent, index) => (
-                            <div
-                                key={index}
-                                ref={cardAnimations[index].ref}
-                                className={`text-left transition-all duration-700 ease-out ${
-                                    cardAnimations[index].isVisible
-                                        ? "opacity-100 translate-y-0"
-                                        : "opacity-0 translate-y-8"
-                                }`}
-                            >
-                                {/* 아이콘 */}
-                                <div className="mb-8 flex justify-start">
-                                    <div className="w-16 h-16 lg:w-20 lg:h-20 2xl:w-24 2xl:h-24">
-                                        <Image
-                                            src={talent.icon}
-                                            alt={`인재상 ${index + 1}`}
-                                            width={96}
-                                            height={96}
-                                            className="w-full h-full"
-                                        />
+                        {TALENT_DATA.map((talent, index) => {
+                            const animation = cardAnimations[index];
+                            if (!animation) return null;
+
+                            return (
+                                <div
+                                    key={index}
+                                    ref={animation.ref}
+                                    className={`text-left transition-all duration-700 ease-out ${
+                                        animation.isVisible
+                                            ? "opacity-100 translate-y-0"
+                                            : "opacity-0 translate-y-8"
+                                    }`}
+                                >
+                                    {/* 아이콘 */}
+                                    <div className="mb-8 flex justify-start">
+                                        <div className="w-16 h-16 lg:w-20 lg:h-20 2xl:w-24 2xl:h-24">
+                                            <Image
+                                                src={talent.icon}
+                                                alt={`인재상 ${index + 1}`}
+                                                width={96}
+                                                height={96}
+                                                className="w-full h-full"
+                                            />
+                                        </div>
                                     </div>
+
+                                    {/* 제목 */}
+                                    <h3 className="text-lg lg:text-xl 2xl:text-2xl font-bold text-background-dark mb-4 leading-relaxed whitespace-pre-line">
+                                        {talent.title}
+                                    </h3>
+
+                                    {/* 설명 */}
+                                    <p className="text-sm lg:text-base text-background-dark leading-relaxed whitespace-pre-line">
+                                        {talent.description}
+                                    </p>
                                 </div>
-
-                                {/* 제목 */}
-                                <h3 className="text-lg lg:text-xl 2xl:text-2xl font-bold text-background-dark mb-4 leading-relaxed whitespace-pre-line">
-                                    {talent.title}
-                                </h3>
-
-                                {/* 설명 */}
-                                <p className="text-sm lg:text-base text-background-dark leading-relaxed whitespace-pre-line">
-                                    {talent.description}
-                                </p>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
