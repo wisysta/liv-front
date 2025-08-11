@@ -49,12 +49,19 @@ export default function CompanyTalentPage() {
     const introSection = useScrollAnimation({ delay: 300, threshold: 0.1 });
 
     // 각 카드에 대한 개별 애니메이션 훅
-    const cardAnimations = TALENT_DATA.map((_, index) =>
-        useScrollAnimation({
-            delay: 200 + index * 150, // 각 카드마다 150ms씩 지연
-            threshold: 0.1,
-        })
-    );
+    const cardAnimation0 = useScrollAnimation({ delay: 200, threshold: 0.1 });
+    const cardAnimation1 = useScrollAnimation({ delay: 350, threshold: 0.1 });
+    const cardAnimation2 = useScrollAnimation({ delay: 500, threshold: 0.1 });
+    const cardAnimation3 = useScrollAnimation({ delay: 650, threshold: 0.1 });
+    const cardAnimation4 = useScrollAnimation({ delay: 800, threshold: 0.1 });
+
+    const cardAnimations = [
+        cardAnimation0,
+        cardAnimation1,
+        cardAnimation2,
+        cardAnimation3,
+        cardAnimation4,
+    ];
 
     return (
         <PageLayout

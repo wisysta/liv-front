@@ -42,7 +42,7 @@ export function HeroVision() {
 
             // 값 계산 최적화 - 변화가 있을 때만 업데이트
             if (progress !== lastYRef.current) {
-                const scale = 0.85 + 0.21 * eased; // 0.85 -> 1.06
+                const scale = 0.9 + 0.1 * eased; // 0.90 -> 1.00 (오버플로우 방지)
                 const radius = 12 * (1 - eased); // 12px -> 0px
 
                 // 텍스트 애니메이션
@@ -108,18 +108,19 @@ export function HeroVision() {
 
     return (
         <section
-            className="relative mt-12 lg:mt-24 2xl:mt-32 overflow-x-hidden"
+            className="relative mt-12 lg:mt-24 2xl:mt-32 overflow-hidden"
             ref={containerRef}
         >
             <div
                 ref={imageAnimation.ref}
-                className={`relative overflow-hidden transition-opacity duration-700 ease-out ${
+                className={`relative overflow-hidden transition-opacity duration-700 ease-out mx-auto max-w-full ${
                     imageAnimation.isVisible ? "opacity-100" : "opacity-0"
                 }`}
                 style={{
                     transform: "scale(var(--hero-scale, 0.85))",
                     borderRadius: "var(--hero-radius, 12px)",
                     willChange: "transform, border-radius, opacity",
+                    transformOrigin: "center center",
                 }}
             >
                 <Image
