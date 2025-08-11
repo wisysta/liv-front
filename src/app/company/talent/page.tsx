@@ -47,7 +47,14 @@ const TALENT_DATA: TalentItem[] = [
 export default function CompanyTalentPage() {
     const heroSection = useScrollAnimation({ delay: 150 });
     const introSection = useScrollAnimation({ delay: 300, threshold: 0.1 });
-    const cardsSection = useScrollAnimation({ delay: 450, threshold: 0.1 });
+
+    // 각 카드에 대한 개별 애니메이션 훅
+    const cardAnimations = TALENT_DATA.map((_, index) =>
+        useScrollAnimation({
+            delay: 200 + index * 150, // 각 카드마다 150ms씩 지연
+            threshold: 0.1,
+        })
+    );
 
     return (
         <PageLayout
@@ -130,16 +137,17 @@ export default function CompanyTalentPage() {
             {/* 인재상 카드들 */}
             <section className="bg-white py-16 lg:py-32 2xl:py-48">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div
-                        ref={cardsSection.ref}
-                        className={`grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12 lg:gap-20 2xl:gap-28 transition-all duration-1000 ease-out ${
-                            cardsSection.isVisible
-                                ? "opacity-100 translate-y-0"
-                                : "opacity-0 translate-y-8"
-                        }`}
-                    >
+                    <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12 lg:gap-20 2xl:gap-28">
                         {TALENT_DATA.map((talent, index) => (
-                            <div key={index} className="text-left">
+                            <div
+                                key={index}
+                                ref={cardAnimations[index].ref}
+                                className={`text-left transition-all duration-700 ease-out ${
+                                    cardAnimations[index].isVisible
+                                        ? "opacity-100 translate-y-0"
+                                        : "opacity-0 translate-y-8"
+                                }`}
+                            >
                                 {/* 아이콘 */}
                                 <div className="mb-8 flex justify-start">
                                     <div className="w-16 h-16 lg:w-20 lg:h-20 2xl:w-24 2xl:h-24">

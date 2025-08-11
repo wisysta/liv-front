@@ -49,7 +49,7 @@ export function PageLayout({
 }: PageLayoutProps) {
     return (
         <div
-            className={`min-h-screen ${
+            className={`min-h-screen overflow-x-hidden ${
                 fullHeight ? "h-screen" : ""
             } flex flex-col ${className}`}
         >
