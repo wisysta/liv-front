@@ -72,6 +72,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {
             id: "rates",
             title: "업종별 공연권료",
+            href: "/performance-fee/industry",
             items: [],
         },
         {
