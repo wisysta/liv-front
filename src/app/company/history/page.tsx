@@ -141,7 +141,13 @@ export default function CompanyHistoryPage() {
                                     }}
                                 >
                                     {/* 연도와 도트 */}
-                                    <div className="relative flex items-start min-h-[180px] lg:min-h-[220px] 2xl:min-h-[280px]">
+                                    <div
+                                        className={`relative flex items-start ${
+                                            blockIndex === 0
+                                                ? "min-h-[240px] lg:min-h-[270px] 2xl:min-h-[340px]"
+                                                : "min-h-[180px] lg:min-h-[200px] 2xl:min-h-[240px]"
+                                        }`}
+                                    >
                                         {/* 연도 */}
                                         <div className="pr-12 text-right">
                                             <h3 className="text-3xl font-bold text-background-dark">
@@ -157,14 +163,18 @@ export default function CompanyHistoryPage() {
                                                 HISTORY_DATA.length - 1 && (
                                                 <div
                                                     className={`w-1 mt-4 bg-primary-purple transition-all duration-1000 ease-out ${
+                                                        hasScrolled &&
                                                         timelineRefs[
                                                             blockIndex + 1
                                                         ]?.isVisible
-                                                            ? "h-48 lg:h-56 2xl:h-64 opacity-100"
+                                                            ? blockIndex === 0
+                                                                ? "h-64 lg:h-80 2xl:h-96 opacity-100"
+                                                                : "h-48 lg:h-56 2xl:h-64 opacity-100"
                                                             : "h-0 opacity-0"
                                                     }`}
                                                     style={{
                                                         transitionDelay:
+                                                            hasScrolled &&
                                                             timelineRefs[
                                                                 blockIndex
                                                             ]?.isVisible
@@ -177,12 +187,51 @@ export default function CompanyHistoryPage() {
 
                                         {/* 이벤트 목록 */}
                                         <div className="ml-8 flex-1">
-                                            <div className="space-y-9">
+                                            <div className="space-y-12 lg:space-y-16 2xl:space-y-20">
                                                 {block.events.map(
                                                     (event, idx) => (
                                                         <div
                                                             key={`${block.year}-${idx}`}
-                                                            className="flex gap-8"
+                                                            className={`flex gap-8 transition-all duration-700 ease-out ${
+                                                                (blockIndex ===
+                                                                    0 &&
+                                                                    timelineRefs[
+                                                                        blockIndex
+                                                                    ]
+                                                                        ?.isVisible) ||
+                                                                (blockIndex >
+                                                                    0 &&
+                                                                    hasScrolled &&
+                                                                    timelineRefs[
+                                                                        blockIndex
+                                                                    ]
+                                                                        ?.isVisible)
+                                                                    ? "opacity-100 translate-x-0"
+                                                                    : "opacity-0 translate-x-8"
+                                                            }`}
+                                                            style={{
+                                                                transitionDelay: `${
+                                                                    (blockIndex ===
+                                                                        0 &&
+                                                                        timelineRefs[
+                                                                            blockIndex
+                                                                        ]
+                                                                            ?.isVisible) ||
+                                                                    (blockIndex >
+                                                                        0 &&
+                                                                        hasScrolled &&
+                                                                        timelineRefs[
+                                                                            blockIndex
+                                                                        ]
+                                                                            ?.isVisible)
+                                                                        ? blockIndex *
+                                                                              200 +
+                                                                          idx *
+                                                                              150 +
+                                                                          400
+                                                                        : 0
+                                                                }ms`,
+                                                            }}
                                                         >
                                                             {/* 월 */}
                                                             <div className="w-12 text-gray-500 font-medium text-lg">
