@@ -182,12 +182,9 @@ function MaterialItem({
                                 </span>
                             </div>
                         </div>
-                        <h3 className="text-lg font-medium text-background-dark leading-relaxed mb-2 group-hover:text-primary-purple transition-colors">
+                        <h3 className="text-lg font-medium text-background-dark leading-relaxed group-hover:text-primary-purple transition-colors">
                             {material.title}
                         </h3>
-                        <p className="text-gray-600 text-sm line-clamp-2">
-                            {material.description}
-                        </p>
                     </div>
 
                     <div className="flex-shrink-0 ml-4 pt-1">
