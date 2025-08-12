@@ -74,7 +74,7 @@ export default function CEOPage() {
                         </div>
 
                         {/* 우측 - 메시지 콘텐츠 */}
-                        <div className="lg:col-span-7 lg:py-8 2xl:py-12">
+                        <div className="lg:col-span-7 py-4 lg:py-6 2xl:py-8">
                             <div className="space-y-12">
                                 {/* 제목 */}
                                 <div
@@ -85,7 +85,7 @@ export default function CEOPage() {
                                             : "opacity-0 translate-y-8"
                                     }`}
                                 >
-                                    <h2 className="text-xl lg:text-2xl 2xl:text-3xl font-bold text-primary-purple mb-6">
+                                    <h2 className="text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold text-primary-purple leading-tight mb-6 lg:mb-8 2xl:mb-10">
                                         K-POP DX Enterprise, LIV MUSIC
                                     </h2>
 
