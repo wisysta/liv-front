@@ -1,0 +1,253 @@
+{
+  "type": "large_area",
+  "industries": [
+    {
+      "id": "mart",
+      "name": "대형마트",
+      "data": [
+        {
+          "area": "3000㎡-5000㎡",
+          "copyright": "80,000원",
+          "producer": "44,000원",
+          "performer": "40,000원",
+          "total": "164,000원"
+        },
+        {
+          "area": "5000㎡-10000㎡",
+          "copyright": "150,000원",
+          "producer": "82,500원",
+          "performer": "75,000원",
+          "total": "307,500원"
+        },
+        {
+          "area": "10000㎡-15000㎡",
+          "copyright": "300,000원",
+          "producer": "165,000원",
+          "performer": "150,000원",
+          "total": "615,000원"
+        },
+        {
+          "area": "15000㎡-20000㎡",
+          "copyright": "500,000원",
+          "producer": "275,000원",
+          "performer": "250,000원",
+          "total": "1,025,000원"
+        },
+        {
+          "area": "20000㎡-30000㎡",
+          "copyright": "700,000원",
+          "producer": "385,000원",
+          "performer": "350,000원",
+          "total": "1,435,000원"
+        },
+        {
+          "area": "30000㎡-40000㎡",
+          "copyright": "900,000원",
+          "producer": "495,000원",
+          "performer": "450,000원",
+          "total": "1,845,000원"
+        },
+        {
+          "area": "40000㎡-50000㎡",
+          "copyright": "1,100,000원",
+          "producer": "605,000원",
+          "performer": "550,000원",
+          "total": "2,255,000원"
+        },
+        {
+          "area": "50000㎡ 이상",
+          "copyright": "1,300,000원",
+          "producer": "715,000원",
+          "performer": "650,000원",
+          "total": "2,665,000원"
+        }
+      ]
+    },
+    {
+      "id": "department",
+      "name": "백화점",
+      "data": [
+        {
+          "area": "3000㎡-5000㎡",
+          "copyright": "80,000원",
+          "producer": "48,400원",
+          "performer": "44,000원",
+          "total": "172,400원"
+        },
+        {
+          "area": "5000㎡-10000㎡",
+          "copyright": "150,000원",
+          "producer": "90,750원",
+          "performer": "82,500원",
+          "total": "323,250원"
+        },
+        {
+          "area": "10000㎡-15000㎡",
+          "copyright": "300,000원",
+          "producer": "181,500원",
+          "performer": "165,000원",
+          "total": "646,500원"
+        },
+        {
+          "area": "15000㎡-20000㎡",
+          "copyright": "500,000원",
+          "producer": "302,500원",
+          "performer": "275,000원",
+          "total": "1,077,500원"
+        },
+        {
+          "area": "20000㎡-30000㎡",
+          "copyright": "700,000원",
+          "producer": "423,500원",
+          "performer": "385,000원",
+          "total": "1,508,500원"
+        },
+        {
+          "area": "30000㎡-40000㎡",
+          "copyright": "900,000원",
+          "producer": "544,500원",
+          "performer": "495,000원",
+          "total": "1,939,500원"
+        },
+        {
+          "area": "40000㎡-50000㎡",
+          "copyright": "1,100,000원",
+          "producer": "665,500원",
+          "performer": "605,000원",
+          "total": "2,370,500원"
+        },
+        {
+          "area": "50000㎡ 이상",
+          "copyright": "1,300,000원",
+          "producer": "786,500원",
+          "performer": "715,000원",
+          "total": "2,801,500원"
+        }
+      ]
+    },
+    {
+      "id": "complex_shopping",
+      "name": "복합쇼핑몰",
+      "data": [
+        {
+          "area": "3000㎡-5000㎡",
+          "copyright": "80,000원",
+          "producer": "44,000원",
+          "performer": "40,000원",
+          "total": "164,000원"
+        },
+        {
+          "area": "5000㎡-10000㎡",
+          "copyright": "150,000원",
+          "producer": "82,500원",
+          "performer": "75,000원",
+          "total": "307,500원"
+        },
+        {
+          "area": "10000㎡-15000㎡",
+          "copyright": "300,000원",
+          "producer": "165,000원",
+          "performer": "150,000원",
+          "total": "615,000원"
+        },
+        {
+          "area": "15000㎡-20000㎡",
+          "copyright": "500,000원",
+          "producer": "275,000원",
+          "performer": "250,000원",
+          "total": "1,025,000원"
+        },
+        {
+          "area": "20000㎡-30000㎡",
+          "copyright": "700,000원",
+          "producer": "385,000원",
+          "performer": "350,000원",
+          "total": "1,435,000원"
+        },
+        {
+          "area": "30000㎡-40000㎡",
+          "copyright": "900,000원",
+          "producer": "495,000원",
+          "performer": "450,000원",
+          "total": "1,845,000원"
+        },
+        {
+          "area": "40000㎡-50000㎡",
+          "copyright": "1,100,000원",
+          "producer": "605,000원",
+          "performer": "550,000원",
+          "total": "2,255,000원"
+        },
+        {
+          "area": "50000㎡ 이상",
+          "copyright": "1,300,000원",
+          "producer": "715,000원",
+          "performer": "650,000원",
+          "total": "2,665,000원"
+        }
+      ]
+    },
+    {
+      "id": "shopping_center",
+      "name": "쇼핑센터",
+      "data": [
+        {
+          "area": "3000㎡-5000㎡",
+          "copyright": "80,000원",
+          "producer": "44,000원",
+          "performer": "40,000원",
+          "total": "164,000원"
+        },
+        {
+          "area": "5000㎡-10000㎡",
+          "copyright": "150,000원",
+          "producer": "82,500원",
+          "performer": "75,000원",
+          "total": "307,500원"
+        },
+        {
+          "area": "10000㎡-15000㎡",
+          "copyright": "300,000원",
+          "producer": "165,000원",
+          "performer": "150,000원",
+          "total": "615,000원"
+        },
+        {
+          "area": "15000㎡-20000㎡",
+          "copyright": "500,000원",
+          "producer": "275,000원",
+          "performer": "250,000원",
+          "total": "1,025,000원"
+        },
+        {
+          "area": "20000㎡-30000㎡",
+          "copyright": "700,000원",
+          "producer": "385,000원",
+          "performer": "350,000원",
+          "total": "1,435,000원"
+        },
+        {
+          "area": "30000㎡-40000㎡",
+          "copyright": "900,000원",
+          "producer": "495,000원",
+          "performer": "450,000원",
+          "total": "1,845,000원"
+        },
+        {
+          "area": "40000㎡-50000㎡",
+          "copyright": "1,100,000원",
+          "producer": "605,000원",
+          "performer": "550,000원",
+          "total": "2,255,000원"
+        },
+        {
+          "area": "50000㎡ 이상",
+          "copyright": "1,300,000원",
+          "producer": "715,000원",
+          "performer": "650,000원",
+          "total": "2,665,000원"
+        }
+      ]
+    }
+  ]
+}

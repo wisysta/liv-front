@@ -1,0 +1,61 @@
+{
+  "type": "equipment_count",
+  "industries": [
+    {
+      "id": "game_room",
+      "name": "게임방",
+      "data": [
+        {
+          "equipment": "노래반주기",
+          "count": "1대",
+          "copyright": "3,000원",
+          "performer": "-",
+          "total": "3,000원"
+        },
+        {
+          "equipment": "댄스게임기",
+          "count": "1대",
+          "copyright": "2,000원",
+          "performer": "-",
+          "total": "2,000원"
+        },
+        {
+          "equipment": "멀티기기",
+          "count": "1대",
+          "copyright": "2,000원",
+          "performer": "-",
+          "total": "2,000원"
+        }
+      ],
+      "note": "※ 멀티기기란 1대의 기기로 게임, 노래, 영화감상 등을 할 수 있는 기기 - 매장에 있는 기기당 공연권료 계산"
+    },
+    {
+      "id": "multi_room",
+      "name": "멀티방",
+      "data": [
+        {
+          "equipment": "노래반주기",
+          "count": "1대",
+          "copyright": "3,000원",
+          "performer": "-",
+          "total": "3,000원"
+        },
+        {
+          "equipment": "댄스게임기",
+          "count": "1대",
+          "copyright": "2,000원",
+          "performer": "-",
+          "total": "2,000원"
+        },
+        {
+          "equipment": "멀티기기",
+          "count": "1대",
+          "copyright": "2,000원",
+          "performer": "-",
+          "total": "2,000원"
+        }
+      ],
+      "note": "※ 멀티기기란 1대의 기기로 게임, 노래, 영화감상 등을 할 수 있는 기기 - 매장에 있는 기기당 공연권료 계산"
+    }
+  ]
+}

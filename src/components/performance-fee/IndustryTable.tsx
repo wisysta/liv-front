@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import industryPricingData from "@/data/industry-pricing.json";
+import tableTypesData from "@/data/table-types.json";
+import industryIndex from "@/data/industries/index.json";
 
 interface IndustryType {
     id: string;
@@ -27,17 +28,63 @@ interface TableType {
     columns: TableColumn[];
 }
 
-// JSON 데이터를 타입에 맞게 변환
-const industryData: IndustryType[] =
-    industryPricingData.industries as IndustryType[];
-const tableTypes: Record<string, TableType> =
-    industryPricingData.tableTypes as Record<string, TableType>;
+// 테이블 타입 데이터 로드
+const tableTypes: Record<string, TableType> = tableTypesData as Record<
+    string,
+    TableType
+>;
+
+// 업종 데이터를 동적으로 로드하는 함수
+const loadIndustryData = async (): Promise<IndustryType[]> => {
+    const allIndustries: IndustryType[] = [];
+
+    // 각 파일별로 데이터를 로드
+    for (const fileName of industryIndex.industryFiles) {
+        try {
+            const module = await import(`@/data/industries/${fileName}`);
+            const data = module.default;
+
+            // 각 업종을 전체 배열에 추가
+            if (data.industries) {
+                data.industries.forEach((industry: any) => {
+                    allIndustries.push({
+                        ...industry,
+                        type: data.type,
+                    });
+                });
+            }
+        } catch (error) {
+            console.error(`Error loading ${fileName}:`, error);
+        }
+    }
+
+    return allIndustries;
+};
 
 interface IndustryTableProps {
     selectedIndustry?: string | null;
 }
 
 export function IndustryTable({ selectedIndustry = null }: IndustryTableProps) {
+    const [industryData, setIndustryData] = useState<IndustryType[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    // 컴포넌트 마운트 시 데이터 로드
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                const data = await loadIndustryData();
+                setIndustryData(data);
+            } catch (error) {
+                console.error("Error loading industry data:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        loadData();
+    }, []);
+
     // selectedIndustry가 null이면 디자인을 위해 커피전문점 데이터를 표시 (블러 처리됨)
     const displayIndustry = selectedIndustry || "coffee";
     const currentIndustry = industryData.find(
@@ -47,6 +94,17 @@ export function IndustryTable({ selectedIndustry = null }: IndustryTableProps) {
     // 현재 업종의 테이블 타입에 따른 컬럼 정의 가져오기
     const tableType = currentIndustry?.type || "standard";
     const columns = tableTypes[tableType]?.columns || [];
+
+    // 로딩 중일 때
+    if (isLoading) {
+        return (
+            <div className="relative z-10 space-y-8">
+                <div className="flex justify-center items-center py-20">
+                    <div className="text-gray-500">데이터를 불러오는 중...</div>
+                </div>
+            </div>
+        );
+    }
 
     const getAlignmentClass = (align: string) => {
         switch (align) {
@@ -84,7 +142,10 @@ export function IndustryTable({ selectedIndustry = null }: IndustryTableProps) {
                     {/* 테이블 헤더 */}
                     <div className="bg-gray-light border-b border-gray-medium">
                         <div
-                            className={`grid grid-cols-${columns.length} gap-4 px-6 py-4`}
+                            className="grid gap-4 px-6 py-4"
+                            style={{
+                                gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))`,
+                            }}
                         >
                             {columns.map((column) => (
                                 <div
@@ -106,13 +167,14 @@ export function IndustryTable({ selectedIndustry = null }: IndustryTableProps) {
                         {currentIndustry?.data.map((row, index) => (
                             <div
                                 key={index}
-                                className={`grid grid-cols-${
-                                    columns.length
-                                } gap-4 px-6 py-4 transition-all duration-500 ${
-                                    selectedIndustry === "coffee"
+                                className={`grid gap-4 px-6 py-4 transition-all duration-500 ${
+                                    selectedIndustry !== null
                                         ? "opacity-100"
                                         : "opacity-30 blur-sm"
                                 } hover:bg-gray-50`}
+                                style={{
+                                    gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))`,
+                                }}
                             >
                                 {columns.map((column) => (
                                     <div

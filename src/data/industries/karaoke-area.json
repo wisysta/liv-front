@@ -1,0 +1,39 @@
+{
+  "type": "karaoke_area",
+  "industries": [
+    {
+      "id": "karaoke",
+      "name": "노래연습장",
+      "data": [
+        {
+          "area": "0-6.6㎡",
+          "copyright": "5,000원",
+          "producer": "-",
+          "performer": "-",
+          "total": "5,000원"
+        },
+        {
+          "area": "6.6㎡-13.2㎡",
+          "copyright": "6,000원",
+          "producer": "-",
+          "performer": "-",
+          "total": "6,000원"
+        },
+        {
+          "area": "13.2㎡-19.8㎡",
+          "copyright": "7,000원",
+          "producer": "-",
+          "performer": "-",
+          "total": "7,000원"
+        },
+        {
+          "area": "19.8㎡ 이상",
+          "copyright": "8,000원",
+          "producer": "-",
+          "performer": "-",
+          "total": "8,000원"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "type": "passenger_count",
+  "industries": [
+    {
+      "id": "aircraft",
+      "name": "항공기",
+      "data": [
+        {
+          "capacity": "0-200명",
+          "boarding": "17,000원",
+          "flying": "69,000원",
+          "performer": "10,280원",
+          "total": "11,685원"
+        },
+        {
+          "capacity": "200명-300명",
+          "boarding": "22,000원",
+          "flying": "92,000원",
+          "performer": "13,310원",
+          "total": "22,550원"
+        },
+        {
+          "capacity": "300명 이상",
+          "boarding": "26,000원",
+          "flying": "115,000원",
+          "performer": "15,730원",
+          "total": "29,520원"
+        }
+      ]
+    }
+  ]
+}
