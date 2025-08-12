@@ -144,7 +144,7 @@ export default function CompanyTalentPage() {
             {/* 인재상 카드들 */}
             <section className="bg-white py-16 lg:py-32 2xl:py-48">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12 lg:gap-20 2xl:gap-28">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12 lg:gap-20 2xl:gap-28">
                         {TALENT_DATA.map((talent, index) => {
                             const animation = cardAnimations[index];
                             if (!animation) return null;
