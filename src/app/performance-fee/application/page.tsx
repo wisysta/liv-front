@@ -26,7 +26,7 @@ function ApplicationInfoPage() {
                                 : "opacity-0 translate-y-8"
                         }`}
                     >
-                        <h1 className="text-2xl lg:text-3xl 2xl:text-4xl font-bold text-background-dark mb-8 lg:mb-18 2xl:mb-24 leading-tight">
+                        <h1 className="text-3xl lg:text-4xl 2xl:text-5xl font-bold text-background-dark mb-6 lg:mb-8 2xl:mb-12 leading-tight">
                             저작권 비즈니스 지원센터 신청방법
                         </h1>
 
@@ -38,7 +38,7 @@ function ApplicationInfoPage() {
                                     : "opacity-0 translate-y-8"
                             }`}
                         >
-                            <h2 className="text-xl lg:text-2xl 2xl:text-3xl font-semibold">
+                            <h2 className="text-2xl lg:text-3xl 2xl:text-4xl font-semibold">
                                 우리 가게도 해당이 될까요?
                             </h2>
 

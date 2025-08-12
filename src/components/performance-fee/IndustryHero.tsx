@@ -58,7 +58,7 @@ export function IndustryHero() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 {/* 제목 */}
                 <h1
-                    className={`text-3xl lg:text-4xl 2xl:text-5xl font-bold text-background-dark mb-6 lg:mb-8 transition-all duration-700 ease-out ${
+                    className={`text-3xl lg:text-4xl 2xl:text-5xl font-bold text-background-dark mb-6 lg:mb-8 2xl:mb-12 transition-all duration-700 ease-out ${
                         textAnimations.title
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 translate-y-12"
