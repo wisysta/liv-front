@@ -347,5 +347,40 @@
         "highlight": true
       }
     ]
+  },
+  "casino_area": {
+    "columns": [
+      {
+        "key": "area",
+        "title": "면적(㎡)",
+        "align": "left",
+        "type": "text"
+      },
+      {
+        "key": "copyright",
+        "title": "저작권자",
+        "align": "right",
+        "type": "price"
+      },
+      {
+        "key": "producer",
+        "title": "제작자",
+        "align": "right",
+        "type": "price"
+      },
+      {
+        "key": "performer",
+        "title": "실연자",
+        "align": "right",
+        "type": "price"
+      },
+      {
+        "key": "total",
+        "title": "공연권료 합계",
+        "align": "right",
+        "type": "price",
+        "highlight": true
+      }
+    ]
   }
 }

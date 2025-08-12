@@ -10,7 +10,8 @@
     "passenger-count.json",
     "restaurant-area.json",
     "entertainment-area.json",
-    "cabaret-area.json"
+    "cabaret-area.json",
+    "casino-area.json"
   ],
   "industryList": [
     { "id": "coffee", "name": "커피전문점", "type": "standard" },
@@ -31,7 +32,7 @@
     { "id": "large_store", "name": "대규모 점포", "type": "large_area" },
     { "id": "dance_academy", "name": "무도학원", "type": "people_count" },
     { "id": "aerobics", "name": "에어로빅장", "type": "people_count" },
-          { "id": "music_class", "name": "노래교실", "type": "people_count" },
+    { "id": "music_class", "name": "노래교실", "type": "people_count" },
       { "id": "cultural_center", "name": "시,군,구 비영리 문화센터", "type": "people_count" },
       { "id": "community_center", "name": "주민자치센터", "type": "people_count" },
       { "id": "amusement_facility", "name": "유원시설", "type": "standard" },
@@ -53,6 +54,7 @@
     { "id": "theater_restaurant", "name": "극장식 식당", "type": "entertainment_area" },
     { "id": "cabaret", "name": "카바레", "type": "cabaret_area" },
     { "id": "stand_bar", "name": "스탠드바", "type": "cabaret_area" },
-    { "id": "dance_hall", "name": "무도장", "type": "people_count" }
+    { "id": "dance_hall", "name": "무도장", "type": "people_count" },
+    { "id": "casino", "name": "카지노", "type": "casino_area" }
   ]
 }
