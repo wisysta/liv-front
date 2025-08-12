@@ -41,8 +41,10 @@ const loadIndustryData = async (): Promise<IndustryType[]> => {
     // 각 파일별로 데이터를 로드
     for (const fileName of industryIndex.industryFiles) {
         try {
-            const module = await import(`@/data/industries/${fileName}`);
-            const data = module.default;
+            const importedModule = await import(
+                `@/data/industries/${fileName}`
+            );
+            const data = importedModule.default;
 
             // 각 업종을 전체 배열에 추가
             if (data.industries) {
