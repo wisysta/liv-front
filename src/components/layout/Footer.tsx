@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function Footer() {
     return (
@@ -67,12 +68,18 @@ export function Footer() {
             {/* 하단 링크 및 저작권 */}
             <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-700 flex flex-col lg:flex-row justify-between items-start lg:items-center text-xs text-gray-400 space-y-4 lg:space-y-0">
                 <div className="flex flex-wrap gap-3 sm:gap-4">
-                    <a href="#" className="hover:text-white transition-colors">
+                    <Link
+                        href="/terms-of-service"
+                        className="hover:text-white transition-colors"
+                    >
                         이용약관
-                    </a>
-                    <a href="#" className="hover:text-white transition-colors">
+                    </Link>
+                    <Link
+                        href="/privacy-policy"
+                        className="hover:text-white transition-colors"
+                    >
                         개인정보처리방침
-                    </a>
+                    </Link>
                     <a href="#" className="hover:text-white transition-colors">
                         사업자정보확인
                     </a>

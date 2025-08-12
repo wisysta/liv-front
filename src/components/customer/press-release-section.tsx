@@ -63,7 +63,7 @@ export default function PressReleaseSection({
             {/* 검색 박스 */}
             <div className="mb-8">
                 <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <div className="absolute inset-y-0 left-0 pl-0 flex items-center pointer-events-none">
                         <svg
                             className="h-5 w-5 text-gray-400"
                             fill="none"
@@ -83,7 +83,7 @@ export default function PressReleaseSection({
                         placeholder="제목을 검색해보세요"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="block w-full pl-10 pr-3 py-3 bg-gray-50 border-0 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-purple focus:bg-white transition-all duration-200"
+                        className="block w-full pl-8 pr-0 py-3 border-0 border-b border-gray-200 bg-transparent placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-primary-purple text-background-dark font-medium transition-all duration-200"
                     />
                 </div>
             </div>
