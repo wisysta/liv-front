@@ -436,6 +436,102 @@
         }
       ],
       "note": "※ 철도사업법의 규정에 의한 여객용 열차 및 해운법의 규정에 의한 해상여객운송사업용 선박의 공연사용료 승차(선)료 수입 × 0.02%(음악사용료율) × 음악저작물관리비율 × 조정계수 승차(선)료 수입이란 운임과 서비스요금을 포함한 것"
+    },
+    {
+      "id": "non_alcoholic_beverage",
+      "name": "기타 비알콜 음료점",
+      "data": [
+        {
+          "area": "50㎡-100㎡",
+          "copyright": "2,000원",
+          "producer": "1,100원",
+          "performer": "1,000원",
+          "total": "4,100원"
+        },
+        {
+          "area": "100㎡-200㎡",
+          "copyright": "3,600원",
+          "producer": "1,980원",
+          "performer": "1,800원",
+          "total": "7,380원"
+        },
+        {
+          "area": "200㎡-300㎡",
+          "copyright": "4,900원",
+          "producer": "2,695원",
+          "performer": "2,450원",
+          "total": "10,045원"
+        },
+        {
+          "area": "300㎡-500㎡",
+          "copyright": "6,200원",
+          "producer": "3,410원",
+          "performer": "3,100원",
+          "total": "12,710원"
+        },
+        {
+          "area": "500㎡-1000㎡",
+          "copyright": "7,800원",
+          "producer": "4,290원",
+          "performer": "3,900원",
+          "total": "15,990원"
+        },
+        {
+          "area": "1000㎡ 이상",
+          "copyright": "10,000원",
+          "producer": "5,500원",
+          "performer": "5,000원",
+          "total": "20,500원"
+        }
+      ]
+    },
+    {
+      "id": "draft_beer",
+      "name": "생맥주 전문점",
+      "data": [
+        {
+          "area": "50㎡-100㎡",
+          "copyright": "2,000원",
+          "producer": "1,100원",
+          "performer": "1,000원",
+          "total": "4,100원"
+        },
+        {
+          "area": "100㎡-200㎡",
+          "copyright": "3,600원",
+          "producer": "1,980원",
+          "performer": "1,800원",
+          "total": "7,380원"
+        },
+        {
+          "area": "200㎡-300㎡",
+          "copyright": "4,900원",
+          "producer": "2,695원",
+          "performer": "2,450원",
+          "total": "10,045원"
+        },
+        {
+          "area": "300㎡-500㎡",
+          "copyright": "6,200원",
+          "producer": "3,410원",
+          "performer": "3,100원",
+          "total": "12,710원"
+        },
+        {
+          "area": "500㎡-1000㎡",
+          "copyright": "7,800원",
+          "producer": "4,290원",
+          "performer": "3,900원",
+          "total": "15,990원"
+        },
+        {
+          "area": "1000㎡ 이상",
+          "copyright": "10,000원",
+          "producer": "5,500원",
+          "performer": "5,000원",
+          "total": "20,500원"
+        }
+      ]
     }
   ]
 }
