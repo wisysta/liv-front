@@ -54,7 +54,7 @@ export function IndustryHero() {
     }, [isLoaded]);
 
     return (
-        <section className="bg-white pt-24 pb-16 lg:pt-32 lg:pb-20">
+        <section className="bg-white pb-16 lg:pb-20 pt-18 lg:pt-24 2xl:pt-32">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 {/* 제목 */}
                 <h1
