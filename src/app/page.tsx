@@ -111,7 +111,7 @@ export default function Home() {
                 <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-24 text-center">
                     <div className="mb-6 sm:mb-8">
                         <p
-                            className={`text-white text-xs sm:text-sm lg:text-base 2xl:text-lg font-semibold mb-3 sm:mb-4 lg:mb-6 tracking-wide transition-all duration-700 ease-out ${
+                            className={`text-white text-xs sm:text-sm lg:text-base xl:text-lg 2xl:text-xl font-semibold mb-3 sm:mb-4 lg:mb-6 2xl:mb-8 tracking-wide transition-all duration-700 ease-out ${
                                 textAnimations.subtitle
                                     ? "opacity-100 translate-y-0"
                                     : "opacity-0 translate-y-8"
@@ -120,7 +120,7 @@ export default function Home() {
                             LIV MUSIC COMPANY
                         </p>
                         <h1
-                            className={`text-white text-2xl sm:text-4xl lg:text-4xl 2xl:text-5xl font-semibold leading-tight mb-4 sm:mb-6 lg:mb-12 transition-all duration-700 ease-out ${
+                            className={`text-white text-2xl sm:text-4xl lg:text-4xl xl:text-5xl 2xl:text-[54px] font-semibold leading-tight mb-4 sm:mb-6 lg:mb-12 2xl:mb-14 transition-all duration-700 ease-out ${
                                 textAnimations.title
                                     ? "opacity-100 translate-y-0"
                                     : "opacity-0 translate-y-8"
@@ -131,7 +131,7 @@ export default function Home() {
                             쉽게 해결하세요
                         </h1>
                         <p
-                            className={`text-white text-xs sm:text-sm lg:text-base 2xl:text-lg mb-8 sm:mb-12 max-w-lg mx-auto transition-all duration-700 ease-out ${
+                            className={`text-white text-xs sm:text-sm lg:text-base xl:text-lg 2xl:text-xl mb-8 sm:mb-12 max-w-lg mx-auto transition-all duration-700 ease-out ${
                                 textAnimations.description
                                     ? "opacity-100 translate-y-0"
                                     : "opacity-0 translate-y-8"
@@ -152,7 +152,7 @@ export default function Home() {
                     >
                         <button
                             // onClick={() => handlePageTransition("/calculator")}
-                            className="text-primary-purple font-semibold bg-white py-2.5 sm:py-3 px-6 sm:px-8 rounded-full hover:bg-primary-purple hover:text-white transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
+                            className="text-primary-purple font-semibold bg-white py-2 sm:py-2.5 xl:py-3 px-6 sm:px-7 xl:px-8 rounded-full hover:bg-primary-purple hover:text-white transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
                         >
                             공연권료 계산기
                         </button>
@@ -162,7 +162,7 @@ export default function Home() {
                                     "/service/integrated-collection"
                                 )
                             }
-                            className="border border-white text-white font-semibold py-2.5 sm:py-3 px-6 sm:px-8 rounded-full hover:bg-white hover:text-gray-900 transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
+                            className="border border-white text-white font-semibold py-2 sm:py-2.5 xl:py-3 px-6 sm:px-7 xl:px-8 rounded-full hover:bg-white hover:text-gray-900 transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
                         >
                             서비스 소개
                         </button>
@@ -170,7 +170,7 @@ export default function Home() {
                             onClick={() =>
                                 handlePageTransition("/customer/faq")
                             }
-                            className="border border-white text-white font-semibold py-2.5 sm:py-3 px-6 sm:px-8 rounded-full hover:bg-white hover:text-gray-900 transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
+                            className="border border-white text-white font-semibold py-2 sm:py-2.5 xl:py-3 px-6 sm:px-7 xl:px-8 rounded-full hover:bg-white hover:text-gray-900 transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
                         >
                             고객센터
                         </button>
