@@ -80,7 +80,7 @@ export function IndustryHero() {
 
                 {/* 설명 */}
                 <p
-                    className={`text-lg lg:text-xl 2xl:text-2xl leading-relaxed text-background-dark max-w-4xl mx-auto transition-all duration-700 ease-out ${
+                    className={`text-base lg:text-lg 2xl:text-xl leading-relaxed text-background-dark max-w-4xl mx-auto transition-all duration-700 ease-out ${
                         textAnimations.description
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 translate-y-12"
