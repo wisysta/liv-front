@@ -116,7 +116,7 @@ export default function HealMusicPage() {
                         </p>
                         <p
                             ref={typingParagraph.ref}
-                            className="text-lg lg:text-xl 2xl:text-2xl leading-relaxed font-semibold whitespace-pre-line inline-block min-h-24"
+                            className="sm:text-xl lg:text-2xl 2xl:text-3xl leading-relaxed font-semibold whitespace-pre-line inline-block min-h-24"
                         >
                             {typingText}
                             {typingText.length < fullText.length && (
