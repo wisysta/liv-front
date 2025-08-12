@@ -169,7 +169,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 }`}
             >
                 {/* 메뉴 헤더 */}
-                <div className="flex justify-end px-4 sm:px-6 lg:px-8 py-3 lg:py-4">
+                <div className="flex justify-end px-4 sm:px-6 lg:px-8 py-2 lg:py-3 2xl:py-4">
                     <button
                         onClick={onClose}
                         className="w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center hover:bg-gray-200 rounded-full transition-colors"
@@ -199,7 +199,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                 {(section as any).href ? (
                                     <a
                                         href={(section as any).href}
-                                        className="block w-full text-left text-background-dark font-semibold text-base lg:text-lg py-[3.5px] sm:py-1 lg:py-1.5 hover:text-primary-purple transition-colors"
+                                        className="block w-full text-left text-background-dark font-semibold text-base lg:text-lg py-[3.5px] sm:py-1 lg:py-[5px] xl-py-1.5 hover:text-primary-purple transition-colors"
                                         onClick={onClose}
                                     >
                                         {section.title}
@@ -209,7 +209,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                         onClick={() =>
                                             handleSectionClick(section)
                                         }
-                                        className="w-full text-left text-background-dark font-semibold text-base lg:text-lg py-[3.5px] sm:py-1 lg:py-1.5 hover:text-primary-purple transition-colors flex items-center justify-between"
+                                        className="w-full text-left text-background-dark font-semibold text-base lg:text-lg py-[3.5px] sm:py-1 lg:py-[5px] xl-py-1.5 hover:text-primary-purple transition-colors flex items-center justify-between"
                                     >
                                         <span>{section.title}</span>
                                         {/* + 버튼 (클라이언트에서 모바일이고 서브메뉴가 있는 경우에만) */}
@@ -230,7 +230,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                 {!(section as any).href &&
                                     section.items.length > 0 &&
                                     shouldShowSubMenu(section.id) && (
-                                        <div className="ml-4 sm:ml-6 lg:ml-8 mt-1 sm:mt-2 space-y-1">
+                                        <div className="ml-4 sm:ml-6 lg:ml-7 2xl:ml-8 mt-0 sm:mt-1 2xl:mt-2 space-y-1">
                                             {section.items.map(
                                                 (item, index) => (
                                                     <a
