@@ -377,29 +377,28 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
     }
 
     if (!result) {
+        // 0원 기본 결과 생성 (totalAmount를 1로 설정하여 징수대상 조건 우회)
+        const defaultResult: CalculationResultData = {
+            copyrightAmount: 0,
+            neighboringAmount: 0,
+            totalAmount: -1, // 징수 대상이 아님 메시지 방지
+            breakdown: [
+                {
+                    label: "리브뮤직 납부 공연권료(3단체)",
+                    amount: 0,
+                    isBold: true,
+                },
+                {
+                    label: "월 매장음악사용료",
+                    amount: 0,
+                    isBold: true,
+                },
+            ],
+        };
+
+        // 기존 CalculationResult 컴포넌트 재사용
         return (
-            <div className="flex items-center justify-center h-full min-h-96">
-                <div className="text-center">
-                    <div className="text-gray-400 mb-4">
-                        <svg
-                            className="w-16 h-16 mx-auto"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={1}
-                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                            />
-                        </svg>
-                    </div>
-                    <p className="text-gray-500 text-lg">
-                        정보를 입력하고 계산 버튼을 눌러주세요
-                    </p>
-                </div>
-            </div>
+            <CalculationResult result={defaultResult} isCalculating={false} />
         );
     }
 
@@ -476,7 +475,11 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
                                 </span>
                             </div>
                             <div className="text-xl lg:text-2xl 2xl:text-3xl font-bold">
-                                {result.totalAmount.toLocaleString()}원
+                                {(result.totalAmount === -1
+                                    ? 0
+                                    : result.totalAmount
+                                ).toLocaleString()}
+                                원
                             </div>
                         </div>
                     </div>
