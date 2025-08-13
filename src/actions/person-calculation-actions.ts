@@ -1,0 +1,63 @@
+"use server";
+
+interface PersonCalculationRequest {
+    industryGroupId: number;
+    personCount: number;
+}
+
+interface PersonCalculationResponse {
+    copyrightAmount: number; // 저작권자
+    koscapAmount: number; // KOSCAP납부액
+    producerAmount: number; // 제작자
+    producerVAT: number; // 제작자VAT
+    performerAmount: number; // 실연자
+    livMusicAmount: number; // 리브뮤직납부액
+    storeUsageFee: number; // 월매장 사용료
+    totalAmount: number; // 공연권료합계
+    tierInfo: {
+        minPersons: number;
+        maxPersons: number | null;
+        copyrightAmount: number;
+        koscapRate: number;
+        neighboringRate: number;
+    };
+    industryNotes: string[];
+}
+
+export async function calculatePersonFee({
+    industryGroupId,
+    personCount,
+}: PersonCalculationRequest): Promise<PersonCalculationResponse> {
+    try {
+        const response = await fetch(
+            `${
+                process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
+            }/api/calculate/person`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    industryGroupId,
+                    personCount,
+                }),
+            }
+        );
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || "계산 중 오류가 발생했습니다.");
+        }
+
+        const result: PersonCalculationResponse = await response.json();
+        return result;
+    } catch (error) {
+        console.error("인원기반 계산 오류:", error);
+        throw new Error(
+            error instanceof Error
+                ? error.message
+                : "계산 중 오류가 발생했습니다."
+        );
+    }
+}

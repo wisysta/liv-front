@@ -1,24 +1,27 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import industryIndex from "@/data/industries/index.json";
+import { Industry } from "@/actions/industry-actions";
 
-interface JsonIndustry {
+interface ProcessedIndustry {
     id: string;
     name: string;
     type: string;
-    uniqueKey?: string;
+    groupId?: number;
+    uniqueKey: string;
 }
 
-interface IndustrySelectorProps {
+interface ApiIndustrySelectorProps {
     onClose: () => void;
     onIndustryChange: (industryId: string) => void;
+    industries: Industry[]; // API 데이터 (필수)
 }
 
-export function IndustrySelector({
+export function ApiIndustrySelector({
     onClose,
     onIndustryChange,
-}: IndustrySelectorProps) {
+    industries,
+}: ApiIndustrySelectorProps) {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedIndustry, setSelectedIndustry] = useState<string | null>(
         null
@@ -28,16 +31,21 @@ export function IndustrySelector({
     useEffect(() => {
         setSearchTerm("");
         setSelectedIndustry(null);
-        console.log("JSON 데이터 기반 IndustrySelector 사용 중");
-    }, []);
 
-    // JSON 데이터만 사용
-    const industryList = (industryIndex.industryList as JsonIndustry[]).map(
-        (ind, index) => ({
-            ...ind,
-            uniqueKey: `json-${ind.id}-${index}`, // JSON 데이터용 고유 키
-        })
-    );
+        // 디버깅: API 데이터 확인
+        console.log("API 데이터 기반 ApiIndustrySelector 사용 중");
+        console.log("API 데이터 개수:", industries.length);
+        console.log("API 데이터 샘플:", industries.slice(0, 3));
+    }, [industries]);
+
+    // API 데이터를 ProcessedIndustry 형태로 변환
+    const industryList: ProcessedIndustry[] = industries.map((ind) => ({
+        id: ind.id.toString(),
+        name: ind.name,
+        type: ind.type,
+        ...(ind.groupId !== undefined && { groupId: ind.groupId }), // groupId가 있을 때만 포함
+        uniqueKey: `${ind.groupId || ind.id}-${ind.id}`, // 고유 키 생성
+    }));
 
     const filteredIndustries = industryList.filter((industry) =>
         industry.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -93,7 +101,9 @@ export function IndustrySelector({
                             <button
                                 key={industry.uniqueKey}
                                 onClick={() =>
-                                    handleIndustrySelect(industry.id)
+                                    handleIndustrySelect(
+                                        industry.uniqueKey || industry.id
+                                    )
                                 }
                                 className={`w-full text-left p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 ${
                                     selectedIndustry === industry.id

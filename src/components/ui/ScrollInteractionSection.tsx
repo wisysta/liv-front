@@ -159,7 +159,7 @@ export function ScrollInteractionSection() {
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                     {images.map((image, index) => (
                         <div
-                            key={index}
+                            key={`scroll-section-${index}`}
                             className="relative transition-all duration-500 ease-out"
                             style={{
                                 ...getFloatingStyle(index),

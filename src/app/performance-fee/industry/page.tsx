@@ -70,20 +70,10 @@ export default function IndustryPerformanceFeePage() {
 
             {/* 업종 선택 모달 */}
             {isModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center">
-                    {/* 배경 오버레이 */}
-                    <div
-                        className="absolute inset-0 bg-black/50"
-                        onClick={() => setIsModalOpen(false)}
-                    />
-                    {/* 모달 콘텐츠 */}
-                    <div className="relative">
-                        <IndustrySelector
-                            onIndustryChange={handleIndustryChange}
-                            onClose={() => setIsModalOpen(false)}
-                        />
-                    </div>
-                </div>
+                <IndustrySelector
+                    onIndustryChange={handleIndustryChange}
+                    onClose={() => setIsModalOpen(false)}
+                />
             )}
         </PageLayout>
     );

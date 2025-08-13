@@ -61,6 +61,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {
             id: "calculator",
             title: "공연권료 계산기",
+            href: "/performance-fee/calculator",
             items: [],
         },
         {
@@ -133,13 +134,18 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
     // PC에서는 서브메뉴가 있는 섹션의 경우 항상 표시
     const shouldShowSubMenu = (sectionId: string) => {
-        if (!isClient) return false; // 서버 렌더링 시에는 서브메뉴 숨김
+        // 서버 렌더링 시에는 서브메뉴 숨김 (초기 상태)
+        if (!isClient) return false;
+        // 클라이언트에서는 데스크톱이거나 활성화된 섹션일 때 표시
         return !isMobile || activeSection === sectionId;
     };
 
-    // 화면 크기별 동적 스타일 클래스
+    // 화면 크기별 동적 스타일 클래스 (서버/클라이언트 일관성 유지)
     const getMenuContainerClass = () => {
         const baseClass = "px-6 pb-8 h-full overflow-y-auto";
+        // 서버 렌더링 시에는 기본 클래스 사용
+        if (!isClient) return baseClass;
+
         switch (screenSize) {
             case "mobile":
                 return `${baseClass} px-4`;
@@ -212,17 +218,15 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                         className="w-full text-left text-background-dark font-semibold text-base lg:text-lg py-[3.5px] sm:py-1 lg:py-[5px] xl-py-1.5 hover:text-primary-purple transition-colors flex items-center justify-between"
                                     >
                                         <span>{section.title}</span>
-                                        {/* + 버튼 (클라이언트에서 모바일이고 서브메뉴가 있는 경우에만) */}
-                                        {isClient &&
-                                            isMobile &&
-                                            section.items.length > 0 && (
-                                                <span className="text-xl sm:text-2xl lg:text-3xl font-normal">
-                                                    {activeSection ===
-                                                    section.id
-                                                        ? "−"
-                                                        : "+"}
-                                                </span>
-                                            )}
+                                        {/* + 버튼 (서브메뉴가 있는 경우에만) */}
+                                        {section.items.length > 0 && (
+                                            <span className="text-xl sm:text-2xl lg:text-3xl font-normal">
+                                                {isClient &&
+                                                activeSection === section.id
+                                                    ? "−"
+                                                    : "+"}
+                                            </span>
+                                        )}
                                     </button>
                                 )}
 
