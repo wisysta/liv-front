@@ -32,7 +32,7 @@ export async function getIndustries(): Promise<Industry[]> {
                 "Content-Type": "application/json",
             },
             next: {
-                revalidate: 1800, // 30분 마다 재검증
+                revalidate: 3600, // 1시간 마다 재검증
             },
         });
 
