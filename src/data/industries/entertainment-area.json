@@ -5,65 +5,65 @@
       "id": "danran_jujeom",
       "name": "단란주점",
       "data": [
-        { "area": "0-66㎡", "copyright": "27,000원", "total": "27,000원" },
-        { "area": "66㎡-99㎡", "copyright": "35,000원", "total": "35,000원" },
-        { "area": "99㎡-132㎡", "copyright": "43,000원", "total": "43,000원" },
-        { "area": "132㎡-165㎡", "copyright": "52,000원", "total": "52,000원" },
-        { "area": "165㎡-198㎡", "copyright": "60,000원", "total": "60,000원" },
-        { "area": "198㎡-231㎡", "copyright": "68,000원", "total": "68,000원" },
-        { "area": "231㎡-264㎡", "copyright": "76,000원", "total": "76,000원" }
+        { "area": "0-66㎡", "copyright": "27,000원", "producer": "-", "performer": "-", "total": "27,000원" },
+        { "area": "66㎡-99㎡", "copyright": "35,000원", "producer": "-", "performer": "-", "total": "35,000원" },
+        { "area": "99㎡-132㎡", "copyright": "43,000원", "producer": "-", "performer": "-", "total": "43,000원" },
+        { "area": "132㎡-165㎡", "copyright": "52,000원", "producer": "-", "performer": "-", "total": "52,000원" },
+        { "area": "165㎡-198㎡", "copyright": "60,000원", "producer": "-", "performer": "-", "total": "60,000원" },
+        { "area": "198㎡-231㎡", "copyright": "68,000원", "producer": "-", "performer": "-", "total": "68,000원" },
+        { "area": "231㎡-264㎡", "copyright": "76,000원", "producer": "-", "performer": "-", "total": "76,000원" }
       ]
     },
     {
       "id": "night_club",
       "name": "나이트클럽",
       "data": [
-        { "area": "0-66㎡", "copyright": "31,000원", "total": "31,000원" },
-        { "area": "66㎡-99㎡", "copyright": "40,000원", "total": "40,000원" },
-        { "area": "99㎡-132㎡", "copyright": "49,000원", "total": "49,000원" },
-        { "area": "132㎡-165㎡", "copyright": "58,000원", "total": "58,000원" },
-        { "area": "165㎡-198㎡", "copyright": "68,000원", "total": "68,000원" },
-        { "area": "198㎡-231㎡", "copyright": "77,000원", "total": "77,000원" },
-        { "area": "231㎡-264㎡", "copyright": "86,000원", "total": "86,000원" }
+        { "area": "0-66㎡", "copyright": "31,000원", "producer": "-", "performer": "-", "total": "31,000원" },
+        { "area": "66㎡-99㎡", "copyright": "40,000원", "producer": "-", "performer": "-", "total": "40,000원" },
+        { "area": "99㎡-132㎡", "copyright": "49,000원", "producer": "-", "performer": "-", "total": "49,000원" },
+        { "area": "132㎡-165㎡", "copyright": "58,000원", "producer": "-", "performer": "-", "total": "58,000원" },
+        { "area": "165㎡-198㎡", "copyright": "68,000원", "producer": "-", "performer": "-", "total": "68,000원" },
+        { "area": "198㎡-231㎡", "copyright": "77,000원", "producer": "-", "performer": "-", "total": "77,000원" },
+        { "area": "231㎡-264㎡", "copyright": "86,000원", "producer": "-", "performer": "-", "total": "86,000원" }
       ]
     },
     {
       "id": "room_salon",
       "name": "룸살롱",
       "data": [
-        { "area": "0-66㎡", "copyright": "31,000원", "total": "31,000원" },
-        { "area": "66㎡-99㎡", "copyright": "40,000원", "total": "40,000원" },
-        { "area": "99㎡-132㎡", "copyright": "49,000원", "total": "49,000원" },
-        { "area": "132㎡-165㎡", "copyright": "58,000원", "total": "58,000원" },
-        { "area": "165㎡-198㎡", "copyright": "68,000원", "total": "68,000원" },
-        { "area": "198㎡-231㎡", "copyright": "77,000원", "total": "77,000원" },
-        { "area": "231㎡-264㎡", "copyright": "86,000원", "total": "86,000원" }
+        { "area": "0-66㎡", "copyright": "31,000원", "producer": "-", "performer": "-", "total": "31,000원" },
+        { "area": "66㎡-99㎡", "copyright": "40,000원", "producer": "-", "performer": "-", "total": "40,000원" },
+        { "area": "99㎡-132㎡", "copyright": "49,000원", "producer": "-", "performer": "-", "total": "49,000원" },
+        { "area": "132㎡-165㎡", "copyright": "58,000원", "producer": "-", "performer": "-", "total": "58,000원" },
+        { "area": "165㎡-198㎡", "copyright": "68,000원", "producer": "-", "performer": "-", "total": "68,000원" },
+        { "area": "198㎡-231㎡", "copyright": "77,000원", "producer": "-", "performer": "-", "total": "77,000원" },
+        { "area": "231㎡-264㎡", "copyright": "86,000원", "producer": "-", "performer": "-", "total": "86,000원" }
       ]
     },
     {
       "id": "entertainment_bar",
       "name": "유흥주점",
       "data": [
-        { "area": "0-66㎡", "copyright": "31,000원", "total": "31,000원" },
-        { "area": "66㎡-99㎡", "copyright": "40,000원", "total": "40,000원" },
-        { "area": "99㎡-132㎡", "copyright": "49,000원", "total": "49,000원" },
-        { "area": "132㎡-165㎡", "copyright": "58,000원", "total": "58,000원" },
-        { "area": "165㎡-198㎡", "copyright": "68,000원", "total": "68,000원" },
-        { "area": "198㎡-231㎡", "copyright": "77,000원", "total": "77,000원" },
-        { "area": "231㎡-264㎡", "copyright": "86,000원", "total": "86,000원" }
+        { "area": "0-66㎡", "copyright": "31,000원", "producer": "-", "performer": "-", "total": "31,000원" },
+        { "area": "66㎡-99㎡", "copyright": "40,000원", "producer": "-", "performer": "-", "total": "40,000원" },
+        { "area": "99㎡-132㎡", "copyright": "49,000원", "producer": "-", "performer": "-", "total": "49,000원" },
+        { "area": "132㎡-165㎡", "copyright": "58,000원", "producer": "-", "performer": "-", "total": "58,000원" },
+        { "area": "165㎡-198㎡", "copyright": "68,000원", "producer": "-", "performer": "-", "total": "68,000원" },
+        { "area": "198㎡-231㎡", "copyright": "77,000원", "producer": "-", "performer": "-", "total": "77,000원" },
+        { "area": "231㎡-264㎡", "copyright": "86,000원", "producer": "-", "performer": "-", "total": "86,000원" }
       ]
     },
     {
       "id": "theater_restaurant",
       "name": "극장식 식당",
       "data": [
-        { "area": "0-66㎡", "copyright": "31,000원", "total": "31,000원" },
-        { "area": "66㎡-99㎡", "copyright": "40,000원", "total": "40,000원" },
-        { "area": "99㎡-132㎡", "copyright": "49,000원", "total": "49,000원" },
-        { "area": "132㎡-165㎡", "copyright": "58,000원", "total": "58,000원" },
-        { "area": "165㎡-198㎡", "copyright": "68,000원", "total": "68,000원" },
-        { "area": "198㎡-231㎡", "copyright": "77,000원", "total": "77,000원" },
-        { "area": "231㎡-264㎡", "copyright": "86,000원", "total": "86,000원" }
+        { "area": "0-66㎡", "copyright": "31,000원", "producer": "-", "performer": "-", "total": "31,000원" },
+        { "area": "66㎡-99㎡", "copyright": "40,000원", "producer": "-", "performer": "-", "total": "40,000원" },
+        { "area": "99㎡-132㎡", "copyright": "49,000원", "producer": "-", "performer": "-", "total": "49,000원" },
+        { "area": "132㎡-165㎡", "copyright": "58,000원", "producer": "-", "performer": "-", "total": "58,000원" },
+        { "area": "165㎡-198㎡", "copyright": "68,000원", "producer": "-", "performer": "-", "total": "68,000원" },
+        { "area": "198㎡-231㎡", "copyright": "77,000원", "producer": "-", "performer": "-", "total": "77,000원" },
+        { "area": "231㎡-264㎡", "copyright": "86,000원", "producer": "-", "performer": "-", "total": "86,000원" }
       ]
     }
   ]

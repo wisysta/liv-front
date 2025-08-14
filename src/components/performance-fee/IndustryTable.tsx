@@ -10,6 +10,7 @@ interface IndustryType {
     name: string;
     type: string;
     data: PricingData[];
+    note?: string;
 }
 
 interface PricingData {
@@ -197,6 +198,23 @@ export function IndustryTable({ selectedIndustry = null }: IndustryTableProps) {
                     </div>
                 </div>
             </div>
+
+            {/* 비고 섹션 */}
+            {currentIndustry?.note && (
+                <div
+                    className={`transition-all duration-500 ${
+                        selectedIndustry !== null
+                            ? "opacity-100"
+                            : "opacity-30 blur-sm"
+                    }`}
+                >
+                    <div className="bg-white rounded-lg p-6">
+                        <div className="text-sm lg:text-base text-gray-dark whitespace-pre-line leading-relaxed">
+                            {currentIndustry.note}
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* 문의 섹션 */}
             <div className="flex items-center justify-center gap-2 text-background-dark">

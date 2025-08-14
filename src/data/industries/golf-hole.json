@@ -6,35 +6,35 @@
       "name": "골프장",
       "data": [
         {
-          "holes": "9홀",
-          "copyright": "30,000원",
-          "producer": "16,500원",
-          "performer": "15,000원",
-          "total": "61,500원"
+          "holes": "1개",
+          "copyright": "50,000원",
+          "producer": "27,500원",
+          "performer": "25,000원",
+          "total": "102,500원"
         },
         {
-          "holes": "18홀",
-          "copyright": "60,000원",
-          "producer": "33,000원",
-          "performer": "30,000원",
-          "total": "123,000원"
+          "holes": "2개",
+          "copyright": "75,000원",
+          "producer": "41,250원",
+          "performer": "37,500원",
+          "total": "153,750원"
         },
         {
-          "holes": "27홀",
-          "copyright": "90,000원",
-          "producer": "49,500원",
-          "performer": "45,000원",
-          "total": "184,500원"
+          "holes": "3개",
+          "copyright": "100,000원",
+          "producer": "55,000원",
+          "performer": "50,000원",
+          "total": "205,000원"
         },
         {
-          "holes": "36홀",
-          "copyright": "120,000원",
-          "producer": "66,000원",
-          "performer": "60,000원",
-          "total": "246,000원"
+          "holes": "4개",
+          "copyright": "125,000원",
+          "producer": "68,750원",
+          "performer": "62,500원",
+          "total": "256,250원"
         },
         {
-          "holes": "45홀 이상",
+          "holes": "5개",
           "copyright": "150,000원",
           "producer": "82,500원",
           "performer": "75,000원",
