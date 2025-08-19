@@ -57,16 +57,27 @@ export async function getFaqs(category?: string): Promise<Faq[]> {
     }
 }
 
+// 기본 FAQ 카테고리 목록
+const DEFAULT_FAQ_CATEGORIES = ["저작권", "이용방법", "공연권료", "기타"];
+
 export async function getFaqCategories(): Promise<string[]> {
     try {
         const faqs = await getFaqs();
-        const categories = [
+        const dbCategories = Array.from(
+            new Set(faqs.map((faq) => faq.category))
+        );
+
+        // 기본 카테고리와 DB 카테고리를 합쳐서 중복 제거
+        const allCategories = [
             "전체",
-            ...new Set(faqs.map((faq) => faq.category)),
+            ...Array.from(
+                new Set([...DEFAULT_FAQ_CATEGORIES, ...dbCategories])
+            ),
         ];
-        return categories;
+
+        return allCategories;
     } catch (error) {
         console.error("FAQ 카테고리 조회 오류:", error);
-        return ["전체", "저작권", "이용방법", "공연권료"];
+        return ["전체", "저작권", "이용방법", "공연권료", "기타"];
     }
 }

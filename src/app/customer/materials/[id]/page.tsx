@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { CustomerHero } from "@/components/customer/customer-hero";
+import MaterialPasswordGate from "@/components/customer/material-password-gate";
 
 interface Material {
     id: number;
@@ -30,11 +31,38 @@ export default function MaterialDetailPage() {
     const [error, setError] = useState<string | null>(null);
     const [nextMaterial, setNextMaterial] = useState<Material | null>(null);
     const [prevMaterial, setPrevMaterial] = useState<Material | null>(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [checkingAuth, setCheckingAuth] = useState(true);
+    const [accessToken, setAccessToken] = useState<string | null>(null);
 
     const materialId =
         typeof params.id === "string" ? parseInt(params.id) : NaN;
 
+    // 인증 상태 확인
     useEffect(() => {
+        const checkAuthentication = () => {
+            // URL에서 토큰 확인
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlToken = urlParams.get("token");
+
+            // 로컬 스토리지에서 토큰 확인
+            const storedToken = localStorage.getItem("materials-access-token");
+
+            const token = urlToken || storedToken;
+
+            if (token) {
+                setAccessToken(token);
+                setIsAuthenticated(true);
+            }
+
+            setCheckingAuth(false);
+        };
+
+        checkAuthentication();
+    }, []);
+
+    useEffect(() => {
+        if (!isAuthenticated || !accessToken) return;
         const fetchMaterialDetail = async () => {
             if (isNaN(materialId)) {
                 setError("잘못된 자료 ID입니다.");
@@ -45,7 +73,7 @@ export default function MaterialDetailPage() {
             try {
                 setLoading(true);
                 const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_URL}/api/materials/${materialId}`
+                    `${process.env.NEXT_PUBLIC_API_URL}/api/materials/${materialId}?token=${accessToken}`
                 );
 
                 // Content-Type 확인
@@ -61,6 +89,16 @@ export default function MaterialDetailPage() {
                 const data = await response.json();
 
                 if (!response.ok) {
+                    // 401 오류 (인증 실패)인 경우 토큰 삭제하고 자료실 메인으로 이동
+                    if (response.status === 401) {
+                        console.log(
+                            "토큰이 만료되었습니다. 자료실 메인으로 이동합니다."
+                        );
+                        localStorage.removeItem("materials-access-token");
+                        router.push("/customer/materials");
+                        return;
+                    }
+
                     throw new Error(data.error || "자료를 불러올 수 없습니다.");
                 }
 
@@ -68,7 +106,7 @@ export default function MaterialDetailPage() {
 
                 // 이전글/다음글 조회 (간단히 ID 기준으로)
                 const allMaterialsResponse = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_URL}/api/materials`
+                    `${process.env.NEXT_PUBLIC_API_URL}/api/materials?token=${accessToken}`
                 );
 
                 // 전체 목록 응답도 JSON 확인
@@ -80,7 +118,7 @@ export default function MaterialDetailPage() {
                 ) {
                     console.error("이전글/다음글 조회 실패: JSON이 아닌 응답");
                     // 이전글/다음글은 선택사항이므로 계속 진행
-                } else {
+                } else if (allMaterialsResponse.ok) {
                     const allMaterials = await allMaterialsResponse.json();
 
                     if (allMaterials.materials) {
@@ -112,7 +150,12 @@ export default function MaterialDetailPage() {
         };
 
         fetchMaterialDetail();
-    }, [materialId]);
+    }, [materialId, isAuthenticated, accessToken]);
+
+    const handleAuthenticated = (token: string) => {
+        setAccessToken(token);
+        setIsAuthenticated(true);
+    };
 
     const formatDate = (dateString: string) => {
         return new Date(dateString).toLocaleDateString("ko-KR", {
@@ -131,12 +174,12 @@ export default function MaterialDetailPage() {
     };
 
     const handleDownload = async () => {
-        if (!material) return;
+        if (!material || !accessToken) return;
 
         try {
             // 다운로드 수 증가
             await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/api/materials/${material.id}?action=download`,
+                `${process.env.NEXT_PUBLIC_API_URL}/api/materials/${material.id}?action=download&token=${accessToken}`,
                 {
                     method: "PATCH",
                 }
@@ -161,7 +204,8 @@ export default function MaterialDetailPage() {
         }
     };
 
-    if (loading) {
+    // 인증 확인 중이거나 로딩 중이면 로딩 표시
+    if (checkingAuth || loading) {
         return (
             <PageLayout
                 headerOverlay={true}
@@ -184,6 +228,30 @@ export default function MaterialDetailPage() {
                                 <div className="h-4 bg-gray-200 rounded w-3/4" />
                             </div>
                         </div>
+                    </div>
+                </section>
+            </PageLayout>
+        );
+    }
+
+    // 인증되지 않은 경우 비밀번호 입력 화면 표시
+    if (!isAuthenticated) {
+        return (
+            <PageLayout
+                headerOverlay={true}
+                fullHeight={false}
+                headerVariant="light"
+            >
+                <CustomerHero
+                    currentPage="materials"
+                    title="자료실"
+                    description="자료실 접근을 위해 비밀번호를 입력해주세요"
+                />
+                <section className="bg-white py-8 lg:py-12 2xl:py-16">
+                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <MaterialPasswordGate
+                            onAuthenticated={handleAuthenticated}
+                        />
                     </div>
                 </section>
             </PageLayout>
@@ -330,7 +398,12 @@ export default function MaterialDetailPage() {
                     {/* 목록 보기 버튼 */}
                     <div className="flex justify-center mb-8">
                         <button
-                            onClick={() => router.push("/customer/materials")}
+                            onClick={() => {
+                                const url = accessToken
+                                    ? `/customer/materials?token=${accessToken}`
+                                    : "/customer/materials";
+                                router.push(url);
+                            }}
                             className="px-8 py-3 bg-gray-100 text-background-dark rounded-full hover:bg-gray-200 transition-colors font-medium"
                         >
                             목록 보기
@@ -346,11 +419,12 @@ export default function MaterialDetailPage() {
                                         다음글
                                     </span>
                                     <button
-                                        onClick={() =>
-                                            router.push(
-                                                `/customer/materials/${nextMaterial.id}`
-                                            )
-                                        }
+                                        onClick={() => {
+                                            const url = accessToken
+                                                ? `/customer/materials/${nextMaterial.id}?token=${accessToken}`
+                                                : `/customer/materials/${nextMaterial.id}`;
+                                            router.push(url);
+                                        }}
                                         className="block text-background-dark hover:text-primary-purple transition-colors mt-1"
                                     >
                                         {nextMaterial.title}
@@ -368,11 +442,12 @@ export default function MaterialDetailPage() {
                                         이전글
                                     </span>
                                     <button
-                                        onClick={() =>
-                                            router.push(
-                                                `/customer/materials/${prevMaterial.id}`
-                                            )
-                                        }
+                                        onClick={() => {
+                                            const url = accessToken
+                                                ? `/customer/materials/${prevMaterial.id}?token=${accessToken}`
+                                                : `/customer/materials/${prevMaterial.id}`;
+                                            router.push(url);
+                                        }}
                                         className="block text-background-dark hover:text-primary-purple transition-colors mt-1"
                                     >
                                         {prevMaterial.title}

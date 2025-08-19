@@ -41,10 +41,19 @@ export function FileUpload({
 
     const uploadFile = async (file: File): Promise<UploadedFile | null> => {
         try {
+            // HWP 파일의 MIME 타입 보정
+            let fileType = file.type;
+            if (
+                file.name.toLowerCase().endsWith(".hwp") &&
+                (!fileType || fileType === "application/octet-stream")
+            ) {
+                fileType = "application/haansofthwp";
+            }
+
             // 1. Pre-signed URL 요청
             const urlParams = new URLSearchParams({
                 fileName: file.name,
-                fileType: file.type,
+                fileType: fileType,
                 fileSize: file.size.toString(),
             });
 
@@ -67,7 +76,7 @@ export function FileUpload({
                 method: "PUT",
                 body: file,
                 headers: {
-                    "Content-Type": file.type,
+                    "Content-Type": fileType,
                 },
             });
 
@@ -225,7 +234,7 @@ export function FileUpload({
                     multiple
                     onChange={handleChange}
                     className="hidden"
-                    accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip"
+                    accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip,.hwp"
                 />
                 <div className="space-y-2">
                     <DocumentIcon className="h-8 w-8 text-gray-400 mx-auto" />
@@ -239,6 +248,10 @@ export function FileUpload({
                         </button>
                         <p className="text-gray-500 mt-1">
                             또는 파일을 여기로 드래그하세요
+                        </p>
+                        <p className="text-xs text-gray-400 mt-2">
+                            지원 형식: 이미지(JPG, PNG) 문서(PDF, DOC, DOCX,
+                            HWP), 오피스(XLS, XLSX, PPT, PPTX), 기타(TXT, ZIP)
                         </p>
                     </div>
                 </div>

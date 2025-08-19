@@ -151,7 +151,11 @@ export default function Home() {
                         }`}
                     >
                         <button
-                            // onClick={() => handlePageTransition("/calculator")}
+                            onClick={() =>
+                                handlePageTransition(
+                                    "/performance-fee/calculator"
+                                )
+                            }
                             className="text-primary-purple font-semibold bg-white py-2 sm:py-2.5 xl:py-3 px-6 sm:px-7 xl:px-8 rounded-full hover:bg-primary-purple hover:text-white transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
                         >
                             공연권료 계산기
@@ -159,20 +163,22 @@ export default function Home() {
                         <button
                             onClick={() =>
                                 handlePageTransition(
-                                    "/service/integrated-collection"
+                                    "/performance-fee/industry"
                                 )
                             }
-                            className="border border-white text-white font-semibold py-2 sm:py-2.5 xl:py-3 px-6 sm:px-7 xl:px-8 rounded-full hover:bg-white hover:text-gray-900 transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
+                            className="border border-white text-white font-semibold py-2 sm:py-2.5 xl:py-3 px-6 sm:px-7 xl:px-8 rounded-full hover:bg-primary-purple hover:text-white hover:border-primary-purple transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
                         >
-                            서비스 소개
+                            납부대상 확인
                         </button>
                         <button
                             onClick={() =>
-                                handlePageTransition("/customer/faq")
+                                handlePageTransition(
+                                    "/performance-fee/application"
+                                )
                             }
-                            className="border border-white text-white font-semibold py-2 sm:py-2.5 xl:py-3 px-6 sm:px-7 xl:px-8 rounded-full hover:bg-white hover:text-gray-900 transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
+                            className="border border-white text-white font-semibold py-2 sm:py-2.5 xl:py-3 px-6 sm:px-7 xl:px-8 rounded-full hover:bg-primary-purple hover:text-white hover:border-primary-purple transition-colors text-sm min-w-28 sm:min-w-32 lg:min-w-40 cursor-pointer"
                         >
-                            고객센터
+                            공연권 신청안내
                         </button>
                     </div>
                 </div>

@@ -68,10 +68,10 @@ function ApplicationInfoPage() {
                             <video
                                 controls
                                 className="w-full h-full object-cover"
-                                poster="/performance-fee-hero.jpg"
+                                poster="/performance-fee-hero2.jpg"
                             >
                                 <source
-                                    src="https://customer-bgy8mp6bray7e5r8.cloudflarestream.com/8a8d54ccd7fd8c113ebdd1f7a0e06ccc/downloads/default.mp4"
+                                    src="https://customer-bgy8mp6bray7e5r8.cloudflarestream.com/1297a9dd51899aaa2ad62ba43dfa8120/downloads/default.mp4"
                                     type="video/mp4"
                                 />
                                 브라우저가 비디오를 지원하지 않습니다.
@@ -80,9 +80,31 @@ function ApplicationInfoPage() {
 
                         {/* Video Description */}
                         <div className="mt-6 lg:mt-8 text-center">
-                            <p className="text-gray-500 text-base lg:text-lg 2xl:text-xl">
+                            <p className="text-gray-500 text-base lg:text-lg 2xl:text-xl mb-6 lg:mb-8">
                                 공연권 신청 과정에 대한 자세한 안내 영상입니다.
                             </p>
+
+                            {/* PDF Download Button */}
+                            <a
+                                href="/저작권비즈니스지원센터_신청방법.pdf"
+                                download
+                                className="inline-flex items-center gap-2 bg-primary-purple text-white font-semibold py-3 px-6 lg:px-8 rounded-full hover:bg-primary-purple/90 transition-colors text-sm lg:text-base"
+                            >
+                                <svg
+                                    className="w-5 h-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                    />
+                                </svg>
+                                신청안내 파일 다운로드
+                            </a>
                         </div>
                     </div>
                 </div>

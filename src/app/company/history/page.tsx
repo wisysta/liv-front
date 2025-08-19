@@ -125,10 +125,10 @@ export default function CompanyHistoryPage() {
                                     key={block.year}
                                     ref={timelineRefs[blockIndex]?.ref}
                                     className={`relative transition-all duration-700 ease-out ${
-                                        (blockIndex === 0 &&
+                                        (blockIndex <= 1 &&
                                             timelineRefs[blockIndex]
                                                 ?.isVisible) ||
-                                        (blockIndex > 0 &&
+                                        (blockIndex > 1 &&
                                             hasScrolled &&
                                             timelineRefs[blockIndex]?.isVisible)
                                             ? "opacity-100 translate-y-0"
@@ -193,14 +193,14 @@ export default function CompanyHistoryPage() {
                                                         <div
                                                             key={`${block.year}-${idx}`}
                                                             className={`flex gap-8 transition-all duration-700 ease-out ${
-                                                                (blockIndex ===
-                                                                    0 &&
+                                                                (blockIndex <=
+                                                                    1 &&
                                                                     timelineRefs[
                                                                         blockIndex
                                                                     ]
                                                                         ?.isVisible) ||
                                                                 (blockIndex >
-                                                                    0 &&
+                                                                    1 &&
                                                                     hasScrolled &&
                                                                     timelineRefs[
                                                                         blockIndex
@@ -211,14 +211,14 @@ export default function CompanyHistoryPage() {
                                                             }`}
                                                             style={{
                                                                 transitionDelay: `${
-                                                                    (blockIndex ===
-                                                                        0 &&
+                                                                    (blockIndex <=
+                                                                        1 &&
                                                                         timelineRefs[
                                                                             blockIndex
                                                                         ]
                                                                             ?.isVisible) ||
                                                                     (blockIndex >
-                                                                        0 &&
+                                                                        1 &&
                                                                         hasScrolled &&
                                                                         timelineRefs[
                                                                             blockIndex

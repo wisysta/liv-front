@@ -45,6 +45,7 @@ export async function getActiveNotices({ page = 1, limit = 20 } = {}): Promise<{
         }
 
         const data = await response.json();
+
         return data;
     } catch (error) {
         console.error("공지사항 조회 오류:", error);
@@ -74,5 +75,78 @@ export async function getNotice(id: number): Promise<Notice> {
     } catch (error) {
         console.error("공지사항 상세 조회 오류:", error);
         throw new Error("공지사항을 불러오는 중 오류가 발생했습니다.");
+    }
+}
+
+export async function getImportantNotices({
+    page = 1,
+    limit = 20,
+} = {}): Promise<{
+    notices: Notice[];
+    pagination: {
+        page: number;
+        limit: number;
+        total: number;
+        totalPages: number;
+    };
+}> {
+    try {
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/notices?page=${page}&limit=${limit}&type=important`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                cache: "no-store",
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.error("중요 공지사항 조회 오류:", error);
+        throw new Error("중요 공지사항을 불러오는 중 오류가 발생했습니다.");
+    }
+}
+
+export async function getRegularNotices({
+    page = 1,
+    limit = 20,
+} = {}): Promise<{
+    notices: Notice[];
+    pagination: {
+        page: number;
+        limit: number;
+        total: number;
+        totalPages: number;
+    };
+}> {
+    try {
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/notices?page=${page}&limit=${limit}&type=regular`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                cache: "no-store",
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("일반 공지사항 조회 오류:", error);
+        throw new Error("일반 공지사항을 불러오는 중 오류가 발생했습니다.");
     }
 }

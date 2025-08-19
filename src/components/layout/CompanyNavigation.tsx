@@ -15,7 +15,7 @@ export function CompanyNavigation({
         { key: "ceo", label: "CEO 인사말", href: "/company/ceo" },
         { key: "vision", label: "기업비전", href: "/company/vision" },
         { key: "history", label: "기업연혁", href: "/company/history" },
-        { key: "talent", label: "인재상", href: "/company/talent" },
+        // { key: "talent", label: "인재상", href: "/company/talent" },
     ];
 
     return (

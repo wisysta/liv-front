@@ -145,13 +145,6 @@ function PressReleaseCard({
             onClick={onClick}
             className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-primary-purple/30 transition-all duration-200 cursor-pointer group"
         >
-            {/* 글번호 */}
-            <div className="mb-4">
-                <span className="text-sm font-semibold text-gray-500">
-                    {pressRelease.pressNumber}
-                </span>
-            </div>
-
             {/* 제목 */}
             <h3 className="text-lg font-semibold text-gray-900 mb-4 line-clamp-2 group-hover:text-primary-purple transition-colors">
                 {pressRelease.title}

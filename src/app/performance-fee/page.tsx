@@ -15,11 +15,11 @@ export default function PerformanceFeeInfoPage() {
     return (
         <PageLayout headerOverlay={true} fullHeight={false}>
             <PerformanceFeeHero
-                backgroundImage="/performance-fee-hero.jpg"
+                backgroundImage="/performance-fee-hero2.jpg"
                 title="공연권료란?"
                 contentBlocks={[
                     {
-                        text: "매장에서 음악을 트는 행위, 사실은 단순한 '재생'이 아니라 '공연'에 해당<br /> 이를 위해 창작자에게 정당한 보상을 지급하는 것",
+                        text: "매장에서 음악을 재생하는 행위, 사실은 단순한 '재생'이 아니라 '공연'에 해당<br /> 이를 위해 창작자에게 정당한 보상을 지급하는 것",
                         fontWeight: "semibold",
                         fontSize: "lg",
                     },
@@ -115,14 +115,14 @@ export default function PerformanceFeeInfoPage() {
                                         지정공고
                                     </span>
                                     <Link
-                                        href="https://mcst.go.kr/kor/s_notice/notice/noticeView.jsp?pSeq=18429"
+                                        href="https://www.mcst.go.kr/kor/s_notice/notice/noticeView.jsp?pSeq=17433"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="bg-gray-light rounded-md px-3 py-1.5 hover:bg-gray-300 transition-colors"
                                     >
                                         <span className="text-background-dark text-xs lg:text-sm font-medium">
-                                            2025년도 음악저작권 공연권료
-                                            통합징수단체 재지정 공고
+                                            문화체육관광부 음악저작권 공연권료
+                                            통합징수단체 지정공고
                                         </span>
                                     </Link>
                                 </div>

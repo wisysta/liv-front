@@ -4,10 +4,15 @@ import { useState, useEffect } from "react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { CustomerHero } from "@/components/customer/customer-hero";
 import NoticeSection from "@/components/customer/notice-section";
-import { Notice, getActiveNotices } from "@/actions/notice-actions";
+import {
+    Notice,
+    getActiveNotices,
+    getImportantNotices,
+} from "@/actions/notice-actions";
 
 export default function NoticePage() {
-    const [notices, setNotices] = useState<Notice[]>([]);
+    const [allNotices, setAllNotices] = useState<Notice[]>([]);
+    const [importantNotices, setImportantNotices] = useState<Notice[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -15,8 +20,15 @@ export default function NoticePage() {
         const fetchNotices = async () => {
             try {
                 setLoading(true);
-                const { notices } = await getActiveNotices();
-                setNotices(notices);
+                // 두 개의 API를 병렬로 호출
+                const [allNoticesResult, importantNoticesResult] =
+                    await Promise.all([
+                        getActiveNotices({ page: 1, limit: 10 }),
+                        getImportantNotices({ limit: 6 }),
+                    ]);
+
+                setAllNotices(allNoticesResult.notices);
+                setImportantNotices(importantNoticesResult.notices);
             } catch (err) {
                 console.error("공지사항 조회 오류:", err);
                 setError("공지사항을 불러오는 중 오류가 발생했습니다.");
@@ -72,7 +84,10 @@ export default function NoticePage() {
                             </button>
                         </div>
                     ) : (
-                        <NoticeSection initialNotices={notices} />
+                        <NoticeSection
+                            allNotices={allNotices}
+                            importantNotices={importantNotices}
+                        />
                     )}
                 </div>
             </section>

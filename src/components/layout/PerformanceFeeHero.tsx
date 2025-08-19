@@ -94,7 +94,7 @@ export function PerformanceFeeHero({
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 bg-black/50" />
                 <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4 sm:px-6 lg:px-8">
                     <h1
                         className={`text-3xl lg:text-4xl 2xl:text-5xl font-bold mb-8 lg:mb-12 transition-all duration-700 ease-out ${

@@ -9,11 +9,20 @@ interface Gallery {
     id: number;
     title: string;
     description?: string;
-    imageUrl: string;
+    thumbnailUrl?: string;
+    eventDate?: string;
     order: number;
     isActive: boolean;
     createdAt: string;
     updatedAt: string;
+    imageCount: number; // 총 이미지 개수
+    images: Array<{
+        id: number;
+        imageUrl: string;
+        fileName?: string;
+        alt?: string;
+        order: number;
+    }>;
 }
 
 export default function GalleryPage() {
@@ -78,7 +87,7 @@ export default function GalleryPage() {
 
             {/* Content Section */}
             <section className="bg-white py-8 lg:py-12 2xl:py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 lg:mb-12 2xl:mb-16">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 lg:mb-12 2xl:mb-16">
                     {loading ? (
                         <GallerySkeleton />
                     ) : error ? (

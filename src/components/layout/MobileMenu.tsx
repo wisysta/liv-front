@@ -8,8 +8,6 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-    const [activeSection, setActiveSection] = useState<string | null>(null);
-    const [isMobile, setIsMobile] = useState(false);
     const [screenSize, setScreenSize] = useState<
         "mobile" | "tablet" | "desktop"
     >("mobile");
@@ -26,7 +24,6 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
         const checkScreenSize = () => {
             const width = window.innerWidth;
-            setIsMobile(width < 1024);
 
             if (width < 640) {
                 setScreenSize("mobile");
@@ -59,6 +56,18 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
     const menuSections = [
         {
+            id: "about",
+            title: "공연권료란?",
+            href: "/performance-fee",
+            items: [],
+        },
+        {
+            id: "rates",
+            title: "공연권 납부대상 확인",
+            href: "/performance-fee/industry",
+            items: [],
+        },
+        {
             id: "calculator",
             title: "공연권료 계산기",
             href: "/performance-fee/calculator",
@@ -71,12 +80,6 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             items: [],
         },
         {
-            id: "rates",
-            title: "업종별 공연권료",
-            href: "/performance-fee/industry",
-            items: [],
-        },
-        {
             id: "service",
             title: "서비스 소개",
             items: [
@@ -85,19 +88,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             ],
         },
         {
-            id: "about",
-            title: "공연권료란?",
-            href: "/performance-fee",
-            items: [],
-        },
-        {
             id: "company",
             title: "기업소개",
             items: [
                 { title: "CEO 인사말", href: "/company/ceo" },
                 { title: "기업비전", href: "/company/vision" },
                 { title: "기업연혁", href: "/company/history" },
-                { title: "인재상", href: "/company/talent" },
+                // { title: "인재상", href: "/company/talent" },
             ],
         },
         {
@@ -115,7 +112,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     ];
 
     const handleSectionClick = (section: any) => {
-        // 하위 메뉴가 있고 첫 번째 아이템에 href가 있으면 해당 링크로 이동
+        // 하위 메뉴가 있으면 첫 번째 아이템으로 이동
         if (
             section.items &&
             section.items.length > 0 &&
@@ -126,18 +123,16 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             return;
         }
 
-        // 그외의 경우 토글 동작 (클라이언트에서만 실행하고, 모바일과 태블릿에서만)
-        if (isClient && isMobile) {
-            setActiveSection(activeSection === section.id ? null : section.id);
+        // href가 있는 메뉴는 해당 링크로 이동
+        if (section.href) {
+            window.location.href = section.href;
+            onClose();
         }
     };
 
-    // PC에서는 서브메뉴가 있는 섹션의 경우 항상 표시
+    // 고객센터만 서브메뉴 표시, 나머지는 숨김
     const shouldShowSubMenu = (sectionId: string) => {
-        // 서버 렌더링 시에는 서브메뉴 숨김 (초기 상태)
-        if (!isClient) return false;
-        // 클라이언트에서는 데스크톱이거나 활성화된 섹션일 때 표시
-        return !isMobile || activeSection === sectionId;
+        return sectionId === "support"; // 고객센터만 표시
     };
 
     // 화면 크기별 동적 스타일 클래스 (서버/클라이언트 일관성 유지)
@@ -199,13 +194,18 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 {/* 메뉴 컨텐츠 */}
                 <div className={getMenuContainerClass()}>
                     <nav className="space-y-1.5 sm:space-y-2">
-                        {menuSections.map((section) => (
+                        {menuSections.map((section, index) => (
                             <div key={section.id}>
+                                {/* 고객센터 메뉴 앞에 구분선 추가 */}
+                                {section.id === "support" && (
+                                    <div className="border-t border-gray-300 my-4" />
+                                )}
+
                                 {/* href가 있으면 링크로, 없으면 버튼으로 */}
                                 {(section as any).href ? (
                                     <a
                                         href={(section as any).href}
-                                        className="block w-full text-left text-background-dark font-semibold text-base lg:text-lg py-[3.5px] sm:py-1 lg:py-[5px] xl-py-1.5 hover:text-primary-purple transition-colors"
+                                        className="block w-full text-left text-background-dark font-semibold text-base lg:text-lg py-[3.5px] sm:py-1 lg:py-[5px] xl-py-1.5 hover:text-primary-purple transition-colors cursor-pointer"
                                         onClick={onClose}
                                     >
                                         {section.title}
@@ -215,22 +215,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                         onClick={() =>
                                             handleSectionClick(section)
                                         }
-                                        className="w-full text-left text-background-dark font-semibold text-base lg:text-lg py-[3.5px] sm:py-1 lg:py-[5px] xl-py-1.5 hover:text-primary-purple transition-colors flex items-center justify-between"
+                                        className="w-full text-left text-background-dark font-semibold text-base lg:text-lg py-[3.5px] sm:py-1 lg:py-[5px] xl-py-1.5 hover:text-primary-purple transition-colors cursor-pointer"
                                     >
-                                        <span>{section.title}</span>
-                                        {/* + 버튼 (서브메뉴가 있는 경우에만) */}
-                                        {section.items.length > 0 && (
-                                            <span className="text-xl sm:text-2xl lg:text-3xl font-normal">
-                                                {isClient &&
-                                                activeSection === section.id
-                                                    ? "−"
-                                                    : "+"}
-                                            </span>
-                                        )}
+                                        {section.title}
                                     </button>
                                 )}
 
-                                {/* 서브메뉴 (href가 없는 경우에만) */}
+                                {/* 서브메뉴 (고객센터만 표시) */}
                                 {!(section as any).href &&
                                     section.items.length > 0 &&
                                     shouldShowSubMenu(section.id) && (
@@ -240,7 +231,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                                     <a
                                                         key={index}
                                                         href={item.href}
-                                                        className="block text-gray-600 text-sm sm:text-base py-1 lg:py-1.5 hover:text-primary-purple transition-colors"
+                                                        className="block text-gray-600 text-sm sm:text-base py-1 lg:py-1 hover:text-primary-purple transition-colors"
                                                         onClick={onClose}
                                                     >
                                                         {item.title}

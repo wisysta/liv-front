@@ -1,41 +1,78 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { Notice } from "@/actions/notice-actions";
+import { Notice, getActiveNotices } from "@/actions/notice-actions";
 
 interface NoticeSectionProps {
-    initialNotices: Notice[];
+    allNotices: Notice[];
+    importantNotices: Notice[];
 }
 
-export default function NoticeSection({ initialNotices }: NoticeSectionProps) {
+export default function NoticeSection({
+    allNotices,
+    importantNotices,
+}: NoticeSectionProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const router = useRouter();
 
-    // 공지사항 필터링 (검색어 기준)
-    const filteredNotices = useMemo(() => {
-        let filtered = initialNotices;
+    const [displayedNotices, setDisplayedNotices] =
+        useState<Notice[]>(allNotices);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(false);
+    const [hasMore, setHasMore] = useState(allNotices.length >= 10);
 
-        // 검색 필터
-        if (searchQuery.trim()) {
-            const query = searchQuery.toLowerCase();
-            filtered = filtered.filter(
-                (notice) =>
-                    notice.title.toLowerCase().includes(query) ||
-                    notice.content.toLowerCase().includes(query)
-            );
+    // 검색어가 있을 때만 전체 데이터에서 필터링
+    const searchResults = useMemo(() => {
+        if (!searchQuery.trim()) return null;
+
+        const query = searchQuery.toLowerCase();
+        return [...allNotices, ...importantNotices]
+            .filter((notice, index, array) => {
+                // 중복 제거 (id 기준)
+                const isFirstOccurrence =
+                    array.findIndex((n) => n.id === notice.id) === index;
+                return (
+                    isFirstOccurrence &&
+                    (notice.title.toLowerCase().includes(query) ||
+                        notice.content.toLowerCase().includes(query))
+                );
+            })
+            .sort((a, b) => {
+                if (a.isImportant && !b.isImportant) return -1;
+                if (!a.isImportant && b.isImportant) return 1;
+                return (
+                    new Date(b.createdAt).getTime() -
+                    new Date(a.createdAt).getTime()
+                );
+            });
+    }, [allNotices, importantNotices, searchQuery]);
+
+    // 더 많은 공지사항 로드
+    const loadMoreNotices = useCallback(async () => {
+        if (loading || !hasMore) return;
+
+        try {
+            setLoading(true);
+            const nextPage = currentPage + 1;
+            const { notices } = await getActiveNotices({
+                page: nextPage,
+                limit: 10,
+            });
+
+            if (notices.length > 0) {
+                setDisplayedNotices((prev) => [...prev, ...notices]);
+                setCurrentPage(nextPage);
+                setHasMore(notices.length >= 10);
+            } else {
+                setHasMore(false);
+            }
+        } catch (error) {
+            console.error("추가 공지사항 로드 오류:", error);
+        } finally {
+            setLoading(false);
         }
-
-        // 중요공지를 상단에, 그 다음 최신순
-        return filtered.sort((a, b) => {
-            if (a.isImportant && !b.isImportant) return -1;
-            if (!a.isImportant && b.isImportant) return 1;
-            return (
-                new Date(b.createdAt).getTime() -
-                new Date(a.createdAt).getTime()
-            );
-        });
-    }, [initialNotices, searchQuery]);
+    }, [loading, hasMore, currentPage]);
 
     const handleNoticeClick = (id: number) => {
         router.push(`/customer/notice/${id}`);
@@ -86,10 +123,10 @@ export default function NoticeSection({ initialNotices }: NoticeSectionProps) {
                     />
                 </div>
             </div>
-
             {/* 공지사항 목록 */}
             <div className="divide-y divide-gray-200">
-                {filteredNotices.length === 0 ? (
+                {(searchQuery.trim() && searchResults?.length === 0) ||
+                (!searchQuery.trim() && displayedNotices.length === 0) ? (
                     <div className="text-center py-12">
                         <svg
                             className="mx-auto h-12 w-12 text-gray-400"
@@ -111,17 +148,65 @@ export default function NoticeSection({ initialNotices }: NoticeSectionProps) {
                             다른 키워드로 검색해보세요.
                         </p>
                     </div>
+                ) : searchQuery.trim() ? (
+                    // 검색 결과 표시
+                    searchResults?.map((notice) =>
+                        notice.isImportant ? (
+                            <ImportantNoticeItem
+                                key={notice.id}
+                                notice={notice}
+                                onClick={() => handleNoticeClick(notice.id)}
+                                formatDate={formatDate}
+                            />
+                        ) : (
+                            <RegularNoticeItem
+                                key={notice.id}
+                                notice={notice}
+                                onClick={() => handleNoticeClick(notice.id)}
+                                formatDate={formatDate}
+                            />
+                        )
+                    )
                 ) : (
-                    filteredNotices.map((notice) => (
-                        <NoticeItem
-                            key={notice.id}
-                            notice={notice}
-                            onClick={() => handleNoticeClick(notice.id)}
-                            formatDate={formatDate}
-                        />
-                    ))
+                    // 일반 목록 표시
+                    <>
+                        {/* 중요 공지사항들만 먼저 */}
+                        {displayedNotices
+                            .filter((notice) => notice.isImportant)
+                            .map((notice) => (
+                                <ImportantNoticeItem
+                                    key={`main-important-${notice.id}`}
+                                    notice={notice}
+                                    onClick={() => handleNoticeClick(notice.id)}
+                                    formatDate={formatDate}
+                                />
+                            ))}
+
+                        {/* 전체 목록 (중요 + 일반) - 순서대로, 중요 배지 없음 */}
+                        {displayedNotices.map((notice) => (
+                            <RegularNoticeItem
+                                key={`main-all-${notice.id}`}
+                                notice={notice}
+                                onClick={() => handleNoticeClick(notice.id)}
+                                formatDate={formatDate}
+                            />
+                        ))}
+                    </>
                 )}
             </div>
+
+            {/* 더보기 버튼 (검색 중이 아니고, 더 로드할 데이터가 있을 때) */}
+            {!searchQuery.trim() && hasMore && (
+                <div className="text-center mt-8">
+                    <button
+                        onClick={loadMoreNotices}
+                        disabled={loading}
+                        className="px-6 py-3 bg-primary-purple text-white rounded-lg hover:bg-primary-purple/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                        {loading ? "로딩 중..." : "더보기"}
+                    </button>
+                </div>
+            )}
         </div>
     );
 }
@@ -132,11 +217,7 @@ interface NoticeItemProps {
     formatDate: (dateString: string) => string;
 }
 
-function NoticeItem({
-    notice,
-    onClick,
-    formatDate,
-}: NoticeItemProps) {
+function ImportantNoticeItem({ notice, onClick, formatDate }: NoticeItemProps) {
     return (
         <div className="py-6">
             <button
@@ -146,11 +227,51 @@ function NoticeItem({
                 <div className="flex items-start justify-between">
                     <div className="flex-1 pr-4">
                         <div className="flex items-center space-x-3 mb-3">
-                            {notice.isImportant && (
-                                <span className="text-xs font-bold text-white bg-primary-purple px-2 py-1 rounded uppercase tracking-wide">
-                                    중요
+                            <span className="text-xs font-bold text-white bg-primary-purple px-2 py-1 rounded uppercase tracking-wide">
+                                중요
+                            </span>
+                            <div className="flex items-center space-x-4 text-sm text-gray-500">
+                                <span>{formatDate(notice.createdAt)}</span>
+                                <span>
+                                    조회수: {notice.views.toLocaleString()}
                                 </span>
-                            )}
+                            </div>
+                        </div>
+                        <h3 className="text-lg font-medium text-background-dark leading-relaxed group-hover:text-primary-purple transition-colors">
+                            {notice.title}
+                        </h3>
+                    </div>
+                    <div className="flex-shrink-0 ml-4 pt-1">
+                        <svg
+                            className="h-5 w-5 text-gray-400 group-hover:text-primary-purple transition-colors"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 5l7 7-7 7"
+                            />
+                        </svg>
+                    </div>
+                </div>
+            </button>
+        </div>
+    );
+}
+
+function RegularNoticeItem({ notice, onClick, formatDate }: NoticeItemProps) {
+    return (
+        <div className="py-6">
+            <button
+                onClick={onClick}
+                className="w-full text-left hover:bg-gray-50/50 focus:outline-none transition-colors py-2 -mx-2 px-2 rounded-lg group"
+            >
+                <div className="flex items-start justify-between">
+                    <div className="flex-1 pr-4">
+                        <div className="flex items-center space-x-3 mb-3">
                             <div className="flex items-center space-x-4 text-sm text-gray-500">
                                 <span>{formatDate(notice.createdAt)}</span>
                                 <span>

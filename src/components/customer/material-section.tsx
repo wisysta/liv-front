@@ -22,9 +22,13 @@ interface Material {
 
 interface MaterialSectionProps {
     materials: Material[];
+    accessToken?: string | undefined;
 }
 
-export default function MaterialSection({ materials }: MaterialSectionProps) {
+export default function MaterialSection({
+    materials,
+    accessToken,
+}: MaterialSectionProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const router = useRouter();
 
@@ -71,7 +75,10 @@ export default function MaterialSection({ materials }: MaterialSectionProps) {
     };
 
     const handleMaterialClick = (id: number) => {
-        router.push(`/customer/materials/${id}`);
+        const url = accessToken
+            ? `/customer/materials/${id}?token=${accessToken}`
+            : `/customer/materials/${id}`;
+        router.push(url);
     };
 
     return (
