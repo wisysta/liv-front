@@ -70,6 +70,23 @@ export function UnifiedCalculator({
                 }
             } else if (selectedIndustry.type === "exempt") {
                 newType = "exempt";
+            } else if (selectedIndustry.type === "annual") {
+                // annual 타입 업종들에 대한 계산기 타입 결정
+                if (selectedIndustry.name === "전문체육시설") {
+                    newType = "sports";
+                } else if (selectedIndustry.name === "유원시설") {
+                    newType = "amusement";
+                } else if (selectedIndustry.name === "스키장") {
+                    newType = "ski";
+                } else if (selectedIndustry.name === "경마장") {
+                    newType = "racetrack";
+                } else if (selectedIndustry.name === "경륜•경정장") {
+                    newType = "cycling_racing";
+                } else if (selectedIndustry.name === "기차/선박") {
+                    newType = "transportation";
+                } else {
+                    newType = "area"; // 기본값
+                }
             } else {
                 const typeMapping: Record<string, CalculatorType> = {
                     person: "person",
@@ -98,6 +115,22 @@ export function UnifiedCalculator({
             return industry.type === "area" && industry.name === "노래연습장";
         } else if (currentType === "exempt") {
             return industry.type === "exempt";
+        } else if (currentType === "sports") {
+            return (
+                industry.type === "annual" && industry.name === "전문체육시설"
+            );
+        } else if (currentType === "amusement") {
+            return industry.type === "annual" && industry.name === "유원시설";
+        } else if (currentType === "ski") {
+            return industry.type === "annual" && industry.name === "스키장";
+        } else if (currentType === "racetrack") {
+            return industry.type === "annual" && industry.name === "경마장";
+        } else if (currentType === "cycling_racing") {
+            return (
+                industry.type === "annual" && industry.name === "경륜•경정장"
+            );
+        } else if (currentType === "transportation") {
+            return industry.type === "annual" && industry.name === "기차/선박";
         } else {
             const typeMapping: Record<string, string[]> = {
                 area: ["area"],
@@ -125,8 +158,17 @@ export function UnifiedCalculator({
             values.isRural = "false";
         }
 
+        // 필드별 defaultValue 설정
+        if (config) {
+            config.fields.forEach((field) => {
+                if (field.defaultValue && !values[field.id]) {
+                    values[field.id] = field.defaultValue;
+                }
+            });
+        }
+
         return values;
-    }, [currentIndustry, currentType]);
+    }, [currentIndustry, currentType, config]);
 
     // 업종이 선택되었을 때의 처리 (재선택 시)
     const handleIndustrySelection = (industryId: string) => {

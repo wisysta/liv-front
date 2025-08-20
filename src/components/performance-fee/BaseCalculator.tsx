@@ -12,6 +12,8 @@ export interface CalculationField {
     options?: Array<{ value: string; label: string }>;
     validation?: (value: any) => boolean;
     unit?: string;
+    formatCurrency?: boolean;
+    defaultValue?: string;
 }
 
 export interface CalculationConfig {
@@ -52,12 +54,34 @@ interface InputFieldProps {
 
 function InputField({ field, value, onChange, error }: InputFieldProps) {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
+        let inputValue = e.target.value;
 
         if (field.type === "number") {
             // 숫자 타입일 때만 검증 로직 적용
             if (inputValue === "") {
                 onChange("");
+                return;
+            }
+
+            // 통화 포맷이 활성화된 경우
+            if (field.formatCurrency) {
+                // 숫자와 콤마만 허용
+                inputValue = inputValue.replace(/[^0-9,]/g, "");
+                // 콤마 제거한 숫자값 추출
+                const numericValue = inputValue.replace(/,/g, "");
+
+                if (numericValue === "") {
+                    onChange("");
+                    return;
+                }
+
+                const numValue = parseFloat(numericValue);
+                if (isNaN(numValue) || numValue < 0) {
+                    return;
+                }
+
+                // 콤마 추가하여 포맷된 값 저장
+                onChange(numValue.toLocaleString());
                 return;
             }
 
@@ -107,7 +131,11 @@ function InputField({ field, value, onChange, error }: InputFieldProps) {
             <div className="flex items-center gap-4">
                 <div className="flex-1">
                     <input
-                        type={field.type === "number" ? "number" : "text"}
+                        type={
+                            field.type === "number" && !field.formatCurrency
+                                ? "number"
+                                : "text"
+                        }
                         value={value}
                         onChange={handleChange}
                         placeholder={field.placeholder}
@@ -115,7 +143,7 @@ function InputField({ field, value, onChange, error }: InputFieldProps) {
                             error ? "border-red-500" : ""
                         }`}
                         min={
-                            field.type === "number"
+                            field.type === "number" && !field.formatCurrency
                                 ? field.unit === "개" ||
                                   field.unit === "명" ||
                                   field.unit === "홀" ||
@@ -131,7 +159,7 @@ function InputField({ field, value, onChange, error }: InputFieldProps) {
                                 : undefined
                         }
                         step={
-                            field.type === "number"
+                            field.type === "number" && !field.formatCurrency
                                 ? field.unit === "개" ||
                                   field.unit === "명" ||
                                   field.unit === "홀" ||
@@ -465,11 +493,13 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
                     {/* 구분선 */}
                     <hr className="border-gray-300" />
 
-                    {/* 월 납부액 */}
+                    {/* 납부액 */}
                     <div className="bg-primary-purple rounded-lg p-6">
                         <div className="flex justify-between items-center text-white">
                             <div className="text-xl lg:text-2xl 2xl:text-3xl font-bold">
-                                월 납부액{" "}
+                                {result.customData?.isAnnualPayment
+                                    ? "연 납부액"
+                                    : "월 납부액"}{" "}
                                 <span className="text-sm font-normal">
                                     (VAT 포함)
                                 </span>

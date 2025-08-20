@@ -8,6 +8,8 @@ import { calculateGolfFee } from "@/actions/golf-calculation-actions";
 import { calculateKaraokeFee } from "@/actions/karaoke-calculation-actions";
 import { calculatePersonFee } from "@/actions/person-calculation-actions";
 import { calculateGameRoomFee } from "@/actions/gameroom-calculation-actions";
+import { calculateAircraftFee } from "@/actions/aircraft-calculation-actions";
+import { calculateRevenueFee } from "@/actions/revenue-calculation-actions";
 
 // 면적형 업종 설정
 export const areaBasedConfig: CalculationConfig = {
@@ -600,10 +602,10 @@ export const gameRoomConfig: CalculationConfig = {
     },
 };
 
-// 항공기 설정
+// 항공기 설정 (연납부)
 export const aircraftConfig: CalculationConfig = {
     title: "공연권료 계산기 - 항공기",
-    description: "항공기 승객 수 기반 업종",
+    description: "항공기 승객 수 및 비행기 수 기반 업종 (연납부)",
     fields: [
         {
             id: "industry",
@@ -615,49 +617,580 @@ export const aircraftConfig: CalculationConfig = {
         {
             id: "passengerCount",
             type: "number",
-            label: "승객 수를 입력하세요",
+            label: "항공기 좌석 수",
             required: true,
             placeholder: "200",
-            unit: "명",
             validation: (value: string) => {
                 const num = parseInt(value);
                 return !isNaN(num) && num > 0 && Number.isInteger(num);
             },
         },
         {
-            id: "flightType",
-            type: "select",
-            label: "운항 구분",
+            id: "aircraftCount",
+            type: "number",
+            label: "비행기 수",
+            required: true,
+            placeholder: "5",
+            validation: (value: string) => {
+                const num = parseInt(value);
+                return !isNaN(num) && num > 0 && Number.isInteger(num);
+            },
+        },
+        {
+            id: "useBoardingMusic",
+            type: "radio",
+            label: "탑승 중 음악 사용",
             required: true,
             options: [
-                { value: "domestic", label: "국내선" },
-                { value: "international", label: "국제선" },
+                { value: "true", label: "예" },
+                { value: "false", label: "아니오" },
+            ],
+        },
+        {
+            id: "useFlightMusic",
+            type: "radio",
+            label: "비행 중 음악 사용",
+            required: true,
+            options: [
+                { value: "true", label: "예" },
+                { value: "false", label: "아니오" },
             ],
         },
     ],
     calculateFunction: async (
         data: Record<string, any>
     ): Promise<CalculationResultData> => {
-        // TODO: 항공기 계산 API 호출
-        // 임시로 더미 데이터 반환
-        const baseRate = data.flightType === "international" ? 20 : 15;
-        const baseAmount = parseInt(data.passengerCount) * baseRate;
-        const boardingFee = baseAmount;
-        const flightFee = Math.floor(baseAmount * 1.5);
+        // industry 값에서 groupId 추출 (형식: "groupId-id" 또는 "id-id")
+        const industryValue = data.industry;
+        const parts = industryValue.split("-");
+        const groupId =
+            parts.length > 1 ? parseInt(parts[0]) : parseInt(industryValue);
+
+        const result = await calculateAircraftFee({
+            industryGroupId: groupId,
+            passengerCount: parseInt(data.passengerCount),
+            aircraftCount: parseInt(data.aircraftCount),
+            useBoardingMusic: data.useBoardingMusic === "true",
+            useFlightMusic: data.useFlightMusic === "true",
+        });
 
         return {
-            copyrightAmount: boardingFee,
-            neighboringAmount: flightFee,
-            totalAmount: boardingFee + flightFee,
+            copyrightAmount: result.copyrightAmount,
+            koscapAmount: result.koscapAmount,
+            neighboringAmount: result.neighboringAmount,
+            totalAmount: result.totalAmount,
+            tierInfo: result.tierInfo,
+            industryNotes: result.industryNotes || [],
             breakdown: [
                 {
-                    label: "월 탑승중 음악사용료",
-                    amount: boardingFee,
+                    label: "연납부 총액",
+                    amount: result.totalAmount,
                     isBold: true,
                 },
+            ],
+            customData: {
+                isAnnualPayment: true,
+                aircraftCount: result.aircraftCount,
+                monthlyBoardingFee: result.monthlyBoardingFee,
+                monthlyFlightFee: result.monthlyFlightFee,
+                monthlyTotal: result.monthlyTotal,
+            },
+        };
+    },
+};
+
+// 전문체육시설 설정 (수입 기반)
+export const sportsConfig: CalculationConfig = {
+    title: "공연권료 계산기 - 전문체육시설",
+    description: "입장료 수입 기반 업종 (수입 × 0.2%)",
+    fields: [
+        {
+            id: "industry",
+            type: "industry",
+            label: "업종",
+            required: true,
+            placeholder: "업종을 선택하세요",
+        },
+        {
+            id: "revenueAmount",
+            type: "number",
+            label: "입장료 수입",
+            required: true,
+            placeholder: "1,000,000",
+            unit: "원",
+            formatCurrency: true,
+            validation: (value: string) => {
+                const num = parseFloat(value.replace(/,/g, ""));
+                return !isNaN(num) && num > 0;
+            },
+        },
+    ],
+    calculateFunction: async (
+        data: Record<string, any>
+    ): Promise<CalculationResultData> => {
+        const industryValue = data.industry;
+        const parts = industryValue.split("-");
+        const groupId =
+            parts.length > 1 ? parseInt(parts[0]) : parseInt(industryValue);
+
+        const result = await calculateRevenueFee({
+            industryGroupId: groupId,
+            revenueAmount: parseFloat(data.revenueAmount.replace(/,/g, "")),
+        });
+
+        return {
+            copyrightAmount: result.copyrightAmount,
+            koscapAmount: 0, // 수입 기반은 별도 구조
+            neighboringAmount: result.producerAmount + result.performerAmount,
+            totalAmount: result.totalAmount,
+            industryNotes: result.industryNotes || [],
+            breakdown: [
                 {
-                    label: "월 비행중 음악사용료",
-                    amount: flightFee,
+                    label: "저작자 합산",
+                    amount: result.copyrightAmount,
+                    isBold: false,
+                },
+                {
+                    label: `제작자 (VAT ${result.producerVAT.toLocaleString()}원 포함)`,
+                    amount: result.producerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "실연자",
+                    amount: result.performerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "납부할 공연권료",
+                    amount: result.totalAmount,
+                    isBold: true,
+                },
+            ],
+            customData: {
+                isAnnualPayment: true,
+            },
+        };
+    },
+};
+
+// 유원시설 설정 (수입 기반)
+export const amusementConfig: CalculationConfig = {
+    title: "공연권료 계산기 - 유원시설",
+    description:
+        "입장료 수입 + 음악사용놀이기구 이용료 수입 기반 업종 (수입 × 0.11%)",
+    fields: [
+        {
+            id: "industry",
+            type: "industry",
+            label: "업종",
+            required: true,
+            placeholder: "업종을 선택하세요",
+        },
+        {
+            id: "admissionRevenue",
+            type: "number",
+            label: "입장료 수입",
+            required: true,
+            placeholder: "500,000",
+            unit: "원",
+            formatCurrency: true,
+            validation: (value: string) => {
+                const num = parseFloat(value.replace(/,/g, ""));
+                return !isNaN(num) && num >= 0;
+            },
+        },
+        {
+            id: "rideRevenue",
+            type: "number",
+            label: "음악사용놀이기구 이용료 수입",
+            required: true,
+            placeholder: "500,000",
+            unit: "원",
+            formatCurrency: true,
+            validation: (value: string) => {
+                const num = parseFloat(value.replace(/,/g, ""));
+                return !isNaN(num) && num >= 0;
+            },
+        },
+    ],
+    calculateFunction: async (
+        data: Record<string, any>
+    ): Promise<CalculationResultData> => {
+        const industryValue = data.industry;
+        const parts = industryValue.split("-");
+        const groupId =
+            parts.length > 1 ? parseInt(parts[0]) : parseInt(industryValue);
+
+        // 입장료 수입 + 음악사용놀이기구 이용료 수입 계산
+        const admissionRevenue = parseFloat(
+            data.admissionRevenue.replace(/,/g, "")
+        );
+        const rideRevenue = parseFloat(data.rideRevenue.replace(/,/g, ""));
+        const revenueAmount = admissionRevenue + rideRevenue;
+
+        const result = await calculateRevenueFee({
+            industryGroupId: groupId,
+            revenueAmount: revenueAmount,
+        });
+
+        return {
+            copyrightAmount: result.copyrightAmount,
+            koscapAmount: 0,
+            neighboringAmount: result.producerAmount + result.performerAmount,
+            totalAmount: result.totalAmount,
+            industryNotes: result.industryNotes || [],
+            breakdown: [
+                {
+                    label: "저작자 합산",
+                    amount: result.copyrightAmount,
+                    isBold: false,
+                },
+                {
+                    label: `제작자 (VAT ${result.producerVAT.toLocaleString()}원 포함)`,
+                    amount: result.producerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "실연자",
+                    amount: result.performerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "납부할 공연권료",
+                    amount: result.totalAmount,
+                    isBold: true,
+                },
+            ],
+        };
+    },
+};
+
+// 스키장 설정 (수입 기반)
+export const skiConfig: CalculationConfig = {
+    title: "공연권료 계산기 - 스키장",
+    description: "수입 기반 업종 (수입 × 0.05%)",
+    fields: [
+        {
+            id: "industry",
+            type: "industry",
+            label: "업종",
+            required: true,
+            placeholder: "업종을 선택하세요",
+        },
+        {
+            id: "revenueAmount",
+            type: "number",
+            label: "수입",
+            required: true,
+            placeholder: "1,000,000",
+            unit: "원",
+            formatCurrency: true,
+            validation: (value: string) => {
+                const num = parseFloat(value.replace(/,/g, ""));
+                return !isNaN(num) && num > 0;
+            },
+        },
+    ],
+    calculateFunction: async (
+        data: Record<string, any>
+    ): Promise<CalculationResultData> => {
+        const industryValue = data.industry;
+        const parts = industryValue.split("-");
+        const groupId =
+            parts.length > 1 ? parseInt(parts[0]) : parseInt(industryValue);
+
+        const result = await calculateRevenueFee({
+            industryGroupId: groupId,
+            revenueAmount: parseFloat(data.revenueAmount.replace(/,/g, "")),
+        });
+
+        return {
+            copyrightAmount: result.copyrightAmount,
+            koscapAmount: 0,
+            neighboringAmount: result.producerAmount + result.performerAmount,
+            totalAmount: result.totalAmount,
+            industryNotes: result.industryNotes || [],
+            breakdown: [
+                {
+                    label: "저작자 합산",
+                    amount: result.copyrightAmount,
+                    isBold: false,
+                },
+                {
+                    label: `제작자 (VAT ${result.producerVAT.toLocaleString()}원 포함)`,
+                    amount: result.producerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "실연자",
+                    amount: result.performerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "납부할 공연권료",
+                    amount: result.totalAmount,
+                    isBold: true,
+                },
+            ],
+        };
+    },
+};
+
+// 경마장 설정 (수입 기반)
+export const racetrackConfig: CalculationConfig = {
+    title: "공연권료 계산기 - 경마장",
+    description: "순수익 × 특별적립공제비율 × 0.01%",
+    fields: [
+        {
+            id: "industry",
+            type: "industry",
+            label: "업종",
+            required: true,
+            placeholder: "업종을 선택하세요",
+        },
+        {
+            id: "netProfit",
+            type: "number",
+            label: "순수익",
+            required: true,
+            placeholder: "1,000,000,000",
+            unit: "원",
+            formatCurrency: true,
+            validation: (value: string) => {
+                const num = parseFloat(value.replace(/,/g, ""));
+                return !isNaN(num) && num > 0;
+            },
+        },
+        {
+            id: "specialReserveRate",
+            type: "number",
+            label: "특별적립공제비율",
+            required: true,
+            placeholder: "9",
+            defaultValue: "9",
+            unit: "%",
+            validation: (value: string) => {
+                const num = parseFloat(value);
+                return !isNaN(num) && num > 0 && num <= 100;
+            },
+        },
+    ],
+    calculateFunction: async (
+        data: Record<string, any>
+    ): Promise<CalculationResultData> => {
+        const industryValue = data.industry;
+        const parts = industryValue.split("-");
+        const groupId =
+            parts.length > 1 ? parseInt(parts[0]) : parseInt(industryValue);
+
+        // 순수익 × 특별적립공제비율 계산
+        const netProfit = parseFloat(data.netProfit.replace(/,/g, ""));
+        const specialReserveRate = parseFloat(data.specialReserveRate) / 100; // % → 소수점
+        const revenueAmount = netProfit * specialReserveRate;
+
+        const result = await calculateRevenueFee({
+            industryGroupId: groupId,
+            revenueAmount: revenueAmount,
+        });
+
+        return {
+            copyrightAmount: result.copyrightAmount,
+            koscapAmount: 0,
+            neighboringAmount: result.producerAmount + result.performerAmount,
+            totalAmount: result.totalAmount,
+            industryNotes: result.industryNotes || [],
+            breakdown: [
+                {
+                    label: "저작자 합산",
+                    amount: result.copyrightAmount,
+                    isBold: false,
+                },
+                {
+                    label: `제작자 (VAT ${result.producerVAT.toLocaleString()}원 포함)`,
+                    amount: result.producerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "실연자",
+                    amount: result.performerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "납부할 공연권료",
+                    amount: result.totalAmount,
+                    isBold: true,
+                },
+            ],
+        };
+    },
+};
+
+// 경륜•경정장 설정 (수입 기반)
+export const cyclingRacingConfig: CalculationConfig = {
+    title: "공연권료 계산기 - 경륜•경정장",
+    description: "전년도 총수입 × 조정발매수득금률 × 0.01%",
+    fields: [
+        {
+            id: "industry",
+            type: "industry",
+            label: "업종",
+            required: true,
+            placeholder: "업종을 선택하세요",
+        },
+        {
+            id: "totalRevenue",
+            type: "number",
+            label: "전년도 총수입",
+            required: true,
+            placeholder: "1,000,000,000",
+            unit: "원",
+            formatCurrency: true,
+            validation: (value: string) => {
+                const num = parseFloat(value.replace(/,/g, ""));
+                return !isNaN(num) && num > 0;
+            },
+        },
+        {
+            id: "adjustmentRate",
+            type: "number",
+            label: "조정발매수득금률",
+            required: true,
+            placeholder: "12",
+            defaultValue: "12",
+            unit: "%",
+            validation: (value: string) => {
+                const num = parseFloat(value);
+                return !isNaN(num) && num > 0 && num <= 100;
+            },
+        },
+    ],
+    calculateFunction: async (
+        data: Record<string, any>
+    ): Promise<CalculationResultData> => {
+        const industryValue = data.industry;
+        const parts = industryValue.split("-");
+        const groupId =
+            parts.length > 1 ? parseInt(parts[0]) : parseInt(industryValue);
+
+        // 전년도 총수입 × 조정발매수득금률 계산
+        const totalRevenue = parseFloat(data.totalRevenue.replace(/,/g, ""));
+        const adjustmentRate = parseFloat(data.adjustmentRate) / 100; // % → 소수점
+        const revenueAmount = totalRevenue * adjustmentRate;
+
+        const result = await calculateRevenueFee({
+            industryGroupId: groupId,
+            revenueAmount: revenueAmount,
+        });
+
+        return {
+            copyrightAmount: result.copyrightAmount,
+            koscapAmount: 0,
+            neighboringAmount: result.producerAmount + result.performerAmount,
+            totalAmount: result.totalAmount,
+            industryNotes: result.industryNotes || [],
+            breakdown: [
+                {
+                    label: "저작자 합산",
+                    amount: result.copyrightAmount,
+                    isBold: false,
+                },
+                {
+                    label: `제작자 (VAT ${result.producerVAT.toLocaleString()}원 포함)`,
+                    amount: result.producerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "실연자",
+                    amount: result.performerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "납부할 공연권료",
+                    amount: result.totalAmount,
+                    isBold: true,
+                },
+            ],
+        };
+    },
+};
+
+// 기차•선박 설정 (수입 기반)
+export const transportationConfig: CalculationConfig = {
+    title: "공연권료 계산기 - 기차•선박",
+    description: "수입 × 0.02% × 조정계수",
+    fields: [
+        {
+            id: "industry",
+            type: "industry",
+            label: "업종",
+            required: true,
+            placeholder: "업종을 선택하세요",
+        },
+        {
+            id: "revenueAmount",
+            type: "number",
+            label: "수입",
+            required: true,
+            placeholder: "1,000,000",
+            unit: "원",
+            formatCurrency: true,
+            validation: (value: string) => {
+                const num = parseFloat(value.replace(/,/g, ""));
+                return !isNaN(num) && num > 0;
+            },
+        },
+        {
+            id: "adjustmentRate",
+            type: "number",
+            label: "조정계수 (%)",
+            required: true,
+            placeholder: "20",
+            defaultValue: "20",
+            validation: (value: string) => {
+                const num = parseFloat(value);
+                return !isNaN(num) && num > 0 && num <= 100;
+            },
+        },
+    ],
+    calculateFunction: async (
+        data: Record<string, any>
+    ): Promise<CalculationResultData> => {
+        const industryValue = data.industry;
+        const parts = industryValue.split("-");
+        const groupId =
+            parts.length > 1 ? parseInt(parts[0]) : parseInt(industryValue);
+
+        const result = await calculateRevenueFee({
+            industryGroupId: groupId,
+            revenueAmount: parseFloat(data.revenueAmount.replace(/,/g, "")),
+            adjustmentRate: parseFloat(data.adjustmentRate) / 100, // % -> 소수점
+        });
+
+        return {
+            copyrightAmount: result.copyrightAmount,
+            koscapAmount: 0,
+            neighboringAmount: result.producerAmount + result.performerAmount,
+            totalAmount: result.totalAmount,
+            industryNotes: result.industryNotes || [],
+            breakdown: [
+                {
+                    label: "저작자 합산",
+                    amount: result.copyrightAmount,
+                    isBold: false,
+                },
+                {
+                    label: `제작자 (VAT ${result.producerVAT.toLocaleString()}원 포함)`,
+                    amount: result.producerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "실연자",
+                    amount: result.performerAmount,
+                    isBold: false,
+                },
+                {
+                    label: "납부할 공연권료",
+                    amount: result.totalAmount,
                     isBold: true,
                 },
             ],
@@ -718,6 +1251,12 @@ export const calculatorConfigs = {
     person: personBasedConfig,
     game_room: gameRoomConfig,
     aircraft: aircraftConfig,
+    sports: sportsConfig,
+    amusement: amusementConfig,
+    ski: skiConfig,
+    racetrack: racetrackConfig,
+    cycling_racing: cyclingRacingConfig,
+    transportation: transportationConfig,
     exempt: exemptConfig,
 } as const;
 

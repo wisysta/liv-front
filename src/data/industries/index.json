@@ -1,60 +1,123 @@
 {
     "industryFiles": [
-    "standard.json",
-    "room-count.json",
-    "people-count.json",
-    "large-area.json",
-    "golf-hole.json",
-    "equipment-count.json",
-    "karaoke-area.json",
-    "passenger-count.json",
-    "restaurant-area.json",
-    "entertainment-area.json",
-    "cabaret-area.json",
-    "casino-area.json"
-  ],
-  "industryList": [
-    { "id": "coffee", "name": "커피전문점", "type": "standard" },
-    { "id": "non_alcoholic_beverage", "name": "기타 비알콜 음료점", "type": "standard" },
-    { "id": "draft_beer", "name": "생맥주 전문점", "type": "standard" },
-    { "id": "restaurant", "name": "일반음식점", "type": "standard" },
-    { "id": "bar", "name": "기타 주점", "type": "standard" },
-    { "id": "gym", "name": "체력단련장", "type": "standard" },
-    { "id": "sports_facility", "name": "전문체육시설", "type": "standard" },
-    { "id": "hotel", "name": "호텔", "type": "room_count" },
-    { "id": "condo", "name": "콘도미니엄", "type": "room_count" },
-    { "id": "golf", "name": "골프장", "type": "golf_hole" },
-    { "id": "mart", "name": "대형마트", "type": "large_area" },
-    { "id": "department", "name": "백화점", "type": "large_area" },
-    { "id": "complex_shopping", "name": "복합쇼핑몰", "type": "large_area" },
-    { "id": "shopping_center", "name": "쇼핑센터", "type": "large_area" },
-    { "id": "shopping_specialty", "name": "쇼핑전문점", "type": "large_area" },
-    { "id": "large_store", "name": "대규모 점포", "type": "large_area" },
-    { "id": "dance_academy", "name": "무도학원", "type": "people_count" },
-    { "id": "aerobics", "name": "에어로빅장", "type": "people_count" },
-    { "id": "music_class", "name": "노래교실", "type": "people_count" },
-      { "id": "cultural_center", "name": "시,군,구 비영리 문화센터", "type": "people_count" },
-      { "id": "community_center", "name": "주민자치센터", "type": "people_count" },
-      { "id": "amusement_facility", "name": "유원시설", "type": "standard" },
-      { "id": "racing_track", "name": "경마,경륜,경정장", "type": "standard" },
-      { "id": "game_room", "name": "게임방", "type": "equipment_count" },
-      { "id": "multi_room", "name": "멀티방", "type": "equipment_count" },
-      { "id": "karaoke", "name": "노래연습장", "type": "karaoke_area" },
-      { "id": "aircraft", "name": "항공기", "type": "passenger_count" },
-    { "id": "ship", "name": "선박", "type": "standard" },
-    { "id": "train", "name": "기차", "type": "standard" },
-    { "id": "restaurant_fancy", "name": "레스토랑", "type": "restaurant_area" },
-    { "id": "coffee_shop", "name": "커피숍", "type": "restaurant_area" },
-    { "id": "cafe_performance", "name": "카페에서 음악 공연", "type": "restaurant_area" },
-    { "id": "buffet_performance", "name": "뷔페에서 음악 공연", "type": "restaurant_area" },
-    { "id": "danran_jujeom", "name": "단란주점", "type": "entertainment_area" },
-    { "id": "night_club", "name": "나이트클럽", "type": "entertainment_area" },
-    { "id": "room_salon", "name": "룸살롱", "type": "entertainment_area" },
-    { "id": "entertainment_bar", "name": "유흥주점", "type": "entertainment_area" },
-    { "id": "theater_restaurant", "name": "극장식 식당", "type": "entertainment_area" },
-    { "id": "cabaret", "name": "카바레", "type": "cabaret_area" },
-    { "id": "stand_bar", "name": "스탠드바", "type": "cabaret_area" },
-    { "id": "dance_hall", "name": "무도장", "type": "people_count" },
-    { "id": "casino", "name": "카지노", "type": "casino_area" }
-  ]
+        "standard.json",
+        "room-count.json",
+        "people-count.json",
+        "large-area.json",
+        "golf-hole.json",
+        "equipment-count.json",
+        "karaoke-area.json",
+        "passenger-count.json",
+        "restaurant-area.json",
+        "entertainment-area.json",
+        "cabaret-area.json",
+        "casino-area.json",
+        "revenue-based.json"
+    ],
+    "industryList": [
+        { "id": "coffee", "name": "커피전문점", "type": "standard" },
+        {
+            "id": "non_alcoholic_beverage",
+            "name": "기타 비알콜 음료점",
+            "type": "standard"
+        },
+        { "id": "draft_beer", "name": "생맥주 전문점", "type": "standard" },
+        { "id": "restaurant", "name": "일반음식점", "type": "standard" },
+        { "id": "bar", "name": "기타 주점", "type": "standard" },
+        { "id": "gym", "name": "체력단련장", "type": "standard" },
+        {
+            "id": "sports_facility",
+            "name": "전문체육시설",
+            "type": "revenue_based"
+        },
+        { "id": "hotel", "name": "호텔", "type": "room_count" },
+        { "id": "condo", "name": "콘도미니엄", "type": "room_count" },
+        { "id": "golf", "name": "골프장", "type": "golf_hole" },
+        { "id": "mart", "name": "대형마트", "type": "large_area" },
+        { "id": "department", "name": "백화점", "type": "large_area" },
+        {
+            "id": "complex_shopping",
+            "name": "복합쇼핑몰",
+            "type": "large_area"
+        },
+        { "id": "shopping_center", "name": "쇼핑센터", "type": "large_area" },
+        {
+            "id": "shopping_specialty",
+            "name": "쇼핑전문점",
+            "type": "large_area"
+        },
+        { "id": "large_store", "name": "대규모 점포", "type": "large_area" },
+        { "id": "dance_academy", "name": "무도학원", "type": "people_count" },
+        { "id": "aerobics", "name": "에어로빅장", "type": "people_count" },
+        { "id": "music_class", "name": "노래교실", "type": "people_count" },
+        {
+            "id": "cultural_center",
+            "name": "시,군,구 비영리 문화센터",
+            "type": "people_count"
+        },
+        {
+            "id": "community_center",
+            "name": "주민자치센터",
+            "type": "people_count"
+        },
+        {
+            "id": "amusement_facility",
+            "name": "유원시설",
+            "type": "revenue_based"
+        },
+        { "id": "ski_resort", "name": "스키장", "type": "revenue_based" },
+        { "id": "horse_racing", "name": "경마장", "type": "revenue_based" },
+        {
+            "id": "cycling_racing",
+            "name": "경륜•경정장",
+            "type": "revenue_based"
+        },
+        { "id": "game_room", "name": "게임방", "type": "equipment_count" },
+        { "id": "multi_room", "name": "멀티방", "type": "equipment_count" },
+        { "id": "karaoke", "name": "노래연습장", "type": "karaoke_area" },
+        { "id": "aircraft", "name": "항공기", "type": "passenger_count" },
+        { "id": "ship", "name": "선박", "type": "revenue_based" },
+        { "id": "train", "name": "기차", "type": "revenue_based" },
+        {
+            "id": "restaurant_fancy",
+            "name": "레스토랑",
+            "type": "restaurant_area"
+        },
+        { "id": "coffee_shop", "name": "커피숍", "type": "restaurant_area" },
+        {
+            "id": "cafe_performance",
+            "name": "카페에서 음악 공연",
+            "type": "restaurant_area"
+        },
+        {
+            "id": "buffet_performance",
+            "name": "뷔페에서 음악 공연",
+            "type": "restaurant_area"
+        },
+        {
+            "id": "danran_jujeom",
+            "name": "단란주점",
+            "type": "entertainment_area"
+        },
+        {
+            "id": "night_club",
+            "name": "나이트클럽",
+            "type": "entertainment_area"
+        },
+        { "id": "room_salon", "name": "룸살롱", "type": "entertainment_area" },
+        {
+            "id": "entertainment_bar",
+            "name": "유흥주점",
+            "type": "entertainment_area"
+        },
+        {
+            "id": "theater_restaurant",
+            "name": "극장식 식당",
+            "type": "entertainment_area"
+        },
+        { "id": "cabaret", "name": "카바레", "type": "cabaret_area" },
+        { "id": "stand_bar", "name": "스탠드바", "type": "cabaret_area" },
+        { "id": "dance_hall", "name": "무도장", "type": "people_count" },
+        { "id": "casino", "name": "카지노", "type": "casino_area" }
+    ]
 }
