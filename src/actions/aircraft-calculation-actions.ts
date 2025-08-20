@@ -19,13 +19,16 @@ export interface AircraftCalculationResponse {
     monthlyBoardingFee: number;
     monthlyFlightFee: number;
     monthlyTotal: number;
+    isAnnualPayment?: boolean; // 연납부형 여부
 }
 
 export async function calculateAircraftFee(
     data: AircraftCalculationRequest
 ): Promise<AircraftCalculationResponse> {
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"}/api/calculate/aircraft`,
+        `${
+            process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
+        }/api/calculate/aircraft`,
         {
             method: "POST",
             headers: {
@@ -38,15 +41,19 @@ export async function calculateAircraftFee(
     if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(
-            errorData.message || `API 오류: ${response.status} ${response.statusText}`
+            errorData.message ||
+                `API 오류: ${response.status} ${response.statusText}`
         );
     }
 
     const apiResponse = await response.json();
-    
+
     if (!apiResponse.success || !apiResponse.data) {
         throw new Error(apiResponse.message || "계산 중 오류가 발생했습니다.");
     }
 
-    return apiResponse.data;
+    return {
+        ...apiResponse.data,
+        isAnnualPayment: apiResponse.meta?.isAnnualPayment || false,
+    };
 }

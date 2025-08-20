@@ -24,6 +24,7 @@ export interface RevenueCalculationResponse {
         producerTotal: number;
         performerAmount: number;
     };
+    isAnnualPayment?: boolean; // 연납부형 여부
 }
 
 export async function calculateRevenueFee(
@@ -56,5 +57,8 @@ export async function calculateRevenueFee(
         throw new Error(apiResponse.message || "계산 중 오류가 발생했습니다.");
     }
 
-    return apiResponse.data;
+    return {
+        ...apiResponse.data,
+        isAnnualPayment: apiResponse.meta?.isAnnualPayment || false,
+    };
 }

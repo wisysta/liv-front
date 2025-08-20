@@ -689,7 +689,7 @@ export const aircraftConfig: CalculationConfig = {
                 },
             ],
             customData: {
-                isAnnualPayment: true,
+                isAnnualPayment: result.isAnnualPayment,
                 aircraftCount: result.aircraftCount,
                 monthlyBoardingFee: result.monthlyBoardingFee,
                 monthlyFlightFee: result.monthlyFlightFee,
@@ -767,7 +767,7 @@ export const sportsConfig: CalculationConfig = {
                 },
             ],
             customData: {
-                isAnnualPayment: true,
+                isAnnualPayment: result.isAnnualPayment,
             },
         };
     },
@@ -861,6 +861,9 @@ export const amusementConfig: CalculationConfig = {
                     isBold: true,
                 },
             ],
+            customData: {
+                isAnnualPayment: result.isAnnualPayment,
+            },
         };
     },
 };
@@ -932,6 +935,9 @@ export const skiConfig: CalculationConfig = {
                     isBold: true,
                 },
             ],
+            customData: {
+                isAnnualPayment: result.isAnnualPayment,
+            },
         };
     },
 };
@@ -1021,6 +1027,9 @@ export const racetrackConfig: CalculationConfig = {
                     isBold: true,
                 },
             ],
+            customData: {
+                isAnnualPayment: result.isAnnualPayment,
+            },
         };
     },
 };
@@ -1110,6 +1119,9 @@ export const cyclingRacingConfig: CalculationConfig = {
                     isBold: true,
                 },
             ],
+            customData: {
+                isAnnualPayment: result.isAnnualPayment,
+            },
         };
     },
 };
@@ -1194,6 +1206,9 @@ export const transportationConfig: CalculationConfig = {
                     isBold: true,
                 },
             ],
+            customData: {
+                isAnnualPayment: result.isAnnualPayment,
+            },
         };
     },
 };
