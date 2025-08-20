@@ -75,6 +75,19 @@ export const areaBasedConfig: CalculationConfig = {
             isRural: data.isRural === "true",
         });
 
+        const breakdown = [
+            {
+                label: "리브뮤직 납부 공연권료(3단체)",
+                amount: result.copyrightAmount,
+                isBold: true,
+            },
+            {
+                label: "월 매장음악사용료",
+                amount: result.neighboringAmount,
+                isBold: true,
+            },
+        ];
+
         return {
             copyrightAmount: result.copyrightAmount,
             koscapAmount: result.koscapAmount,
@@ -82,18 +95,7 @@ export const areaBasedConfig: CalculationConfig = {
             totalAmount: result.totalAmount,
             tierInfo: result.tierInfo,
             industryNotes: result.industryNotes || [],
-            breakdown: [
-                {
-                    label: "리브뮤직 납부 공연권료(3단체)",
-                    amount: result.copyrightAmount,
-                    isBold: true,
-                },
-                {
-                    label: "월 매장음악사용료",
-                    amount: result.neighboringAmount,
-                    isBold: true,
-                },
-            ],
+            breakdown,
         };
     },
 };

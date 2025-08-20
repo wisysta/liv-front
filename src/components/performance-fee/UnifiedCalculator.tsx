@@ -44,12 +44,6 @@ export function UnifiedCalculator({
     // 업종이 변경되면 업종 상태와 계산기 타입을 업데이트
     useEffect(() => {
         if (selectedIndustry) {
-            console.log(
-                "업종 변경 감지:",
-                selectedIndustry.name,
-                selectedIndustry.type
-            );
-
             // 업종 정보 업데이트
             setCurrentIndustry(selectedIndustry);
 
@@ -85,8 +79,6 @@ export function UnifiedCalculator({
                 newType = typeMapping[selectedIndustry.type] || "area";
             }
 
-            // 계산기 타입 업데이트
-            console.log("계산기 타입 설정:", newType);
             setCurrentType(newType);
         }
     }, [selectedIndustry]);
@@ -187,7 +179,6 @@ export function UnifiedCalculator({
                         currentIndustry?.id
                     }`
             ) {
-                console.log("BaseCalculator에서 업종 변경 감지:", industryId);
                 handleIndustrySelection(industryId);
             }
         },

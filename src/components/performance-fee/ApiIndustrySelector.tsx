@@ -31,11 +31,6 @@ export function ApiIndustrySelector({
     useEffect(() => {
         setSearchTerm("");
         setSelectedIndustry(null);
-
-        // 디버깅: API 데이터 확인
-        console.log("API 데이터 기반 ApiIndustrySelector 사용 중");
-        console.log("API 데이터 개수:", industries.length);
-        console.log("API 데이터 샘플:", industries.slice(0, 3));
     }, [industries]);
 
     // API 데이터를 ProcessedIndustry 형태로 변환

@@ -107,7 +107,6 @@ export async function getImportantNotices({
         }
 
         const data = await response.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error("중요 공지사항 조회 오류:", error);

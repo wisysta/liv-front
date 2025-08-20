@@ -646,6 +646,7 @@ export function BaseCalculator({
         setIsCalculating(true);
         try {
             const result = await config.calculateFunction(formData);
+            console.log("BaseCalculator: 계산 결과 ->", result);
             setCalculationResult(result);
         } catch (error) {
             console.error("계산 중 오류:", error);

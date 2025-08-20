@@ -50,8 +50,15 @@ export async function calculatePersonFee({
             throw new Error(errorData.error || "계산 중 오류가 발생했습니다.");
         }
 
-        const result: PersonCalculationResponse = await response.json();
-        return result;
+        const apiResponse = await response.json();
+
+        if (!apiResponse.success || !apiResponse.data) {
+            throw new Error(
+                apiResponse.error || "계산 결과를 받을 수 없습니다."
+            );
+        }
+
+        return apiResponse.data;
     } catch (error) {
         console.error("인원기반 계산 오류:", error);
         throw new Error(
