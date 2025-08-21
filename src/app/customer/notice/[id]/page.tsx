@@ -105,7 +105,7 @@ export default function NoticeDetailPage() {
                     title="공지사항"
                     description="리브뮤직 고객센터에서 알려드립니다"
                 />
-                <section className="bg-white py-8 lg:py-12 2xl:py-16">
+                <section className="bg-white py-6 sm:py-8 lg:py-12 2xl:py-16">
                     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="animate-pulse">
                             <div className="h-8 bg-gray-200 rounded mb-4" />
@@ -130,7 +130,7 @@ export default function NoticeDetailPage() {
                 headerVariant="light"
             >
                 <CustomerHero currentPage="notice" />
-                <section className="bg-white py-8 lg:py-12 2xl:py-16">
+                <section className="bg-white py-6 sm:py-8 lg:py-12 2xl:py-16">
                     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center py-12">
                             <div className="text-red-500 mb-4">
@@ -174,10 +174,10 @@ export default function NoticeDetailPage() {
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* 제목 및 메타 정보 */}
                     <div className="border-b border-gray-200 pb-6 mb-8">
-                        <h1 className="text-2xl lg:text-3xl font-bold text-background-dark mb-4">
+                        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-background-dark mb-4">
                             {notice.title}
                         </h1>
-                        <div className="flex items-center text-gray-500 text-sm">
+                        <div className="flex items-center text-gray-500 text-xs sm:text-sm">
                             <span>{formatDate(notice.createdAt)}</span>
                             <span className="mx-2">•</span>
                             <span>조회수 {notice.views}</span>
@@ -187,7 +187,7 @@ export default function NoticeDetailPage() {
                     {/* 첨부파일 */}
                     {notice.attachments && notice.attachments.length > 0 && (
                         <div className="mb-8">
-                            <h3 className="text-lg font-semibold mb-4">
+                            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
                                 첨부파일
                             </h3>
                             <div className="space-y-2">
@@ -245,7 +245,7 @@ export default function NoticeDetailPage() {
                     {/* 내용 */}
                     <div className="prose max-w-none mb-12">
                         <div
-                            className="text-gray-700 leading-relaxed whitespace-pre-wrap"
+                            className="text-gray-700 text-sm sm:text-base leading-relaxed whitespace-pre-wrap"
                             dangerouslySetInnerHTML={{ __html: notice.content }}
                         />
                     </div>
@@ -254,7 +254,7 @@ export default function NoticeDetailPage() {
                     <div className="flex justify-center mb-8">
                         <button
                             onClick={() => router.push("/customer/notice")}
-                            className="px-8 py-3 bg-gray-100 text-background-dark rounded-full hover:bg-gray-200 transition-colors font-medium"
+                            className="px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base bg-gray-100 text-background-dark rounded-full hover:bg-gray-200 transition-colors font-medium"
                         >
                             목록 보기
                         </button>

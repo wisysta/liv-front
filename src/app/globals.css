@@ -1,32 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-pretendard: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-  
-  /* 리브뮤직 디자인 시스템 색상 */
-  --color-primary-purple: #2D265A;
-  --color-background-dark: #17171B;
-  --color-gray-light: #F4F4F4;
-  --color-gray-medium: #D1D5DB;
-  --color-gray-dark: #374151;
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-pretendard: "Pretendard Variable", "Pretendard", -apple-system,
+        BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+        "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+
+    /* 리브뮤직 디자인 시스템 색상 */
+    --color-primary-purple: #2d265a;
+    --color-background-dark: #17171b;
+    --color-gray-light: #f4f4f4;
+    --color-gray-medium: #d1d5db;
+    --color-gray-dark: #374151;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-pretendard);
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-pretendard);
 }

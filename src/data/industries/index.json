@@ -11,8 +11,7 @@
         "restaurant-area.json",
         "entertainment-area.json",
         "cabaret-area.json",
-        "casino-area.json",
-        "revenue-based.json"
+        "casino-area.json"
     ],
     "industryList": [
         { "id": "coffee", "name": "커피전문점", "type": "standard" },

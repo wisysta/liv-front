@@ -9,8 +9,8 @@ interface PerformanceFeeHeroProps {
     title: string;
     contentBlocks: {
         text: string;
-        fontWeight?: "normal" | "semibold";
-        fontSize?: "base" | "lg";
+        mobileText?: string;
+        className?: string;
     }[];
     laws: {
         text: string;
@@ -106,15 +106,6 @@ export function PerformanceFeeHero({
 
                     <div className="max-w-5xl space-y-6 lg:space-y-8 mb-12 lg:mb-16">
                         {contentBlocks.map((block, index) => {
-                            const fontWeightClass =
-                                block.fontWeight === "semibold"
-                                    ? "font-semibold"
-                                    : "";
-                            const fontSizeClass =
-                                block.fontSize === "base"
-                                    ? "text-base lg:text-lg 2xl:text-xl"
-                                    : "text-lg lg:text-xl 2xl:text-2xl";
-
                             // 첫 번째 블록(메인 텍스트)은 아래에서 위로, 나머지는 제자리에서 페이드인
                             const animationClass =
                                 index === 0
@@ -130,13 +121,33 @@ export function PerformanceFeeHero({
                                       }`;
 
                             return (
-                                <p
-                                    key={index}
-                                    className={`${fontSizeClass} leading-relaxed ${fontWeightClass} ${animationClass}`}
-                                    dangerouslySetInnerHTML={{
-                                        __html: block.text,
-                                    }}
-                                />
+                                <div key={index}>
+                                    {/* 데스크톱용 텍스트 */}
+                                    <p
+                                        className={`hidden lg:block leading-relaxed whitespace-pre-line ${
+                                            block.className || ""
+                                        } ${animationClass}`}
+                                    >
+                                        {block.text.replace(
+                                            /<br\s*\/?>/g,
+                                            "\n"
+                                        )}
+                                    </p>
+                                    {/* 모바일용 텍스트 */}
+                                    <p
+                                        className={`lg:hidden ${
+                                            index === 0
+                                                ? "text-base"
+                                                : "text-sm"
+                                        } leading-relaxed whitespace-pre-line ${
+                                            block.className || ""
+                                        } ${animationClass}`}
+                                    >
+                                        {(
+                                            block.mobileText || block.text
+                                        ).replace(/<br\s*\/?>/g, "\n")}
+                                    </p>
+                                </div>
                             );
                         })}
                     </div>

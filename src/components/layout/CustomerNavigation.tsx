@@ -18,7 +18,7 @@ export function CustomerNavigation({
     className = "",
 }: CustomerNavigationProps) {
     const navigationItems = [
-        { key: "faq", label: "자주 묻는 질문", href: "/customer/faq" },
+        { key: "faq", label: "FAQ", href: "/customer/faq" },
         { key: "inquiry", label: "1:1 문의", href: "/customer/inquiry" },
         { key: "notice", label: "공지사항", href: "/customer/notice" },
         {
@@ -32,7 +32,7 @@ export function CustomerNavigation({
 
     return (
         <div
-            className={`flex flex-wrap justify-center gap-8 lg:gap-12 ${className}`}
+            className={`flex flex-wrap justify-center gap-4 sm:gap-8 lg:gap-12 ${className}`}
         >
             {navigationItems.map((item) => (
                 <Link
@@ -40,8 +40,8 @@ export function CustomerNavigation({
                     href={item.href}
                     className={
                         currentPage === item.key
-                            ? "text-base 2xl:text-lg text-background-dark font-semibold border-b-2 border-primary-purple"
-                            : "text-base 2xl:text-lg text-gray-500 hover:text-background-dark transition-colors"
+                            ? "text-sm sm:text-base 2xl:text-lg text-background-dark font-semibold border-b-2 border-primary-purple"
+                            : "text-sm sm:text-base 2xl:text-lg text-gray-500 hover:text-background-dark transition-colors"
                     }
                 >
                     {item.label}

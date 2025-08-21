@@ -143,16 +143,19 @@ export default function InquiryPage() {
             />
 
             {/* 문의 폼 섹션 */}
-            <section className="bg-white py-8 lg:py-12 2xl:py-16">
+            <section className="bg-white py-6 sm:py-8 lg:py-12 2xl:py-16">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <form onSubmit={handleSubmit} className="space-y-8">
+                    <form
+                        onSubmit={handleSubmit}
+                        className="space-y-6 sm:space-y-8"
+                    >
                         {/* 기본 정보 */}
-                        <div className="space-y-6">
+                        <div className="space-y-4 sm:space-y-6">
                             {/* 성함 */}
                             <div>
                                 <label
                                     htmlFor="name"
-                                    className="block text-lg font-semibold text-background-dark mb-2"
+                                    className="block text-base sm:text-lg font-semibold text-background-dark mb-2"
                                 >
                                     성함 <span className="text-red-500">*</span>
                                 </label>
@@ -163,7 +166,7 @@ export default function InquiryPage() {
                                     value={formData.name}
                                     onChange={handleInputChange}
                                     placeholder="이름을 입력해주세요"
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-purple focus:border-transparent transition-all duration-200"
+                                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-purple focus:border-transparent transition-all duration-200"
                                     required
                                 />
                             </div>
@@ -172,15 +175,15 @@ export default function InquiryPage() {
                             <div>
                                 <label
                                     htmlFor="email"
-                                    className="block text-lg font-semibold text-background-dark mb-2"
+                                    className="block text-base sm:text-lg font-semibold text-background-dark mb-2"
                                 >
                                     이메일 주소{" "}
                                     <span className="text-red-500">*</span>
                                 </label>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div className="flex items-center space-x-1 sm:space-x-2 w-full">
                                     <input
                                         type="text"
-                                        placeholder="입력해 주세요."
+                                        placeholder="사용자명"
                                         value={
                                             formData.email.split("@")[0] || ""
                                         }
@@ -195,34 +198,30 @@ export default function InquiryPage() {
                                                     : e.target.value,
                                             }));
                                         }}
-                                        className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-purple focus:border-transparent"
+                                        className="w-0 flex-1 min-w-0 px-2 sm:px-3 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-purple focus:border-transparent"
                                         required
                                     />
-                                    <div className="flex items-center">
-                                        <span className="text-lg text-background-dark mx-2">
-                                            @
-                                        </span>
-                                        <input
-                                            type="text"
-                                            placeholder="입력해 주세요."
-                                            value={
-                                                formData.email.split("@")[1] ||
-                                                ""
-                                            }
-                                            onChange={(e) => {
-                                                const local =
-                                                    formData.email.split(
-                                                        "@"
-                                                    )[0] || "";
-                                                setFormData((prev) => ({
-                                                    ...prev,
-                                                    email: `${local}@${e.target.value}`,
-                                                }));
-                                            }}
-                                            className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-purple focus:border-transparent"
-                                            required
-                                        />
-                                    </div>
+                                    <span className="text-sm sm:text-base text-background-dark flex-shrink-0">
+                                        @
+                                    </span>
+                                    <input
+                                        type="text"
+                                        placeholder="도메인"
+                                        value={
+                                            formData.email.split("@")[1] || ""
+                                        }
+                                        onChange={(e) => {
+                                            const local =
+                                                formData.email.split("@")[0] ||
+                                                "";
+                                            setFormData((prev) => ({
+                                                ...prev,
+                                                email: `${local}@${e.target.value}`,
+                                            }));
+                                        }}
+                                        className="w-0 flex-1 min-w-0 px-2 sm:px-3 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-purple focus:border-transparent"
+                                        required
+                                    />
                                 </div>
                             </div>
 
@@ -230,13 +229,13 @@ export default function InquiryPage() {
                             <div>
                                 <label
                                     htmlFor="phone"
-                                    className="block text-lg font-semibold text-background-dark mb-2"
+                                    className="block text-base sm:text-lg font-semibold text-background-dark mb-2"
                                 >
                                     휴대폰 번호{" "}
                                     <span className="text-red-500">*</span>
                                 </label>
-                                <div className="flex items-center space-x-3">
-                                    <span className="text-background-dark">
+                                <div className="flex items-center space-x-2 sm:space-x-3">
+                                    <span className="text-sm sm:text-base text-background-dark">
                                         +82
                                     </span>
                                     <input
@@ -246,7 +245,7 @@ export default function InquiryPage() {
                                         value={formData.phone}
                                         onChange={handlePhoneChange}
                                         placeholder="01012345678"
-                                        className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-purple focus:border-transparent"
+                                        className="flex-1 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-purple focus:border-transparent"
                                         required
                                     />
                                 </div>
@@ -256,7 +255,7 @@ export default function InquiryPage() {
                             <div>
                                 <label
                                     htmlFor="title"
-                                    className="block text-lg font-semibold text-background-dark mb-2"
+                                    className="block text-base sm:text-lg font-semibold text-background-dark mb-2"
                                 >
                                     문의 제목{" "}
                                     <span className="text-red-500">*</span>
@@ -269,7 +268,7 @@ export default function InquiryPage() {
                                     onChange={handleInputChange}
                                     placeholder="제목을 입력해 주세요.(20자 이내)"
                                     maxLength={20}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-purple focus:border-transparent"
+                                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-purple focus:border-transparent"
                                     required
                                 />
                             </div>
@@ -278,7 +277,7 @@ export default function InquiryPage() {
                             <div>
                                 <label
                                     htmlFor="content"
-                                    className="block text-lg font-semibold text-background-dark mb-2"
+                                    className="block text-base sm:text-lg font-semibold text-background-dark mb-2"
                                 >
                                     문의 내용{" "}
                                     <span className="text-red-500">*</span>

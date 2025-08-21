@@ -11,6 +11,7 @@ interface ServiceHeroProps {
     title: string;
     subtitle?: string;
     description: string;
+    mobileDescription?: string;
     buttonText?: string;
     buttonLink?: string;
     children?: React.ReactNode;
@@ -22,6 +23,7 @@ export function ServiceHero({
     title,
     subtitle,
     description,
+    mobileDescription,
     buttonText,
     buttonLink,
     children,
@@ -133,13 +135,13 @@ export function ServiceHero({
 
                 {/* 상단 네비게이션 */}
                 <div
-                    className={`absolute lg:top-32 2xl:top-40 left-0 right-0 z-12 text-center text-white transition-all duration-700 ease-out ${
+                    className={`absolute top-[18vh] sm:top-28 lg:top-[15vh] left-0 right-0 z-12 text-center text-white transition-all duration-700 ease-out ${
                         textAnimations.navigation
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 translate-y-8"
                     }`}
                 >
-                    <div className="flex items-center justify-center space-x-8 lg:mb-12 2xl:mb-18">
+                    <div className="flex items-center justify-center space-x-8 mb-8 sm:mb-8 lg:mb-12 2xl:mb-18">
                         <Link
                             href="/service/integrated-collection"
                             onClick={(e) => {
@@ -173,7 +175,7 @@ export function ServiceHero({
                     </div>
 
                     {/* 페이지 타이틀 */}
-                    <h1 className="text-3xl xl:text-5xl font-semibold whitespace-pre">
+                    <h1 className="text-3xl sm:text-4xl xl:text-5xl font-semibold whitespace-pre">
                         {title}
                     </h1>
                 </div>
@@ -183,7 +185,7 @@ export function ServiceHero({
                     <div className="text-center text-white px-4">
                         {subtitle && (
                             <h2
-                                className={`text-2xl lg:text-3xl 2xl:text-4xl font-semibold mb-8 leading-normal transition-all duration-700 ease-out ${
+                                className={`text-2xl lg:text-3xl 2xl:text-4xl font-semibold mb-4 lg:mb-8 leading-normal transition-all duration-700 ease-out whitespace-pre-line ${
                                     textAnimations.content
                                         ? "opacity-100 translate-y-0"
                                         : "opacity-0 translate-y-8"
@@ -193,8 +195,9 @@ export function ServiceHero({
                             </h2>
                         )}
 
+                        {/* 데스크톱용 설명 */}
                         <div
-                            className={`space-y-6 text-lg 2xl:text-xl max-w-4xl mx-auto leading-relaxed mb-12 lg:mg-14 2xl:mb-18 transition-all duration-700 ease-out ${
+                            className={`hidden lg:block space-y-6 text-lg 2xl:text-xl max-w-4xl mx-auto leading-relaxed mb-12 lg:mg-14 2xl:mb-18 transition-all duration-700 ease-out ${
                                 textAnimations.content
                                     ? "opacity-100 translate-y-0"
                                     : "opacity-0 translate-y-8"
@@ -205,6 +208,27 @@ export function ServiceHero({
                                     __html: description,
                                 }}
                             />
+                        </div>
+
+                        {/* 모바일용 설명 */}
+                        <div
+                            className={`lg:hidden space-y-6 text-sm sm:text-base max-w-4xl mx-auto leading-relaxed mb-12 transition-all duration-700 ease-out ${
+                                textAnimations.content
+                                    ? "opacity-100 translate-y-0"
+                                    : "opacity-0 translate-y-8"
+                            }`}
+                        >
+                            {mobileDescription ? (
+                                <div className="whitespace-pre-line">
+                                    {mobileDescription}
+                                </div>
+                            ) : (
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: description,
+                                    }}
+                                />
+                            )}
                         </div>
 
                         {buttonText && buttonLink && (

@@ -86,15 +86,15 @@ export default function GalleryPage() {
             />
 
             {/* Content Section */}
-            <section className="bg-white py-8 lg:py-12 2xl:py-16">
+            <section className="bg-white py-6 sm:py-8 lg:py-12 2xl:py-16">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 lg:mb-12 2xl:mb-16">
                     {loading ? (
                         <GallerySkeleton />
                     ) : error ? (
-                        <div className="text-center py-12">
+                        <div className="text-center py-8 sm:py-12">
                             <div className="text-red-500 mb-4">
                                 <svg
-                                    className="mx-auto h-12 w-12"
+                                    className="mx-auto h-8 sm:h-12 w-8 sm:w-12"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
@@ -107,10 +107,12 @@ export default function GalleryPage() {
                                     />
                                 </svg>
                             </div>
-                            <p className="text-gray-600">{error}</p>
+                            <p className="text-sm sm:text-base text-gray-600">
+                                {error}
+                            </p>
                             <button
                                 onClick={() => window.location.reload()}
-                                className="mt-4 px-6 py-2 bg-primary-purple text-white rounded-lg hover:bg-primary-purple/90 transition-colors"
+                                className="mt-4 px-4 sm:px-6 py-2 text-sm sm:text-base bg-primary-purple text-white rounded-lg hover:bg-primary-purple/90 transition-colors"
                             >
                                 다시 시도
                             </button>

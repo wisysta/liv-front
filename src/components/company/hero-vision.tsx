@@ -25,7 +25,12 @@ export function HeroVision() {
             // 스크롤 계산 최적화
             const scrollY = window.scrollY;
             const travelled = Math.max(0, scrollY > 30 ? scrollY - 150 : 0);
-            const progress = Math.min(1, travelled / 300); // 듀레이션 1.5배 증가
+
+            // 모바일과 데스크톱에서 다른 스크롤 속도
+            const isMobile = viewportHeight <= 1024; // 모바일 기준
+            const duration = isMobile ? 120 : 300; // 모바일에서 더 짧은 거리로 완료
+
+            const progress = Math.min(1, travelled / duration);
             const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic 인라인
 
             // 높이 계산 캐시
@@ -164,7 +169,7 @@ export function HeroVision() {
 
                         {/* 추가 설명 텍스트 */}
                         <div
-                            className="max-w-4xl transition-all duration-300 ease-out overflow-hidden"
+                            className="block sm:hidden max-w-4xl transition-all duration-300 ease-out overflow-hidden"
                             style={{
                                 opacity: "var(--desc-opacity, 0)",
                                 transform:
@@ -172,7 +177,36 @@ export function HeroVision() {
                                 height: "var(--desc-height, 0px)",
                             }}
                         >
-                            <p className="text-base lg:text-lg leading-relaxed mb-6 opacity-90">
+                            <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-6 opacity-90">
+                                카페, 헬스장, 식당 등 일상 속 공간에서 음악이
+                                <br />
+                                자유롭게 사용되며 음악의 가치가 정당하게
+                                보상되는 선순환
+                                <br /> 구조를 만드는 것을 목표로 하고 있습니다
+                            </p>
+
+                            <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-6 opacity-90">
+                                복잡한 음악 이용계약과 공연권료 납부 절차를
+                                하나로 통합해 <br /> 이용자에게는 편리함을
+                                제공하고, 창작자와 가창자 등 <br />
+                                권리자에게는 정당한 권리가 돌아가는 건강한 음악
+                                생태계를 <br /> 만들어갑니다
+                            </p>
+
+                            <p className="text-sm sm:text-base lg:text-lg font-semibold">
+                                이것이 리브뮤직이 만들어가는 새로운 길입니다
+                            </p>
+                        </div>
+                        <div
+                            className="hidden sm:block max-w-4xl transition-all duration-300 ease-out overflow-hidden"
+                            style={{
+                                opacity: "var(--desc-opacity, 0)",
+                                transform:
+                                    "translateY(var(--desc-translate-y, 16px))",
+                                height: "var(--desc-height, 0px)",
+                            }}
+                        >
+                            <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-6 opacity-90">
                                 카페, 헬스장, 식당 등 일상 속 공간에서 음악이
                                 자유롭게 사용되며
                                 <br />
@@ -180,7 +214,7 @@ export function HeroVision() {
                                 만드는 것을 목표로 하고 있습니다
                             </p>
 
-                            <p className="text-base lg:text-lg leading-relaxed mb-6 opacity-90">
+                            <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-6 opacity-90">
                                 복잡한 음악 이용계약과 공연권료 납부 절차를
                                 하나로 통합해 이용자에게는 편리함을 제공하고,
                                 <br />
@@ -188,7 +222,7 @@ export function HeroVision() {
                                 돌아가는 건강한 음악 생태계를 만들어갑니다
                             </p>
 
-                            <p className="text-base lg:text-lg font-semibold">
+                            <p className="text-sm sm:text-base lg:text-lg font-semibold">
                                 이것이 리브뮤직이 만들어가는 새로운 길입니다
                             </p>
                         </div>

@@ -74,32 +74,35 @@ export default function MaterialPasswordGate({
     };
 
     return (
-        <div className="min-h-[400px] flex items-center justify-center bg-white">
-            <div className="max-w-md w-full mx-auto">
-                <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+        <div className="min-h-[300px] sm:min-h-[400px] flex items-center justify-center bg-white">
+            <div className="max-w-sm sm:max-w-md w-full mx-auto">
+                <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8">
                     {/* 아이콘 */}
-                    <div className="flex justify-center mb-6">
-                        <div className="w-16 h-16 bg-primary-purple/10 rounded-full flex items-center justify-center">
-                            <LockClosedIcon className="w-8 h-8 text-primary-purple" />
+                    <div className="flex justify-center mb-4 sm:mb-6">
+                        <div className="w-12 sm:w-16 h-12 sm:h-16 bg-primary-purple/10 rounded-full flex items-center justify-center">
+                            <LockClosedIcon className="w-6 sm:w-8 h-6 sm:h-8 text-primary-purple" />
                         </div>
                     </div>
 
                     {/* 제목 */}
-                    <div className="text-center mb-8">
-                        <h2 className="text-2xl font-semibold text-background-dark mb-2">
+                    <div className="text-center mb-6 sm:mb-8">
+                        <h2 className="text-xl sm:text-2xl font-semibold text-background-dark mb-2">
                             자료실 접근
                         </h2>
-                        <p className="text-gray-600">
+                        <p className="text-sm sm:text-base text-gray-600">
                             자료실에 접근하려면 비밀번호를 입력해주세요.
                         </p>
                     </div>
 
                     {/* 폼 */}
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form
+                        onSubmit={handleSubmit}
+                        className="space-y-4 sm:space-y-6"
+                    >
                         <div>
                             <label
                                 htmlFor="password"
-                                className="block text-sm font-medium text-gray-700 mb-2"
+                                className="block text-xs sm:text-sm font-medium text-gray-700 mb-2"
                             >
                                 비밀번호
                             </label>
@@ -112,7 +115,7 @@ export default function MaterialPasswordGate({
                                         setPassword(e.target.value)
                                     }
                                     placeholder="비밀번호를 입력하세요"
-                                    className="block w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-purple focus:border-transparent transition-colors"
+                                    className="block w-full px-3 sm:px-4 py-2 sm:py-3 pr-10 sm:pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-purple focus:border-transparent transition-colors text-sm sm:text-base"
                                     required
                                     disabled={isLoading}
                                 />
@@ -125,9 +128,9 @@ export default function MaterialPasswordGate({
                                     disabled={isLoading}
                                 >
                                     {showPassword ? (
-                                        <EyeSlashIcon className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                                        <EyeSlashIcon className="h-4 sm:h-5 w-4 sm:w-5 text-gray-400 hover:text-gray-600" />
                                     ) : (
-                                        <EyeIcon className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                                        <EyeIcon className="h-4 sm:h-5 w-4 sm:w-5 text-gray-400 hover:text-gray-600" />
                                     )}
                                 </button>
                             </div>
@@ -135,8 +138,10 @@ export default function MaterialPasswordGate({
 
                         {/* 에러 메시지 */}
                         {error && (
-                            <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                                <p className="text-sm text-red-600">{error}</p>
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-2 sm:p-3">
+                                <p className="text-xs sm:text-sm text-red-600">
+                                    {error}
+                                </p>
                             </div>
                         )}
 
@@ -144,12 +149,12 @@ export default function MaterialPasswordGate({
                         <button
                             type="submit"
                             disabled={isLoading || !password.trim()}
-                            className="w-full bg-primary-purple text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-purple/90 focus:outline-none focus:ring-2 focus:ring-primary-purple focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full bg-primary-purple text-white py-2 sm:py-3 px-3 sm:px-4 rounded-lg text-sm sm:text-base font-medium hover:bg-primary-purple/90 focus:outline-none focus:ring-2 focus:ring-primary-purple focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {isLoading ? (
                                 <div className="flex items-center justify-center">
                                     <svg
-                                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                                        className="animate-spin -ml-1 mr-2 sm:mr-3 h-4 sm:h-5 w-4 sm:w-5 text-white"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                     >
@@ -176,8 +181,8 @@ export default function MaterialPasswordGate({
                     </form>
 
                     {/* 하단 정보 */}
-                    <div className="mt-6 text-center">
-                        <p className="text-sm text-gray-500">
+                    <div className="mt-4 sm:mt-6 text-center">
+                        <p className="text-xs sm:text-sm text-gray-500">
                             비밀번호를 모르시나요?{" "}
                             <a
                                 href="/customer/inquiry"

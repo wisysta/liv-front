@@ -7,24 +7,24 @@ export default function PrivacyPolicyPage() {
             fullHeight={false}
             headerVariant="light"
         >
-            <div className="bg-white py-16 lg:py-20">
+            <div className="bg-white py-12 sm:py-16 lg:py-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* 페이지 헤더 */}
-                    <div className="text-center mb-12">
-                        <h1 className="text-3xl lg:text-4xl font-bold text-background-dark mb-4">
+                    <div className="text-center mb-8 sm:mb-12">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-background-dark mb-3 sm:mb-4">
                             개인정보처리방침
                         </h1>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-gray-600 text-sm sm:text-base lg:text-lg">
                             리브뮤직의 개인정보처리방침을 안내드립니다.
                         </p>
                     </div>
 
                     {/* 약관 내용 */}
-                    <div className="prose prose-lg max-w-none">
-                        <div className="space-y-8">
+                    <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none">
+                        <div className="space-y-6 sm:space-y-8">
                             {/* 제1조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제1조 (총칙)
                                 </h2>
                                 <p className="text-gray-700 leading-relaxed">
@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
 
                             {/* 제2조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제2조 (개인정보의 수집 항목 및 이용 목적)
                                 </h2>
                                 <div className="space-y-4">
@@ -92,7 +92,7 @@ export default function PrivacyPolicyPage() {
 
                             {/* 제3조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제3조 (개인정보의 처리 및 보유 기간)
                                 </h2>
                                 <p className="text-gray-700 leading-relaxed">
@@ -108,7 +108,7 @@ export default function PrivacyPolicyPage() {
 
                             {/* 제4조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제4조 (개인정보의 파기)
                                 </h2>
                                 <p className="text-gray-700 leading-relaxed">
@@ -123,7 +123,7 @@ export default function PrivacyPolicyPage() {
 
                             {/* 제5조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제5조 (개인정보의 안전성 확보 조치)
                                 </h2>
                                 <div className="space-y-4">
@@ -153,7 +153,7 @@ export default function PrivacyPolicyPage() {
 
                             {/* 제6조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제6조 (정보주체의 권리·의무 및 행사방법)
                                 </h2>
                                 <p className="text-gray-700 leading-relaxed">
@@ -167,7 +167,7 @@ export default function PrivacyPolicyPage() {
 
                             {/* 제7조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제7조 (개인정보 보호책임자)
                                 </h2>
                                 <div className="space-y-4">
@@ -232,7 +232,7 @@ export default function PrivacyPolicyPage() {
 
                             {/* 제8조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제8조 (개인정보처리방침의 변경)
                                 </h2>
                                 <div className="space-y-4">

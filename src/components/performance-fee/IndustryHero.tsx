@@ -54,11 +54,11 @@ export function IndustryHero() {
     }, [isLoaded]);
 
     return (
-        <section className="bg-white pb-16 lg:pb-20 pt-18 lg:pt-24 2xl:pt-32">
+        <section className="bg-white pb-4 sm:pb-16 lg:pb-20 pt-18 lg:pt-24 2xl:pt-32">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 {/* 제목 */}
                 <h1
-                    className={`text-3xl lg:text-4xl 2xl:text-5xl font-bold text-background-dark mb-6 lg:mb-8 2xl:mb-12 transition-all duration-700 ease-out ${
+                    className={`text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-bold text-background-dark mb-6 lg:mb-8 2xl:mb-12 transition-all duration-700 ease-out ${
                         textAnimations.title
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 translate-y-12"
@@ -69,7 +69,7 @@ export function IndustryHero() {
 
                 {/* 부제목 */}
                 <h2
-                    className={`text-2xl lg:text-3xl 2xl:text-4xl font-bold text-background-dark mb-8 lg:mb-12 transition-all duration-700 ease-out ${
+                    className={`text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold text-background-dark mb-8 lg:mb-12 transition-all duration-700 ease-out ${
                         textAnimations.subtitle
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 translate-y-12"
@@ -80,7 +80,7 @@ export function IndustryHero() {
 
                 {/* 설명 */}
                 <p
-                    className={`text-base lg:text-lg 2xl:text-xl leading-relaxed text-background-dark max-w-4xl mx-auto transition-all duration-700 ease-out ${
+                    className={`text-sm sm:text-base lg:text-lg 2xl:text-xl leading-relaxed text-background-dark max-w-4xl mx-auto transition-all duration-700 ease-out ${
                         textAnimations.description
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 translate-y-12"

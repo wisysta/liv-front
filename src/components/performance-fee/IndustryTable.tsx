@@ -121,13 +121,13 @@ export function IndustryTable({ selectedIndustry = null }: IndustryTableProps) {
     };
 
     return (
-        <div className="relative z-10 space-y-8">
+        <div className="relative z-10 space-y-6 xl:space-y-8">
             <div className="flex justify-between items-baseline">
-                <div className="text-center space-y-4 flex gap-6">
-                    <h3 className="text-2xl lg:text-3xl font-bold text-gray-400">
+                <div className="text-center space-y-2 xl:space-y-4 flex gap-2 xl:gap-6">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-400">
                         업종
                     </h3>
-                    <h2 className="text-2xl lg:text-3xl font-bold text-primary-purple">
+                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary-purple">
                         {selectedIndustry
                             ? currentIndustry?.name
                             : "업종을 선택해주세요"}
@@ -135,25 +135,33 @@ export function IndustryTable({ selectedIndustry = null }: IndustryTableProps) {
                 </div>
                 {/* VAT 포함 안내 */}
                 <div className="text-right mt-2">
-                    <span className="text-sm text-gray-dark">*VAT 포함</span>
+                    <span className="text-xs sm:text-sm text-gray-dark">
+                        *VAT 포함
+                    </span>
                 </div>
             </div>
 
             {/* 공연권료 표 */}
-            <div className="overflow-x-auto">
-                <div className="min-w-full bg-white rounded-lg shadow-lg overflow-hidden">
+            <div
+                className="overflow-x-auto -mx-4 px-4 lg:mx-0 lg:px-0 pb-1 sm:pb-0"
+                style={{
+                    scrollbarWidth: "thin",
+                    scrollbarColor: "#2d265a #E2E8F0",
+                }}
+            >
+                <div className="min-w-max lg:min-w-full bg-white rounded-lg shadow-lg overflow-hidden">
                     {/* 테이블 헤더 */}
                     <div className="bg-gray-light border-b border-gray-medium">
                         <div
                             className="grid gap-4 px-6 py-4"
                             style={{
-                                gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))`,
+                                gridTemplateColumns: `repeat(${columns.length}, minmax(120px, 1fr))`,
                             }}
                         >
                             {columns.map((column) => (
                                 <div
                                     key={column.key}
-                                    className={`font-semibold text-sm lg:text-base ${
+                                    className={`font-semibold text-sm lg:text-base whitespace-nowrap ${
                                         column.highlight
                                             ? "text-primary-purple font-bold"
                                             : "text-gray-dark"
@@ -176,13 +184,13 @@ export function IndustryTable({ selectedIndustry = null }: IndustryTableProps) {
                                         : "opacity-30 blur-sm"
                                 } hover:bg-gray-50`}
                                 style={{
-                                    gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr))`,
+                                    gridTemplateColumns: `repeat(${columns.length}, minmax(120px, 1fr))`,
                                 }}
                             >
                                 {columns.map((column) => (
                                     <div
                                         key={column.key}
-                                        className={`text-sm lg:text-base ${
+                                        className={`text-sm lg:text-base whitespace-nowrap ${
                                             column.highlight
                                                 ? "font-bold text-primary-purple"
                                                 : column.key === "area"

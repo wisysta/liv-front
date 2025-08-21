@@ -32,7 +32,7 @@ export default function IndustryPerformanceFeePage() {
             <IndustryHero />
 
             {/* 업종 선택 버튼 섹션 */}
-            <section className="bg-white py-8 lg:py-12 2xl:py-16">
+            <section className="bg-white py-10 sm:py-12 lg:py-16">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div
                         ref={selectorSection.ref}

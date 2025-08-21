@@ -57,7 +57,7 @@ export default function IntegratedCollectionPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
                         {/* 좌측 - Simple */}
                         <div
-                            className={`text-center lg:text-left transition-all duration-1200 ease-out opacity-100 ${
+                            className={` sm:text-center lg:text-left transition-all duration-1200 ease-out opacity-100 ${
                                 sectionContainer.isVisible
                                     ? "translate-y-0"
                                     : "translate-y-96"
@@ -72,16 +72,16 @@ export default function IntegratedCollectionPage() {
                                     className="w-full h-auto rounded-lg"
                                 />
                                 <div className="absolute top-6 left-6">
-                                    <h3 className="text-4xl font-bold text-white">
+                                    <h3 className="text-2xl sm:text-4xl font-bold text-white">
                                         Simple
                                     </h3>
                                 </div>
                             </div>
 
-                            <div className="space-y-8">
+                            <div className="space-y-4 sm:space-y-8">
                                 <h2
                                     ref={simpleTitle.ref}
-                                    className={`text-2xl xl:text-3xl font-bold text-background-dark transition-all duration-700 ease-out ${
+                                    className={`text-xl sm:text-2xl xl:text-3xl font-bold text-background-dark transition-all duration-700 ease-out ${
                                         simpleTitle.isVisible
                                             ? "opacity-100 translate-y-0"
                                             : "opacity-0 translate-y-4"
@@ -91,7 +91,7 @@ export default function IntegratedCollectionPage() {
                                 </h2>
                                 <div
                                     ref={simpleContent.ref}
-                                    className={`space-y-6 text-background-dark lg:text-lg leading-relaxed transition-all duration-700 ease-out ${
+                                    className={`space-y-6 text-background-dark text-sm sm:text-base lg:text-lg leading-relaxed transition-all duration-700 ease-out ${
                                         simpleContent.isVisible
                                             ? "opacity-100 translate-y-0"
                                             : "opacity-0 translate-y-4"
@@ -126,7 +126,7 @@ export default function IntegratedCollectionPage() {
 
                         {/* 우측 - Easy */}
                         <div
-                            className={`text-center lg:text-left transition-all duration-1200 ease-out ${
+                            className={`sm:text-center lg:text-left transition-all duration-1200 ease-out ${
                                 easyVisible
                                     ? "opacity-100 translate-y-0"
                                     : "opacity-0 translate-y-96"
@@ -141,16 +141,16 @@ export default function IntegratedCollectionPage() {
                                     className="w-full h-auto rounded-lg"
                                 />
                                 <div className="absolute top-6 left-6">
-                                    <h3 className="text-4xl font-bold text-white">
+                                    <h3 className="text-2xl sm:text-4xl font-bold text-white">
                                         Easy
                                     </h3>
                                 </div>
                             </div>
 
-                            <div className="space-y-8">
+                            <div className="space-y-4 sm:space-y-8">
                                 <h2
                                     ref={easyTitle.ref}
-                                    className={`text-2xl xl:text-3xl font-bold text-background-dark transition-all duration-700 ease-out ${
+                                    className={`text-xl sm:text-2xl xl:text-3xl font-bold text-background-dark transition-all duration-700 ease-out ${
                                         easyTitle.isVisible
                                             ? "opacity-100 translate-y-0"
                                             : "opacity-0 translate-y-4"
@@ -160,7 +160,7 @@ export default function IntegratedCollectionPage() {
                                 </h2>
                                 <div
                                     ref={easyContent.ref}
-                                    className={`space-y-6 text-background-dark lg:text-lg leading-relaxed transition-all duration-700 ease-out ${
+                                    className={`space-y-6 text-background-dark text-sm sm:text-base lg:text-lg leading-relaxed transition-all duration-700 ease-out ${
                                         easyContent.isVisible
                                             ? "opacity-100 translate-y-0"
                                             : "opacity-0 translate-y-4"
@@ -186,7 +186,7 @@ export default function IntegratedCollectionPage() {
                                 {/* 공연권 신청안내 버튼 */}
                                 <div
                                     ref={easyButton.ref}
-                                    className={`pt-8 transition-all duration-700 ease-out ${
+                                    className={`pt-4 sm:pt-8 transition-all duration-700 ease-out ${
                                         easyButton.isVisible
                                             ? "opacity-100 translate-y-0"
                                             : "opacity-0 translate-y-4"
@@ -194,7 +194,7 @@ export default function IntegratedCollectionPage() {
                                 >
                                     <Link
                                         href="/performance-fee"
-                                        className="inline-flex items-center bg-primary-purple text-white px-12 py-4 rounded-full text-base font-semibold hover:bg-primary-purple/90 transition-colors"
+                                        className="inline-flex items-center bg-primary-purple text-white px-6 sm:px-12 py-3 sm:py-4 rounded-full text-sm sm:text-base font-semibold hover:bg-primary-purple/90 transition-colors"
                                     >
                                         공연권 신청안내
                                         <svg

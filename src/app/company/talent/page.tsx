@@ -70,12 +70,12 @@ export default function CompanyTalentPage() {
             fullHeight={false}
         >
             {/* Hero */}
-            <section className="bg-white pt-24 lg:pt-32">
+            <section className="bg-white pt-20 sm:pt-24 lg:pt-32">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* 서브 내비게이션 */}
                     <div
                         ref={heroSection.ref}
-                        className={`mb-12 lg:mb-14 2xl:mb-16 transition-all duration-700 ease-out ${
+                        className={`mb-8 sm:mb-12 lg:mb-14 2xl:mb-16 transition-all duration-700 ease-out ${
                             heroSection.isVisible
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-6"
@@ -86,13 +86,13 @@ export default function CompanyTalentPage() {
 
                     {/* 페이지 타이틀 */}
                     <div
-                        className={`text-center mb-8 lg:mb-12 transition-all duration-700 ease-out ${
+                        className={`text-center mb-6 sm:mb-8 lg:mb-12 transition-all duration-700 ease-out ${
                             heroSection.isVisible
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-6"
                         }`}
                     >
-                        <h1 className="text-2xl lg:text-3xl 2xl:text-4xl font-bold text-background-dark">
+                        <h1 className="text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold text-background-dark">
                             인재상
                         </h1>
                     </div>
@@ -100,7 +100,7 @@ export default function CompanyTalentPage() {
             </section>
 
             {/* 인재상 소개 */}
-            <section className="relative py-24 lg:py-48 2xl:py-56 mt-16 lg:mt-24 2xl:mt-32 overflow-hidden">
+            <section className="relative py-16 sm:py-24 lg:py-48 2xl:py-56 mt-8 sm:mt-16 lg:mt-24 2xl:mt-32 overflow-hidden">
                 {/* 배경 이미지 */}
                 <div
                     ref={introSection.ref}
@@ -128,7 +128,7 @@ export default function CompanyTalentPage() {
                     }`}
                 >
                     <div>
-                        <h2 className="text-xl lg:text-2xl 2xl:text-3xl text-white leading-relaxed">
+                        <h2 className="text-base sm:text-xl lg:text-2xl 2xl:text-3xl text-white leading-relaxed">
                             리브뮤직은 음악 산업의 더 나은 가치를 만들어가기
                             위해
                             <br />
@@ -142,9 +142,9 @@ export default function CompanyTalentPage() {
             </section>
 
             {/* 인재상 카드들 */}
-            <section className="bg-white py-16 lg:py-32 2xl:py-48">
+            <section className="bg-white py-12 sm:py-16 lg:py-32 2xl:py-48">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12 lg:gap-20 2xl:gap-28">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-12 lg:gap-20 2xl:gap-28">
                         {TALENT_DATA.map((talent, index) => {
                             const animation = cardAnimations[index];
                             if (!animation) return null;
@@ -160,8 +160,8 @@ export default function CompanyTalentPage() {
                                     }`}
                                 >
                                     {/* 아이콘 */}
-                                    <div className="mb-8 flex justify-start">
-                                        <div className="w-16 h-16 lg:w-20 lg:h-20 2xl:w-24 2xl:h-24">
+                                    <div className="mb-4 sm:mb-8 flex justify-start">
+                                        <div className="w-12 sm:w-16 h-12 sm:h-16 lg:w-20 lg:h-20 2xl:w-24 2xl:h-24">
                                             <Image
                                                 src={talent.icon}
                                                 alt={`인재상 ${index + 1}`}
@@ -173,12 +173,12 @@ export default function CompanyTalentPage() {
                                     </div>
 
                                     {/* 제목 */}
-                                    <h3 className="text-lg lg:text-xl 2xl:text-2xl font-bold text-background-dark mb-4 leading-relaxed whitespace-pre-line">
+                                    <h3 className="text-base sm:text-lg lg:text-xl 2xl:text-2xl font-bold text-background-dark mb-3 sm:mb-4 leading-relaxed whitespace-pre-line">
                                         {talent.title}
                                     </h3>
 
                                     {/* 설명 */}
-                                    <p className="text-sm lg:text-base text-background-dark leading-relaxed whitespace-pre-line">
+                                    <p className="text-xs sm:text-sm lg:text-base text-background-dark leading-relaxed whitespace-pre-line">
                                         {talent.description}
                                     </p>
                                 </div>

@@ -39,10 +39,10 @@ export default function CalculatorClient({
             headerVariant="light"
         >
             {/* 헤더 섹션 */}
-            <div className="bg-white py-12 lg:py-12 2xl:py-16">
+            <div className="bg-white py-6 lg:py-12 2xl:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
-                        <h1 className="text-2xl lg:text-3xl 2xl:text-4xl font-bold text-background-dark">
+                        <h1 className="text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold text-background-dark">
                             공연권료 계산기
                         </h1>
                     </div>
@@ -51,7 +51,7 @@ export default function CalculatorClient({
 
             {/* 메인 컨텐츠 */}
             <div className="bg-white min-h-screen">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 2xl:py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 2xl:py-12">
                     {industries.length === 0 ? (
                         <div className="flex justify-center items-center py-20">
                             <div className="w-8 h-8 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin"></div>

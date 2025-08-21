@@ -48,22 +48,10 @@ export function PageLayout({
     className = "",
 }: PageLayoutProps) {
     return (
-        <div
-            className={`min-h-screen overflow-x-hidden ${
-                fullHeight ? "h-screen" : ""
-            } flex flex-col ${className}`}
-        >
-            {/* 헤더 - 오버레이 모드일 때는 absolute 위치 */}
+        <div className={`min-h-screen overflow-x-hidden ${className}`}>
+            {/* 헤더 */}
             {!hideHeader && (
-                <div
-                    className={
-                        headerOverlay
-                            ? "absolute top-0 left-0 right-0 z-20"
-                            : ""
-                    }
-                >
-                    <Header variant={headerVariant} />
-                </div>
+                <Header variant={headerVariant} headerOverlay={headerOverlay} />
             )}
 
             {/* 메인 컨텐츠 */}

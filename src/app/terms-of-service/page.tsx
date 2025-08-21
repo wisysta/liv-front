@@ -7,24 +7,24 @@ export default function TermsOfServicePage() {
             fullHeight={false}
             headerVariant="light"
         >
-            <div className="bg-white py-16 lg:py-20">
+            <div className="bg-white py-12 sm:py-16 lg:py-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* 페이지 헤더 */}
-                    <div className="text-center mb-12">
-                        <h1 className="text-3xl lg:text-4xl font-bold text-background-dark mb-4">
+                    <div className="text-center mb-8 sm:mb-12">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-background-dark mb-3 sm:mb-4">
                             이용약관
                         </h1>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-gray-600 text-sm sm:text-base lg:text-lg">
                             리브뮤직 홈페이지 이용약관을 안내드립니다.
                         </p>
                     </div>
 
                     {/* 약관 내용 */}
-                    <div className="prose prose-lg max-w-none">
-                        <div className="space-y-8">
+                    <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none">
+                        <div className="space-y-6 sm:space-y-8">
                             {/* 제1조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제1조 (목적)
                                 </h2>
                                 <p className="text-gray-700 leading-relaxed">
@@ -38,7 +38,7 @@ export default function TermsOfServicePage() {
 
                             {/* 제2조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제2조 (용어의 정의)
                                 </h2>
                                 <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
@@ -64,7 +64,7 @@ export default function TermsOfServicePage() {
 
                             {/* 제3조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제3조 (약관의 명시와 개정)
                                 </h2>
                                 <div className="space-y-4">
@@ -84,7 +84,7 @@ export default function TermsOfServicePage() {
 
                             {/* 제4조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제4조 (서비스의 제공 및 중단)
                                 </h2>
                                 <div className="space-y-4">
@@ -104,7 +104,7 @@ export default function TermsOfServicePage() {
 
                             {/* 제5조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제5조 (회사의 의무)
                                 </h2>
                                 <div className="space-y-4">
@@ -124,7 +124,7 @@ export default function TermsOfServicePage() {
 
                             {/* 제6조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제6조 (이용자의 의무)
                                 </h2>
                                 <div className="space-y-4">
@@ -158,7 +158,7 @@ export default function TermsOfServicePage() {
 
                             {/* 제7조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제7조 (게시물의 저작권)
                                 </h2>
                                 <p className="text-gray-700 leading-relaxed">
@@ -172,7 +172,7 @@ export default function TermsOfServicePage() {
 
                             {/* 제8조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제8조 (책임 제한)
                                 </h2>
                                 <div className="space-y-4">
@@ -191,7 +191,7 @@ export default function TermsOfServicePage() {
 
                             {/* 제9조 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     제9조 (준거법 및 재판관할)
                                 </h2>
                                 <div className="space-y-4">
@@ -209,7 +209,7 @@ export default function TermsOfServicePage() {
 
                             {/* 부칙 */}
                             <section>
-                                <h2 className="text-xl lg:text-2xl font-bold text-background-dark mb-4">
+                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-background-dark mb-3 sm:mb-4">
                                     부칙
                                 </h2>
                                 <div className="bg-gray-50 p-4 rounded-lg">

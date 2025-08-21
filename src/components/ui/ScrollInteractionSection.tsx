@@ -146,7 +146,7 @@ export function ScrollInteractionSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative min-h-screen bg-white overflow-hidden py-20 lg:py-32 "
+            className="relative min-h-[80vh] sm:min-h-screen bg-white overflow-hidden py-20 lg:py-32 "
         >
             {/* 검정 박스 (스크롤에 따라 높아짐) */}
             <div
@@ -155,11 +155,37 @@ export function ScrollInteractionSection() {
             />
 
             {/* 이미지들 */}
-            <div className="relative z-10 lg:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <div className="relative z-10 lg:max-w-6xl mx-auto lg:px-4 sm:lg:px-6 lg:px-8">
+                {/* 모바일 레이아웃 (lg 미만) - 4개 한 줄, 좌우 넘침 */}
+                <div className="lg:hidden -mx-12 px-2">
+                    <div className="grid grid-cols-4 gap-1 sm:gap-2">
+                        {images.map((image, index) => (
+                            <div
+                                key={`scroll-section-mobile-${index}`}
+                                className="relative transition-all duration-500 ease-out"
+                                style={{
+                                    ...getFloatingStyle(index),
+                                    ...getImageSpacing(index),
+                                }}
+                            >
+                                <div className="relative aspect-[9/16] rounded-md overflow-hidden shadow-md">
+                                    <Image
+                                        src={image.src}
+                                        alt={image.alt}
+                                        fill
+                                        className="object-cover object-center"
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* 데스크톱 레이아웃 (lg 이상) - 기존 2x2 그리드 */}
+                <div className="hidden lg:grid lg:grid-cols-4 gap-6 lg:gap-8">
                     {images.map((image, index) => (
                         <div
-                            key={`scroll-section-${index}`}
+                            key={`scroll-section-desktop-${index}`}
                             className="relative transition-all duration-500 ease-out"
                             style={{
                                 ...getFloatingStyle(index),
@@ -189,12 +215,22 @@ export function ScrollInteractionSection() {
                 }`}
             >
                 <div className="max-w-4xl mx-auto lg:pb-8 lg:pt-4  2xl:pb-12 2xl:pt-6">
-                    <p className="text-xl lg:text-2xl xl:text-3xl leading-relaxed text-white/90 font-medium">
+                    <p className="hidden sm:block text-base sm:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-white/90 font-medium">
                         리브뮤직은 앞으로도 음악을 사랑하는 사람들과 함께 음악의
                         가치를 지키고
                         <br />
                         <b className="text-white font-bold">
                             음악이 만들어내는 새로운 가능성을 확장시켜
+                            나가겠습니다
+                        </b>
+                    </p>
+                    <p className="block sm:hidden text-base sm:text-xl lg:text-2xl xl:text-3xl leading-relaxed text-white/90 font-medium">
+                        리브뮤직은 앞으로도 음악을 사랑하는 <br />
+                        사람들과 함께 음악의 가치를 지키고
+                        <br />
+                        <br />
+                        <b className="text-white font-bold">
+                            음악이 만들어내는 새로운 가능성을 <br /> 확장시켜
                             나가겠습니다
                         </b>
                     </p>

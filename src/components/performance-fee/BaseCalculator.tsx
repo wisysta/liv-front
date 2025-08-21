@@ -123,8 +123,8 @@ function InputField({ field, value, onChange, error }: InputFieldProps) {
     };
 
     return (
-        <div className="mb-8">
-            <label className="block text-base lg:text-lg 2xl:text-xl font-semibold text-black mb-4">
+        <div className="mb-3 sm:mb-4 lg:mb-6">
+            <label className="block text-sm sm:text-base lg:text-lg 2xl:text-xl font-semibold text-black mb-2 sm:mb-3 lg:mb-4">
                 {field.label}
                 {field.required && <span className="text-red-500 ml-1">*</span>}
             </label>
@@ -139,7 +139,7 @@ function InputField({ field, value, onChange, error }: InputFieldProps) {
                         value={value}
                         onChange={handleChange}
                         placeholder={field.placeholder}
-                        className={`w-full border-2 border-gray-200 rounded-lg p-3 bg-white text-left flex items-center justify-between hover:border-gray-300 transition-colors focus:outline-none focus:border-primary-purple text-background-dark text-base lg:text-lg 2xl:text-xl font-medium ${
+                        className={`w-full border-2 border-gray-200 rounded-lg p-3 sm:p-3 lg:p-4 bg-white text-left flex items-center justify-between hover:border-gray-300 transition-colors focus:outline-none focus:border-primary-purple text-background-dark text-sm sm:text-base lg:text-lg 2xl:text-xl font-medium ${
                             error ? "border-red-500" : ""
                         }`}
                         min={
@@ -226,19 +226,19 @@ function SelectField({
     };
 
     return (
-        <div className="mb-8">
-            <label className="block text-base lg:text-lg 2xl:text-xl font-semibold text-black mb-4">
+        <div className="mb-3 sm:mb-4 lg:mb-6">
+            <label className="block text-sm sm:text-base lg:text-lg 2xl:text-xl font-semibold text-black mb-2 sm:mb-3 lg:mb-4">
                 {field.label}
                 {field.required && <span className="text-red-500 ml-1">*</span>}
             </label>
             <div className="relative">
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`w-full border-2 border-gray-200 rounded-lg p-4 bg-white text-left flex items-center justify-between hover:border-gray-300 transition-colors focus:outline-none focus:border-primary-purple ${
+                    className={`w-full border-2 border-gray-200 rounded-lg p-3 sm:p-3 lg:p-4 bg-white text-left flex items-center justify-between hover:border-gray-300 transition-colors focus:outline-none focus:border-primary-purple ${
                         error ? "border-red-500" : ""
                     }`}
                 >
-                    <span className="text-background-dark text-sm lg:text-base font-medium">
+                    <span className="text-background-dark text-sm sm:text-base lg:text-lg font-medium">
                         {selectedOption?.label ||
                             field.placeholder ||
                             "선택하세요"}
@@ -266,7 +266,7 @@ function SelectField({
                         onClick={handleBackgroundClick}
                     >
                         <div className="bg-white rounded-lg shadow-xl border border-gray-200 w-full max-w-md mx-4 max-h-96 flex flex-col">
-                            <div className="p-4 border-b border-gray-200 text-center">
+                            <div className="py-6 px-4 border-b border-gray-200 text-center">
                                 <h3 className="text-lg font-bold text-background-dark mb-2">
                                     해당하는 업종을 선택하세요
                                 </h3>
@@ -291,7 +291,7 @@ function SelectField({
                             </div>
 
                             {/* 옵션 목록 */}
-                            <div className="overflow-y-auto max-h-80">
+                            <div className="overflow-y-auto max-h-100">
                                 {filteredOptions.length > 0 ? (
                                     filteredOptions.map((option) => (
                                         <button
@@ -300,7 +300,7 @@ function SelectField({
                                                 onChange(option.value);
                                                 closeDropdown();
                                             }}
-                                            className={`w-full text-left p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 ${
+                                            className={`w-full text-left py-3 px-5 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 ${
                                                 option.value === value
                                                     ? "bg-purple-50 text-primary-purple"
                                                     : "text-background-dark"
@@ -312,7 +312,7 @@ function SelectField({
                                         </button>
                                     ))
                                 ) : (
-                                    <div className="p-4 text-center text-gray-500 text-sm">
+                                    <div className="p-3 sm:p-4 text-center text-gray-500 text-xs sm:text-sm">
                                         검색 결과가 없습니다.
                                     </div>
                                 )}
@@ -322,7 +322,7 @@ function SelectField({
                             <div className="p-4 border-t border-gray-200 text-center">
                                 <button
                                     onClick={closeDropdown}
-                                    className="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors text-sm"
+                                    className="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors text-xs sm:text-sm"
                                 >
                                     닫기
                                 </button>
@@ -347,12 +347,12 @@ function RadioField({ field, value, onChange, error }: RadioFieldProps) {
     if (!field.options) return null;
 
     return (
-        <div className="mb-8">
-            <label className="block text-base lg:text-lg 2xl:text-xl font-semibold text-black mb-4">
+        <div className="mb-3 sm:mb-4 lg:mb-6">
+            <label className="block text-sm sm:text-base lg:text-lg 2xl:text-xl font-semibold text-black mb-3 sm:mb-4">
                 {field.label}
                 {field.required && <span className="text-red-500 ml-1">*</span>}
             </label>
-            <div className="flex items-center gap-4 mb-2">
+            <div className="flex items-center gap-3 sm:gap-4 mb-2">
                 {field.options.map((option) => (
                     <label
                         key={option.value}
@@ -368,18 +368,18 @@ function RadioField({ field, value, onChange, error }: RadioFieldProps) {
                                 className="sr-only"
                             />
                             <div
-                                className={`w-5 h-5 rounded-full border-2 ${
+                                className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 ${
                                     value === option.value
                                         ? "border-primary-purple bg-primary-purple"
                                         : "border-gray-400"
                                 } flex items-center justify-center`}
                             >
                                 {value === option.value && (
-                                    <div className="w-2 h-2 rounded-full bg-white"></div>
+                                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white"></div>
                                 )}
                             </div>
                         </div>
-                        <span className="text-base lg:text-lg 2xl:text-xl text-gray-600">
+                        <span className="text-sm sm:text-base lg:text-lg 2xl:text-xl text-gray-600">
                             {option.label}
                         </span>
                     </label>
@@ -432,27 +432,27 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
 
     return (
         <div>
-            <h3 className="text-lg lg:text-xl 2xl:text-2xl font-bold text-black mb-8">
+            <h3 className="text-base sm:text-lg lg:text-xl 2xl:text-2xl font-bold text-black mb-6 sm:mb-8">
                 이용권 금액 조회 결과
             </h3>
 
             {result.isExempt ? (
-                <div className="text-center py-12">
-                    <div className="text-2xl lg:text-3xl font-bold text-primary-purple mb-4">
+                <div className="text-center py-8 sm:py-12">
+                    <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-primary-purple mb-4">
                         {result.exemptMessage || "징수 제외 대상입니다"}
                     </div>
                 </div>
             ) : result.totalAmount === 0 ? (
-                <div className="text-center py-8">
-                    <div className="text-xl text-gray-600 mb-4">
+                <div className="text-center py-6 sm:py-8">
+                    <div className="text-base sm:text-xl text-gray-600 mb-4">
                         해당 조건은 징수 대상이 아닙니다.
                     </div>
-                    <div className="text-3xl font-bold text-primary-purple/80">
+                    <div className="text-xl sm:text-3xl font-bold text-primary-purple/80">
                         납부금액: 0원
                     </div>
                 </div>
             ) : (
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                     {/* 계산 결과 항목들 */}
                     {result.breakdown?.map((item, index) => (
                         <div key={index}>
@@ -460,8 +460,8 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
                                 <span
                                     className={`${
                                         item.isBold
-                                            ? "text-base lg:text-lg 2xl:text-xl font-semibold text-black"
-                                            : "text-base lg:text-lg 2xl:text-xl text-black"
+                                            ? "text-sm sm:text-base lg:text-lg 2xl:text-xl font-semibold text-black"
+                                            : "text-sm sm:text-base lg:text-lg 2xl:text-xl text-black"
                                     }`}
                                 >
                                     {item.label}
@@ -469,8 +469,8 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
                                 <span
                                     className={`${
                                         item.isBold
-                                            ? "text-base lg:text-lg 2xl:text-xl font-semibold text-black"
-                                            : "text-base lg:text-lg 2xl:text-xl text-black"
+                                            ? "text-sm sm:text-base lg:text-lg 2xl:text-xl font-semibold text-black"
+                                            : "text-sm sm:text-base lg:text-lg 2xl:text-xl text-black"
                                     }`}
                                 >
                                     {item.amount.toLocaleString()}원
@@ -480,7 +480,7 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
                             {item.label.includes(
                                 "리브뮤직 납부 공연권료(3단체)"
                             ) && (
-                                <div className="text-sm text-gray-600 mt-2 ml-0">
+                                <div className="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2 ml-0">
                                     함께하는음악저작권협회,
                                     한국음악실연자연합회,
                                     <br />
@@ -494,17 +494,17 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
                     <hr className="border-gray-300" />
 
                     {/* 납부액 */}
-                    <div className="bg-primary-purple rounded-lg p-6">
+                    <div className="bg-primary-purple rounded-lg p-4 sm:p-6">
                         <div className="flex justify-between items-center text-white">
-                            <div className="text-xl lg:text-2xl 2xl:text-3xl font-bold">
+                            <div className="text-base sm:text-xl lg:text-2xl 2xl:text-3xl font-bold">
                                 {result.customData?.isAnnualPayment
                                     ? "연 납부액"
                                     : "월 납부액"}{" "}
-                                <span className="text-sm font-normal">
+                                <span className="text-xs sm:text-sm font-normal">
                                     (VAT 포함)
                                 </span>
                             </div>
-                            <div className="text-xl lg:text-2xl 2xl:text-3xl font-bold">
+                            <div className="text-base sm:text-xl lg:text-2xl 2xl:text-3xl font-bold">
                                 {(result.totalAmount === -1
                                     ? 0
                                     : result.totalAmount
@@ -518,15 +518,15 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
 
             {/* 그룹별 비고 */}
             {result.industryNotes && result.industryNotes.length > 0 && (
-                <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                    <h4 className="text-sm font-semibold text-gray-800 mb-3">
+                <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <h4 className="text-xs sm:text-sm font-semibold text-gray-800 mb-2 sm:mb-3">
                         업종별 안내사항
                     </h4>
-                    <ul className="text-xs text-gray-700 space-y-1.5">
+                    <ul className="text-xs text-gray-700 space-y-1 sm:space-y-1.5">
                         {result.industryNotes.map(
                             (note: string, index: number) => (
                                 <li key={index} className="flex items-start">
-                                    <span className="mr-2 text-gray-600 text-sm">
+                                    <span className="mr-1 sm:mr-2 text-gray-600 text-xs sm:text-sm">
                                         •
                                     </span>
                                     <span className="leading-relaxed">
@@ -540,8 +540,8 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
             )}
 
             {/* 일반 안내사항 */}
-            <div className="mt-6">
-                <p className="text-xs text-gray-700">
+            <div className="mt-4 sm:mt-6">
+                <p className="text-xs text-gray-700 leading-relaxed">
                     - 한국음악저작권협회(KOMCA)의 공연권은 리브뮤직에서 통합
                     징수하지 않습니다.
                     <br />
@@ -572,6 +572,10 @@ export function BaseCalculator({
     const [calculationResult, setCalculationResult] =
         useState<CalculationResultData | null>(null);
     const [isCalculating, setIsCalculating] = useState(false);
+
+    // 모바일 단계 관리
+    const [currentStep, setCurrentStep] = useState<"input" | "result">("input");
+    const [showResult, setShowResult] = useState(false);
 
     // 초기 값 설정 및 업종 변경 처리
     const [previousIndustry, setPreviousIndustry] = useState<string>("");
@@ -678,6 +682,12 @@ export function BaseCalculator({
             const result = await config.calculateFunction(formData);
             console.log("BaseCalculator: 계산 결과 ->", result);
             setCalculationResult(result);
+
+            // 모바일에서는 결과 단계로 전환
+            if (window.innerWidth < 1024) {
+                setCurrentStep("result");
+                setTimeout(() => setShowResult(true), 100);
+            }
         } catch (error) {
             console.error("계산 중 오류:", error);
             alert("계산 중 오류가 발생했습니다.");
@@ -686,12 +696,170 @@ export function BaseCalculator({
         }
     };
 
+    // 업종별 공연권료로 돌아가기 (모바일)
+    const handleBackToInput = () => {
+        setCurrentStep("input");
+        setShowResult(false);
+        // 폼 데이터 리셋
+        setFormData(defaultValues || {});
+        setCalculationResult(null);
+        setErrors({});
+    };
+
     return (
         <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* 모바일 뷰 */}
+            <div className="block lg:hidden">
+                {currentStep === "input" ? (
+                    <div className="bg-white rounded-lg p-4 sm:p-6">
+                        <h3 className="text-base sm:text-lg font-bold text-black mb-6">
+                            사업장 정보 입력
+                        </h3>
+
+                        {config.fields.map((field) => {
+                            const value = formData[field.id] || "";
+                            const error = errors[field.id];
+
+                            switch (field.type) {
+                                case "industry":
+                                    return (
+                                        <SelectField
+                                            key={field.id}
+                                            field={field}
+                                            value={value}
+                                            onChange={(val) =>
+                                                updateFormData(field.id, val)
+                                            }
+                                            options={
+                                                industries?.map((ind) => ({
+                                                    value: `${
+                                                        ind.groupId || ind.id
+                                                    }-${ind.id}`,
+                                                    label: ind.name,
+                                                })) || []
+                                            }
+                                            error={error}
+                                        />
+                                    );
+                                case "select":
+                                    return (
+                                        <SelectField
+                                            key={field.id}
+                                            field={field}
+                                            value={value}
+                                            onChange={(val) =>
+                                                updateFormData(field.id, val)
+                                            }
+                                            options={field.options || []}
+                                            error={error}
+                                        />
+                                    );
+                                case "radio":
+                                    return (
+                                        <RadioField
+                                            key={field.id}
+                                            field={field}
+                                            value={value}
+                                            onChange={(val) =>
+                                                updateFormData(field.id, val)
+                                            }
+                                            error={error}
+                                        />
+                                    );
+                                case "number":
+                                default:
+                                    return (
+                                        <InputField
+                                            key={field.id}
+                                            field={field}
+                                            value={value}
+                                            onChange={(val) =>
+                                                updateFormData(field.id, val)
+                                            }
+                                            error={error}
+                                        />
+                                    );
+                            }
+                        })}
+
+                        {/* 계산 결과 보기 버튼 */}
+                        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+                            <button
+                                onClick={handleCalculate}
+                                disabled={isCalculating}
+                                className="w-full bg-primary-purple text-white py-4 rounded-lg text-base font-semibold hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            >
+                                {isCalculating
+                                    ? "계산 중..."
+                                    : "계산 결과 보기"}
+                                {!isCalculating && (
+                                    <svg
+                                        className="w-5 h-5"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M9 5l7 7-7 7"
+                                        />
+                                    </svg>
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                ) : (
+                    <div
+                        className={`bg-white rounded-lg p-4 sm:p-6 pb-24 transition-all duration-500 ease-out ${
+                            showResult
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-8"
+                        }`}
+                    >
+                        <h3 className="text-base sm:text-lg font-bold text-black mb-6">
+                            이용권 금액 조회 결과
+                        </h3>
+
+                        <CalculationResult
+                            result={calculationResult}
+                            isCalculating={false}
+                        />
+                    </div>
+                )}
+
+                {/* 모바일 하단 고정 버튼 */}
+                {currentStep === "result" && (
+                    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 lg:hidden">
+                        <button
+                            onClick={handleBackToInput}
+                            className="w-full bg-gray-100 text-gray-700 py-4 rounded-lg text-base font-semibold hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
+                        >
+                            <svg
+                                className="w-5 h-5 rotate-180"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M9 5l7 7-7 7"
+                                />
+                            </svg>
+                            업종별 공연권료
+                        </button>
+                    </div>
+                )}
+            </div>
+
+            {/* 데스크톱 뷰 */}
+            <div className="hidden lg:grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
                 {/* 왼쪽: 사업장 정보 입력 섹션 */}
-                <div className="bg-white rounded-lg p-8">
-                    <h3 className="text-lg lg:text-xl 2xl:text-2xl font-bold text-black mb-8">
+                <div className="bg-white rounded-lg p-4 sm:p-6 lg:p-8">
+                    <h3 className="text-base sm:text-lg lg:text-xl 2xl:text-2xl font-bold text-black mb-6 sm:mb-8">
                         사업장 정보 입력
                     </h3>
 
@@ -762,11 +930,11 @@ export function BaseCalculator({
                     })}
 
                     {/* 계산 버튼 */}
-                    <div className="text-center">
+                    <div className="text-center mt-6">
                         <button
                             onClick={handleCalculate}
                             disabled={isCalculating}
-                            className="bg-primary-purple text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="bg-primary-purple text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-lg font-semibold hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {isCalculating ? "계산 중..." : "계산하기"}
                         </button>
@@ -774,7 +942,7 @@ export function BaseCalculator({
                 </div>
 
                 {/* 오른쪽: 계산 결과 */}
-                <div className="bg-white rounded-lg shadow-lg p-8">
+                <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 lg:p-8">
                     <CalculationResult
                         result={calculationResult}
                         isCalculating={isCalculating}

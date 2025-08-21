@@ -102,7 +102,7 @@ export default function CompanyHistoryPage() {
 
                     {/* 페이지 타이틀 */}
                     <div
-                        className={`text-center mb-8 lg:mb-12 transition-all duration-700 ease-out ${
+                        className={`text-center mb-4 sm:mb-8 lg:mb-12 transition-all duration-700 ease-out ${
                             heroSection.isVisible
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-6"
@@ -149,8 +149,8 @@ export default function CompanyHistoryPage() {
                                         }`}
                                     >
                                         {/* 연도 */}
-                                        <div className="pr-12 text-right">
-                                            <h3 className="text-3xl font-bold text-background-dark">
+                                        <div className="pr-4 sm:pr-12 text-right">
+                                            <h3 className="text-xl sm:text-3xl font-bold text-background-dark">
                                                 {block.year}
                                             </h3>
                                         </div>
@@ -186,13 +186,13 @@ export default function CompanyHistoryPage() {
                                         </div>
 
                                         {/* 이벤트 목록 */}
-                                        <div className="ml-8 flex-1">
-                                            <div className="space-y-12 lg:space-y-16 2xl:space-y-20">
+                                        <div className="ml-6 sm:ml-8 flex-1">
+                                            <div className="space-y-10 sm:space-y-12 lg:space-y-16 2xl:space-y-20 mt-1 sm:mt-0">
                                                 {block.events.map(
                                                     (event, idx) => (
                                                         <div
                                                             key={`${block.year}-${idx}`}
-                                                            className={`flex gap-8 transition-all duration-700 ease-out ${
+                                                            className={`flex gap-2 sm:gap-8 transition-all duration-700 ease-out ${
                                                                 (blockIndex <=
                                                                     1 &&
                                                                     timelineRefs[
@@ -234,11 +234,11 @@ export default function CompanyHistoryPage() {
                                                             }}
                                                         >
                                                             {/* 월 */}
-                                                            <div className="w-12 text-gray-500 font-medium text-lg">
+                                                            <div className="w-8 sm:w-12 text-gray-500 font-medium text-sm sm:text-lg">
                                                                 {event.month}
                                                             </div>
                                                             {/* 설명 */}
-                                                            <div className="flex-1 text-background-dark font-semibold text-lg">
+                                                            <div className="flex-1 text-background-dark font-semibold text-sm sm:text-lg">
                                                                 {
                                                                     event.description
                                                                 }

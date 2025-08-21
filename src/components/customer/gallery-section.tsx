@@ -119,9 +119,9 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
 
     if (galleries.length === 0) {
         return (
-            <div className="text-center py-12">
+            <div className="text-center py-8 sm:py-12">
                 <svg
-                    className="mx-auto h-12 w-12 text-gray-400"
+                    className="mx-auto h-8 sm:h-12 w-8 sm:w-12 text-gray-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -133,10 +133,10 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
                         d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                     />
                 </svg>
-                <h3 className="mt-2 text-sm font-medium text-background-dark">
+                <h3 className="mt-2 text-xs sm:text-sm font-medium text-background-dark">
                     갤러리가 비어있습니다
                 </h3>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-xs sm:text-sm text-gray-500">
                     준비된 갤러리 이미지가 없습니다.
                 </p>
             </div>
@@ -146,7 +146,7 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
     return (
         <>
             {/* 갤러리 그리드 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {galleries.map((gallery) => {
                     const thumbnailUrl =
                         gallery.thumbnailUrl?.trim() ||
@@ -217,17 +217,17 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
                             </div>
 
                             {/* 갤러리 정보 */}
-                            <div className="p-4 md:p-5 lg:p-6">
-                                <h3 className="font-semibold text-xl md:text-2xl lg:text-2xl text-gray-900 mb-2 md:mb-3 line-clamp-2">
+                            <div className="p-3 sm:p-4 md:p-5 lg:p-6">
+                                <h3 className="font-semibold text-base sm:text-xl md:text-2xl lg:text-2xl text-gray-900 mb-2 md:mb-3 line-clamp-2">
                                     {gallery.title}
                                 </h3>
                                 {gallery.description && (
-                                    <p className="text-base md:text-base text-gray-600 line-clamp-2 mb-2 md:mb-3">
+                                    <p className="text-sm sm:text-base md:text-base text-gray-600 line-clamp-2 mb-2 md:mb-3">
                                         {gallery.description}
                                     </p>
                                 )}
                                 {eventDate && (
-                                    <p className="text-sm md:text-sm text-gray-500">
+                                    <p className="text-xs sm:text-sm md:text-sm text-gray-500">
                                         {eventDate}
                                     </p>
                                 )}
@@ -240,26 +240,29 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
             {/* 갤러리 이미지 모달 */}
             {selectedGallery && (
                 <div
-                    className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+                    className="fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center p-4"
                     onClick={closeModal}
                     onKeyDown={handleKeyDown}
                     tabIndex={-1}
                 >
                     {/* 닫기 버튼 */}
                     <button
-                        onClick={closeModal}
-                        className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            closeModal();
+                        }}
+                        className="absolute top-2 sm:top-4 right-2 sm:right-4 text-white hover:text-gray-300 transition-colors z-[10000]"
                     >
-                        <XMarkIcon className="w-8 h-8" />
+                        <XMarkIcon className="w-6 sm:w-8 h-6 sm:h-8" />
                     </button>
 
                     {/* 갤러리 제목 */}
-                    <div className="absolute top-4 left-4 text-white z-10">
-                        <h2 className="text-xl font-semibold">
+                    <div className="absolute top-2 sm:top-4 left-2 sm:left-4 text-white z-[10000]">
+                        <h2 className="text-lg sm:text-xl font-semibold">
                             {selectedGallery.title}
                         </h2>
                         {selectedGallery.eventDate && (
-                            <p className="text-sm text-gray-300 mt-1">
+                            <p className="text-xs sm:text-sm text-gray-300 mt-1">
                                 {new Date(
                                     selectedGallery.eventDate
                                 ).toLocaleDateString("ko-KR", {
@@ -280,7 +283,7 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
                                     e.stopPropagation();
                                     navigateImage("prev");
                                 }}
-                                className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10"
+                                className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-[10000]"
                             >
                                 <ChevronLeftIcon className="w-8 h-8" />
                             </button>
@@ -291,7 +294,7 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
                                     e.stopPropagation();
                                     navigateImage("next");
                                 }}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10"
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-[10000]"
                             >
                                 <ChevronRightIcon className="w-8 h-8" />
                             </button>

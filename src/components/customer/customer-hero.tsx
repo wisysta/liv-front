@@ -41,19 +41,19 @@ export function CustomerHero({
                 {/* 제목 */}
                 {(title || description) && (
                     <div
-                        className={`text-center mb-8 transition-all duration-700 ease-out ${
+                        className={`text-center mb-4 sm:mb-8 transition-all duration-700 ease-out ${
                             heroSection.isVisible
                                 ? "opacity-100 translate-y-0"
                                 : "opacity-0 translate-y-8"
                         }`}
                     >
                         {title && (
-                            <h1 className="text-2xl lg:text-3xl 2xl:text-4xl font-bold text-background-dark mb-4">
+                            <h1 className="text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-bold text-background-dark mb-4">
                                 {title}
                             </h1>
                         )}
                         {description && (
-                            <p className="text-lg text-gray-600">
+                            <p className="text-sm sm:text-lg text-gray-600">
                                 {description}
                             </p>
                         )}

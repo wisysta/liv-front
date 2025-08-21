@@ -26,7 +26,7 @@ function ApplicationInfoPage() {
                                 : "opacity-0 translate-y-8"
                         }`}
                     >
-                        <h1 className="text-3xl lg:text-4xl 2xl:text-5xl font-bold text-background-dark mb-6 lg:mb-8 2xl:mb-12 leading-tight">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-bold text-background-dark mb-6 lg:mb-8 2xl:mb-12 leading-tight">
                             저작권 비즈니스 지원센터 신청방법
                         </h1>
 
@@ -38,11 +38,11 @@ function ApplicationInfoPage() {
                                     : "opacity-0 translate-y-8"
                             }`}
                         >
-                            <h2 className="text-2xl lg:text-3xl 2xl:text-4xl font-semibold">
+                            <h2 className="text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-semibold">
                                 우리 가게도 해당이 될까요?
                             </h2>
 
-                            <p className="text-base lg:text-lg 2xl:text-xl leading-relaxed font-normal">
+                            <p className="text-sm sm:text-base lg:text-lg 2xl:text-xl leading-relaxed font-normal">
                                 가게에서 배경음악(BGM), TV에서 음악 방송을
                                 켜두는 등 <br className="hidden lg:block" />
                                 매장에서 음악이 흘러나오고 있다면, 대상이 될 수

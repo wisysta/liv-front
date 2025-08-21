@@ -217,7 +217,7 @@ export default function MaterialDetailPage() {
                     title="자료실"
                     description="리브뮤직 자료를 지금 확인해보세요"
                 />
-                <section className="bg-white py-8 lg:py-12 2xl:py-16">
+                <section className="bg-white py-6 sm:py-8 lg:py-12 2xl:py-16">
                     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="animate-pulse">
                             <div className="h-8 bg-gray-200 rounded mb-4" />
@@ -247,7 +247,7 @@ export default function MaterialDetailPage() {
                     title="자료실"
                     description="자료실 접근을 위해 비밀번호를 입력해주세요"
                 />
-                <section className="bg-white py-8 lg:py-12 2xl:py-16">
+                <section className="bg-white py-6 sm:py-8 lg:py-12 2xl:py-16">
                     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                         <MaterialPasswordGate
                             onAuthenticated={handleAuthenticated}
@@ -265,7 +265,7 @@ export default function MaterialDetailPage() {
                 fullHeight={false}
                 headerVariant="light"
             >
-                <section className="bg-white py-8 lg:py-12 2xl:py-16">
+                <section className="bg-white py-6 sm:py-8 lg:py-12 2xl:py-16">
                     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center py-12">
                             <div className="text-red-500 mb-4">
@@ -325,10 +325,10 @@ export default function MaterialDetailPage() {
                                 {material.category}
                             </span>
                         </div>
-                        <h1 className="text-2xl lg:text-3xl font-bold text-background-dark mb-4">
+                        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-background-dark mb-4">
                             {material.title}
                         </h1>
-                        <div className="flex items-center text-gray-500 text-sm space-x-4">
+                        <div className="flex items-center text-gray-500 text-xs sm:text-sm space-x-2 sm:space-x-4">
                             <span>{formatDate(material.createdAt)}</span>
                             <span>조회수 {material.views}</span>
                             <span>다운로드 {material.downloads}</span>
@@ -337,11 +337,11 @@ export default function MaterialDetailPage() {
 
                     {/* 파일 정보 및 다운로드 */}
                     <div className="mb-8">
-                        <div className="bg-gray-50 rounded-lg p-6">
+                        <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
                             <div className="flex items-center justify-between">
-                                <div className="flex items-center space-x-3">
+                                <div className="flex items-center space-x-2 sm:space-x-3">
                                     <svg
-                                        className="w-8 h-8 text-primary-purple"
+                                        className="w-6 sm:w-8 h-6 sm:h-8 text-primary-purple"
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
@@ -354,20 +354,20 @@ export default function MaterialDetailPage() {
                                         />
                                     </svg>
                                     <div>
-                                        <h3 className="font-medium text-background-dark">
+                                        <h3 className="text-sm sm:text-base font-medium text-background-dark">
                                             {material.fileName}
                                         </h3>
-                                        <p className="text-sm text-gray-500">
+                                        <p className="text-xs sm:text-sm text-gray-500">
                                             {formatFileSize(material.fileSize)}
                                         </p>
                                     </div>
                                 </div>
                                 <button
                                     onClick={handleDownload}
-                                    className="flex items-center space-x-2 px-6 py-3 bg-primary-purple text-white rounded-lg hover:bg-primary-purple/90 transition-colors font-medium"
+                                    className="flex items-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-primary-purple text-white rounded-lg hover:bg-primary-purple/90 transition-colors font-medium"
                                 >
                                     <svg
-                                        className="w-5 h-5"
+                                        className="w-4 sm:w-5 h-4 sm:h-5"
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
