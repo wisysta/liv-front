@@ -66,10 +66,12 @@ export function ApiIndustrySelector({
         // 닫기 시 첫번째 업종 선택
         if (industries.length > 0) {
             const firstIndustry = industries[0];
-            const firstIndustryKey = `${
-                firstIndustry.groupId || firstIndustry.id
-            }-${firstIndustry.id}`;
-            onIndustryChange(firstIndustryKey);
+            if (firstIndustry) {
+                const firstIndustryKey = `${
+                    firstIndustry.groupId || firstIndustry.id
+                }-${firstIndustry.id}`;
+                onIndustryChange(firstIndustryKey);
+            }
         }
         onClose();
     };
