@@ -27,10 +27,18 @@ export function ApiIndustrySelector({
         null
     );
 
-    // 컴포넌트가 마운트될 때마다 검색어 초기화
+    // 컴포넌트가 마운트될 때마다 검색어 초기화 및 첫번째 업종 선택
     useEffect(() => {
         setSearchTerm("");
-        setSelectedIndustry(null);
+        if (industries.length > 0) {
+            const firstIndustry = industries[0];
+            const firstIndustryKey = `${
+                firstIndustry.groupId || firstIndustry.id
+            }-${firstIndustry.id}`;
+            setSelectedIndustry(firstIndustryKey);
+        } else {
+            setSelectedIndustry(null);
+        }
     }, [industries]);
 
     // API 데이터를 ProcessedIndustry 형태로 변환
@@ -48,8 +56,20 @@ export function ApiIndustrySelector({
 
     const handleBackgroundClick = (e: React.MouseEvent) => {
         if (e.target === e.currentTarget) {
-            onClose();
+            handleClose();
         }
+    };
+
+    const handleClose = () => {
+        // 닫기 시 첫번째 업종 선택
+        if (industries.length > 0) {
+            const firstIndustry = industries[0];
+            const firstIndustryKey = `${
+                firstIndustry.groupId || firstIndustry.id
+            }-${firstIndustry.id}`;
+            onIndustryChange(firstIndustryKey);
+        }
+        onClose();
     };
 
     const handleIndustrySelect = (industryId: string) => {
@@ -101,7 +121,7 @@ export function ApiIndustrySelector({
                                     )
                                 }
                                 className={`w-full text-left p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 ${
-                                    selectedIndustry === industry.id
+                                    selectedIndustry === industry.uniqueKey
                                         ? "bg-purple-50 text-primary-purple"
                                         : "text-background-dark"
                                 }`}
@@ -121,7 +141,7 @@ export function ApiIndustrySelector({
                 {/* 닫기 버튼 */}
                 <div className="p-4 border-t border-gray-200 text-center">
                     <button
-                        onClick={onClose}
+                        onClick={handleClose}
                         className="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors text-sm"
                     >
                         닫기

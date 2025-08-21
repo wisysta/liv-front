@@ -59,11 +59,11 @@ export default function PerformanceFeeInfoPage() {
             />
 
             {/* 꼭 내야하는 건가요? 섹션 */}
-            <section className="bg-white py-16 sm:py-16 xl:py-20 lg:py-32">
-                <div className="max-w-6xl mx-auto px-8 sm:px-6 lg:px-8">
+            <section className="bg-white py-16 sm:py-16 xl:py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div
                         ref={faqSection.ref}
-                        className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+                        className="flex flex-col lg:grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-start"
                     >
                         {/* 텍스트와 버튼 - 모바일에서 맨 위로 */}
                         <div
@@ -202,7 +202,7 @@ export default function PerformanceFeeInfoPage() {
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div
                         ref={mainSection.ref}
-                        className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+                        className="flex flex-col lg:grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-start"
                     >
                         {/* 텍스트와 버튼 - 모바일에서 맨 위로 */}
                         <div
@@ -241,7 +241,7 @@ export default function PerformanceFeeInfoPage() {
 
                             {/* 관계법령 - 데스크톱에서는 텍스트 아래에 표시 */}
                             <div className="space-y-3 hidden lg:block">
-                                <div className="flex flex-wrap items-center gap-3">
+                                <div className="flex flex-wrap items-start gap-3">
                                     <span className="text-background-dark text-sm lg:text-base font-semibold">
                                         관계법령
                                     </span>

@@ -33,7 +33,7 @@ export default function CEOPage() {
         >
             {/* Hero 섹션 */}
             <section className="bg-white pt-24 lg:pt-32">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
                     {/* 회사 네비게이션 */}
                     <div
                         ref={heroSection.ref}
@@ -63,7 +63,7 @@ export default function CEOPage() {
 
             {/* 메인 콘텐츠 섹션 */}
             <section className="bg-white pb-12 sm:pb-12 lg:pb-24">
-                <div className="lg:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="lg:max-w-6xl 2xl:max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
                     {/* 모바일용 레이아웃 (lg 미만) */}
                     <div className="lg:hidden space-y-12">
                         {/* 모바일 - 메시지 콘텐츠가 먼저 */}

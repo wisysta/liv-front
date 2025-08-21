@@ -86,8 +86,8 @@ export default function CompanyHistoryPage() {
             fullHeight={false}
         >
             {/* Hero */}
-            <section className="bg-white pt-24 lg:pt-32">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section className="bg-white  pt-24 lg:pt-32">
+                <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
                     {/* 서브 내비게이션 */}
                     <div
                         ref={heroSection.ref}
@@ -117,7 +117,7 @@ export default function CompanyHistoryPage() {
 
             {/* 타임라인 */}
             <section className="bg-white py-16 lg:py-24 2xl:py-32">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-4xl mx-auto px-6 sm:px-6 lg:px-8">
                     <div className="relative">
                         <div className="">
                             {HISTORY_DATA.map((block, blockIndex) => (

@@ -77,7 +77,8 @@ export function IndustrySelector({
                         placeholder="업종 검색..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-purple text-sm"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-purple text-base"
+                        style={{ fontSize: "16px" }}
                         autoFocus
                     />
                 </div>

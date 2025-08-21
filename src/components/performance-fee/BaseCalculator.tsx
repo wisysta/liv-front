@@ -139,9 +139,10 @@ function InputField({ field, value, onChange, error }: InputFieldProps) {
                         value={value}
                         onChange={handleChange}
                         placeholder={field.placeholder}
-                        className={`w-full border-2 border-gray-200 rounded-lg p-3 sm:p-3 lg:p-4 bg-white text-left flex items-center justify-between hover:border-gray-300 transition-colors focus:outline-none focus:border-primary-purple text-background-dark text-sm sm:text-base lg:text-lg 2xl:text-xl font-medium ${
+                        className={`w-full border-2 border-gray-200 rounded-lg p-3 sm:p-3 lg:p-4 bg-white text-left flex items-center justify-between hover:border-gray-300 transition-colors focus:outline-none focus:border-primary-purple text-background-dark text-base sm:text-base lg:text-lg 2xl:text-xl font-medium ${
                             error ? "border-red-500" : ""
                         }`}
+                        style={{ fontSize: "16px" }}
                         min={
                             field.type === "number" && !field.formatCurrency
                                 ? field.unit === "개" ||
@@ -285,7 +286,8 @@ function SelectField({
                                     onChange={(e) =>
                                         setSearchTerm(e.target.value)
                                     }
-                                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-purple text-sm"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-purple text-base"
+                                    style={{ fontSize: "16px" }}
                                     autoFocus
                                 />
                             </div>
@@ -783,7 +785,7 @@ export function BaseCalculator({
                         })}
 
                         {/* 계산 결과 보기 버튼 */}
-                        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+                        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-4">
                             <button
                                 onClick={handleCalculate}
                                 disabled={isCalculating}
