@@ -251,13 +251,13 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
                             e.stopPropagation();
                             closeModal();
                         }}
-                        className="absolute top-2 sm:top-4 right-2 sm:right-4 text-white hover:text-gray-300 transition-colors z-[10000]"
+                        className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-[10000]"
                     >
                         <XMarkIcon className="w-6 sm:w-8 h-6 sm:h-8" />
                     </button>
 
                     {/* 갤러리 제목 */}
-                    <div className="absolute top-2 sm:top-4 left-2 sm:left-4 text-white z-[10000]">
+                    <div className="absolute top-4 left-4 text-white z-[10000]">
                         <h2 className="text-lg sm:text-xl font-semibold">
                             {selectedGallery.title}
                         </h2>

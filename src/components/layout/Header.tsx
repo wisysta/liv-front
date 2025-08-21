@@ -17,13 +17,12 @@ export function Header({
 }: HeaderProps) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    // 오버레이 모드일 때만 스크롤 감지
-    const isScrolled = headerOverlay
-        ? useScrollDetection({
-              threshold: 50,
-              enableOnMobileOnly: true,
-          })
-        : false;
+    // 스크롤 감지 (항상 호출하되 오버레이 모드일 때만 사용)
+    const scrollDetected = useScrollDetection({
+        threshold: 50,
+        enableOnMobileOnly: true,
+    });
+    const isScrolled = headerOverlay ? scrollDetected : false;
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);

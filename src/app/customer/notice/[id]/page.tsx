@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
+import Image from "next/image";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { CustomerHero } from "@/components/customer/customer-hero";
 import { Notice } from "@/actions/notice-actions";
@@ -232,11 +233,13 @@ export default function NoticeDetailPage() {
                     {notice.headerImage && (
                         <div className="mb-8">
                             <div className="rounded-lg overflow-hidden max-w-sm mr-auto">
-                                <img
+                                <Image
                                     src={notice.headerImage}
                                     alt={notice.title}
+                                    width={400}
+                                    height={300}
                                     className="w-full h-auto object-cover"
-                                    loading="lazy"
+                                    sizes="(max-width: 640px) 100vw, 400px"
                                 />
                             </div>
                         </div>

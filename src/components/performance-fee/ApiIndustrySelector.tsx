@@ -32,10 +32,12 @@ export function ApiIndustrySelector({
         setSearchTerm("");
         if (industries.length > 0) {
             const firstIndustry = industries[0];
-            const firstIndustryKey = `${
-                firstIndustry.groupId || firstIndustry.id
-            }-${firstIndustry.id}`;
-            setSelectedIndustry(firstIndustryKey);
+            if (firstIndustry) {
+                const firstIndustryKey = `${
+                    firstIndustry.groupId || firstIndustry.id
+                }-${firstIndustry.id}`;
+                setSelectedIndustry(firstIndustryKey);
+            }
         } else {
             setSelectedIndustry(null);
         }
