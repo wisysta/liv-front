@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { PopupModal } from "@/components/ui/popup-modal";
+import { getActivePopups } from "@/actions/popup-actions";
 
 export const metadata: Metadata = {
     title: "리브뮤직 - 공연권료 납부, 쉽게 해결하세요",
@@ -58,16 +60,22 @@ export const metadata: Metadata = {
         },
     },
     verification: {
-        google: "google-site-verification-code", // 실제 구글 서치 콘솔 코드로 교체 필요
-        // naver: "naver-site-verification-code", // 네이버 웹마스터 도구 코드로 교체 필요
+        google: "oOxWTE0J7hnmtnlMXRUWw7rFFyfAGfBUMhO0aMD-kGs",
+        other: {
+            "naver-site-verification":
+                "1f53042b93a5b41c4dd963a573df9a626ad3488f",
+        },
     },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    // 활성화된 팝업 데이터 가져오기
+    const popups = await getActivePopups();
+
     return (
         <html lang="ko">
             <head>
@@ -87,6 +95,8 @@ export default function RootLayout({
                 <StructuredData type="organization" />
                 <StructuredData type="website" />
                 {children}
+                {/* 팝업 모달 */}
+                <PopupModal popups={popups} />
             </body>
         </html>
     );

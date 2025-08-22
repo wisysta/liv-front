@@ -12,6 +12,16 @@ export default function manifest(): MetadataRoute.Manifest {
         theme_color: "#7c3aed",
         icons: [
             {
+                src: "/app.png",
+                sizes: "192x192",
+                type: "image/png",
+            },
+            {
+                src: "/app.png",
+                sizes: "512x512",
+                type: "image/png",
+            },
+            {
                 src: "/livmusic-logo-black.svg",
                 sizes: "any",
                 type: "image/svg+xml",
