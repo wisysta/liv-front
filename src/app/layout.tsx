@@ -3,50 +3,40 @@ import "./globals.css";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { PopupModal } from "@/components/ui/popup-modal";
 import { getActivePopups } from "@/actions/popup-actions";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-    title: "리브뮤직 - 공연권료 납부, 쉽게 해결하세요",
-    description: "따뜻한 소통과 친절한 태도로 공연권료 납부를 도와드리겠습니다",
-    keywords: [
-        "공연권료",
-        "공연권료 납부",
-        "공연권료 계산",
-        "리브뮤직",
-        "음악 저작권",
-        "저작권료",
-        "공연료",
-        "음악 사용료",
-    ],
-    authors: [{ name: "리브뮤직" }],
-    creator: "리브뮤직",
-    publisher: "리브뮤직",
-    metadataBase: new URL("https://livmusic.co.kr"),
+    title: siteConfig.title,
+    description: siteConfig.description,
+    keywords: siteConfig.keywords,
+    authors: [{ name: siteConfig.name }],
+    creator: siteConfig.name,
+    publisher: siteConfig.name,
+    metadataBase: new URL(siteConfig.url),
     alternates: {
         canonical: "/",
     },
     openGraph: {
         type: "website",
         locale: "ko_KR",
-        url: "https://livmusic.co.kr",
-        siteName: "리브뮤직",
-        title: "리브뮤직 - 공연권료 납부, 쉽게 해결하세요",
-        description:
-            "따뜻한 소통과 친절한 태도로 공연권료 납부를 도와드리겠습니다",
+        url: siteConfig.url,
+        siteName: siteConfig.name,
+        title: siteConfig.title,
+        description: siteConfig.description,
         images: [
             {
-                url: "/OG_IMAGE.jpg",
+                url: siteConfig.ogImage,
                 width: 1200,
                 height: 630,
-                alt: "리브뮤직 - 공연권료 납부 서비스",
+                alt: `${siteConfig.name} - 공연권료 납부 서비스`,
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "리브뮤직 - 공연권료 납부, 쉽게 해결하세요",
-        description:
-            "따뜻한 소통과 친절한 태도로 공연권료 납부를 도와드리겠습니다",
-        images: ["/OG_IMAGE.jpg"],
+        title: siteConfig.title,
+        description: siteConfig.description,
+        images: [siteConfig.ogImage],
     },
     robots: {
         index: true,

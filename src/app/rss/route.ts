@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { unstable_cache } from "next/cache";
+import { siteConfig } from "@/config/site";
 
 // 24시간마다 재생성 (ISR)
 export const revalidate = 86400; // 24시간 (초 단위)
@@ -46,7 +47,7 @@ const getCachedRssData = unstable_cache(
 );
 
 export async function GET() {
-    const baseUrl = "https://livmusic.co.kr";
+    const baseUrl = siteConfig.url;
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const currentDate = new Date().toISOString();
 
@@ -96,21 +97,27 @@ export async function GET() {
         const rssXml = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>리브뮤직 - 최신 소식</title>
-    <description>리브뮤직의 최신 공지사항과 보도자료를 확인하세요</description>
+    <title>${siteConfig.name} - 최신 소식</title>
+    <description>${
+        siteConfig.name
+    }의 최신 공지사항과 보도자료를 확인하세요</description>
     <link>${baseUrl}</link>
     <atom:link href="${baseUrl}/rss" rel="self" type="application/rss+xml" />
     <language>ko-KR</language>
     <lastBuildDate>${currentDate}</lastBuildDate>
     <pubDate>${currentDate}</pubDate>
     <ttl>60</ttl>
-    <managingEditor>info@livmusic.co.kr (리브뮤직)</managingEditor>
-    <webMaster>info@livmusic.co.kr (리브뮤직)</webMaster>
-    <copyright>Copyright © ${new Date().getFullYear()} 리브뮤직. All rights reserved.</copyright>
+    <managingEditor>${siteConfig.contact.email} (${
+            siteConfig.name
+        })</managingEditor>
+    <webMaster>${siteConfig.contact.email} (${siteConfig.name})</webMaster>
+    <copyright>Copyright © ${new Date().getFullYear()} ${
+            siteConfig.name
+        }. All rights reserved.</copyright>
     <category>음악/저작권/공연권료</category>
     <image>
-      <url>${baseUrl}/livmusic-logo-black.svg</url>
-      <title>리브뮤직</title>
+      <url>${baseUrl}${siteConfig.logo}</url>
+      <title>${siteConfig.name}</title>
       <link>${baseUrl}</link>
       <width>144</width>
       <height>144</height>
@@ -132,28 +139,32 @@ ${rssItems}
         const fallbackRss = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>리브뮤직 - 공연권료 납부 서비스</title>
-    <description>따뜻한 소통과 친절한 태도로 공연권료 납부를 도와드리겠습니다</description>
+    <title>${siteConfig.name} - 공연권료 납부 서비스</title>
+    <description>${siteConfig.description}</description>
     <link>${baseUrl}</link>
     <atom:link href="${baseUrl}/rss" rel="self" type="application/rss+xml" />
     <language>ko-KR</language>
     <lastBuildDate>${currentDate}</lastBuildDate>
     <pubDate>${currentDate}</pubDate>
     <ttl>60</ttl>
-    <managingEditor>info@livmusic.co.kr (리브뮤직)</managingEditor>
-    <webMaster>info@livmusic.co.kr (리브뮤직)</webMaster>
-    <copyright>Copyright © ${new Date().getFullYear()} 리브뮤직. All rights reserved.</copyright>
+    <managingEditor>${siteConfig.contact.email} (${
+            siteConfig.name
+        })</managingEditor>
+    <webMaster>${siteConfig.contact.email} (${siteConfig.name})</webMaster>
+    <copyright>Copyright © ${new Date().getFullYear()} ${
+            siteConfig.name
+        }. All rights reserved.</copyright>
     <category>음악/저작권/공연권료</category>
     <image>
-      <url>${baseUrl}/livmusic-logo-black.svg</url>
-      <title>리브뮤직</title>
+      <url>${baseUrl}${siteConfig.logo}</url>
+      <title>${siteConfig.name}</title>
       <link>${baseUrl}</link>
       <width>144</width>
       <height>144</height>
     </image>
 
     <item>
-      <title>리브뮤직 서비스 안내</title>
+      <title>${siteConfig.name} 서비스 안내</title>
       <description>공연권료 납부와 관련된 모든 서비스를 제공합니다.</description>
       <link>${baseUrl}</link>
       <guid>${baseUrl}</guid>

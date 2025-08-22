@@ -1,3 +1,5 @@
+import { siteConfig } from "@/config/site";
+
 interface StructuredDataProps {
     type?: "organization" | "website" | "service";
     data?: Record<string, any>;
@@ -17,11 +19,10 @@ export function StructuredData({
                 return {
                     ...baseData,
                     "@type": "Organization",
-                    name: "리브뮤직",
-                    url: "https://livmusic.co.kr",
-                    logo: "https://livmusic.co.kr/livmusic-logo-black.svg",
-                    description:
-                        "따뜻한 소통과 친절한 태도로 공연권료 납부를 도와드리겠습니다",
+                    name: siteConfig.name,
+                    url: siteConfig.url,
+                    logo: `${siteConfig.url}${siteConfig.logo}`,
+                    description: siteConfig.description,
                     contactPoint: {
                         "@type": "ContactPoint",
                         contactType: "customer service",
@@ -37,20 +38,18 @@ export function StructuredData({
                 return {
                     ...baseData,
                     "@type": "WebSite",
-                    name: "리브뮤직",
-                    url: "https://livmusic.co.kr",
-                    description:
-                        "따뜻한 소통과 친절한 태도로 공연권료 납부를 도와드리겠습니다",
+                    name: siteConfig.name,
+                    url: siteConfig.url,
+                    description: siteConfig.description,
                     publisher: {
                         "@type": "Organization",
-                        name: "리브뮤직",
+                        name: siteConfig.name,
                     },
                     potentialAction: {
                         "@type": "SearchAction",
                         target: {
                             "@type": "EntryPoint",
-                            urlTemplate:
-                                "https://livmusic.co.kr/search?q={search_term_string}",
+                            urlTemplate: `${siteConfig.url}/search?q={search_term_string}`,
                         },
                         "query-input": "required name=search_term_string",
                     },
@@ -62,12 +61,11 @@ export function StructuredData({
                     ...baseData,
                     "@type": "Service",
                     name: "공연권료 납부 서비스",
-                    description:
-                        "따뜻한 소통과 친절한 태도로 공연권료 납부를 도와드리겠습니다",
+                    description: siteConfig.description,
                     provider: {
                         "@type": "Organization",
-                        name: "리브뮤직",
-                        url: "https://livmusic.co.kr",
+                        name: siteConfig.name,
+                        url: siteConfig.url,
                     },
                     serviceType: "공연권료 계산 및 납부",
                     areaServed: {
