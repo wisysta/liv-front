@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 
 interface Popup {
     id: number;
@@ -152,10 +153,11 @@ export function PopupModal({ popups }: PopupModalProps) {
                         onTouchMove={handleTouchMove}
                         onTouchEnd={handleTouchEnd}
                     >
-                        <img
+                        <Image
                             src={currentPopup.imageUrl}
                             alt={currentPopup.title}
-                            className="w-full h-full object-cover"
+                            fill
+                            className="object-cover"
                             key={currentIndex}
                             onError={(e) => {
                                 const target = e.target as HTMLImageElement;

@@ -150,7 +150,7 @@ export default function MaterialDetailPage() {
         };
 
         fetchMaterialDetail();
-    }, [materialId, isAuthenticated, accessToken]);
+    }, [materialId, isAuthenticated, accessToken, router]);
 
     const handleAuthenticated = (token: string) => {
         setAccessToken(token);

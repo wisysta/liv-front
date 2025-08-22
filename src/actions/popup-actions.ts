@@ -18,7 +18,7 @@ export async function getActivePopups(): Promise<Popup[]> {
     try {
         const response = await fetch(
             `${
-                process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
+                process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"
             }/api/popups/active`,
             {
                 method: "GET",
