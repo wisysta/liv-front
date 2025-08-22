@@ -33,3 +33,14 @@ body {
     color: var(--foreground);
     font-family: var(--font-pretendard);
 }
+
+/* iOS 세이프 에어리어 배경색 설정 */
+html {
+    background-color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: #0a0a0a;
+    }
+}

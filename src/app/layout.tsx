@@ -5,6 +5,14 @@ import { PopupModal } from "@/components/ui/popup-modal";
 import { getActivePopups } from "@/actions/popup-actions";
 import { siteConfig } from "@/config/site";
 
+export const viewport = {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+    viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
@@ -69,6 +77,10 @@ export default async function RootLayout({
     return (
         <html lang="ko">
             <head>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+                />
                 <link rel="preconnect" href="https://cdn.jsdelivr.net" />
                 <link
                     rel="stylesheet"
