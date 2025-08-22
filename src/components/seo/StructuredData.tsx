@@ -1,13 +1,15 @@
 import { siteConfig } from "@/config/site";
 
 interface StructuredDataProps {
-    type?: "organization" | "website" | "service";
+    type?: "organization" | "website" | "service" | "breadcrumb";
     data?: Record<string, any>;
+    breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
 export function StructuredData({
     type = "organization",
     data,
+    breadcrumbs,
 }: StructuredDataProps) {
     const getStructuredData = () => {
         const baseData = {
@@ -53,6 +55,57 @@ export function StructuredData({
                         },
                         "query-input": "required name=search_term_string",
                     },
+                    mainEntity: {
+                        "@type": "ItemList",
+                        itemListElement: [
+                            {
+                                "@type": "SiteNavigationElement",
+                                position: 1,
+                                name: "사업 소개",
+                                description:
+                                    "통합징수와 Heal Music 서비스를 소개합니다",
+                                url: `${siteConfig.url}/service/integrated-collection`,
+                            },
+                            {
+                                "@type": "SiteNavigationElement",
+                                position: 2,
+                                name: "회사 소개",
+                                description:
+                                    "CEO 인사말, 기업비전, 연혁을 확인하세요",
+                                url: `${siteConfig.url}/company/ceo`,
+                            },
+                            {
+                                "@type": "SiteNavigationElement",
+                                position: 3,
+                                name: "Q&A",
+                                description:
+                                    "자주 묻는 질문과 답변을 확인하세요",
+                                url: `${siteConfig.url}/customer/faq`,
+                            },
+                            {
+                                "@type": "SiteNavigationElement",
+                                position: 4,
+                                name: "공연권료 계산기",
+                                description: "공연권료를 쉽게 계산해보세요",
+                                url: `${siteConfig.url}/performance-fee/calculator`,
+                            },
+                            {
+                                "@type": "SiteNavigationElement",
+                                position: 5,
+                                name: "공연권료란?",
+                                description:
+                                    "공연권료 제도와 납부 대상을 확인하세요",
+                                url: `${siteConfig.url}/performance-fee`,
+                            },
+                            {
+                                "@type": "SiteNavigationElement",
+                                position: 6,
+                                name: "Heal Music",
+                                description: "음악 치유 서비스를 소개합니다",
+                                url: `${siteConfig.url}/service/heal-music`,
+                            },
+                        ],
+                    },
                     ...data,
                 };
 
@@ -72,6 +125,20 @@ export function StructuredData({
                         "@type": "Country",
                         name: "대한민국",
                     },
+                    ...data,
+                };
+
+            case "breadcrumb":
+                return {
+                    ...baseData,
+                    "@type": "BreadcrumbList",
+                    itemListElement:
+                        breadcrumbs?.map((crumb, index) => ({
+                            "@type": "ListItem",
+                            position: index + 1,
+                            name: crumb.name,
+                            item: crumb.url,
+                        })) || [],
                     ...data,
                 };
 
