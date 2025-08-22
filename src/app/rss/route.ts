@@ -1,26 +1,25 @@
 import { NextResponse } from "next/server";
+import { unstable_cache } from "next/cache";
 
-export async function GET() {
-    const baseUrl = "https://livmusic.co.kr";
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const currentDate = new Date().toISOString();
+// 24시간마다 재생성 (ISR)
+export const revalidate = 86400; // 24시간 (초 단위)
 
-    try {
-        // API에서 실제 공지사항과 보도자료 데이터 가져오기 (actions 패턴 따라함)
+// 캐시된 데이터 가져오기 함수
+const getCachedRssData = unstable_cache(
+    async (apiUrl: string) => {
+        // API에서 실제 공지사항과 보도자료 데이터 가져오기
         const [noticesResponse, pressReleasesResponse] = await Promise.all([
             fetch(`${apiUrl}/api/notices?limit=10`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                cache: "no-store",
             }).catch(() => null),
             fetch(`${apiUrl}/api/press-releases`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                cache: "no-store",
             }).catch(() => null),
         ]);
 
@@ -36,6 +35,24 @@ export async function GET() {
             const pressData = await pressReleasesResponse.json();
             pressReleases = pressData.pressReleases || [];
         }
+
+        return { notices, pressReleases };
+    },
+    ["rss-data"], // 캐시 키
+    {
+        revalidate: 86400, // 24시간
+        tags: ["rss"],
+    }
+);
+
+export async function GET() {
+    const baseUrl = "https://livmusic.co.kr";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const currentDate = new Date().toISOString();
+
+    try {
+        // 캐시된 데이터 가져오기
+        const { notices, pressReleases } = await getCachedRssData(apiUrl!);
 
         // 모든 아이템을 합치고 날짜순으로 정렬
         const allItems = [
@@ -105,7 +122,7 @@ ${rssItems}
         return new NextResponse(rssXml, {
             headers: {
                 "Content-Type": "application/xml",
-                "Cache-Control": "s-maxage=1800, stale-while-revalidate", // 30분 캐시
+                "Cache-Control": "s-maxage=86400, stale-while-revalidate=3600", // 24시간 캐시, 1시간 stale-while-revalidate
             },
         });
     } catch (error) {
@@ -150,7 +167,7 @@ ${rssItems}
         return new NextResponse(fallbackRss, {
             headers: {
                 "Content-Type": "application/xml",
-                "Cache-Control": "s-maxage=300, stale-while-revalidate", // 5분 캐시 (오류 시)
+                "Cache-Control": "s-maxage=3600, stale-while-revalidate=300", // 1시간 캐시 (오류 시), 5분 stale-while-revalidate
             },
         });
     }

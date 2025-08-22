@@ -110,7 +110,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${baseUrl}/rss`,
             lastModified: new Date(),
             changeFrequency: "daily",
-            priority: 0.3,
+            priority: 0.5,
         },
     ];
 }
