@@ -64,12 +64,12 @@
             "name": "유원시설",
             "type": "revenue_based"
         },
-        { "id": "ski_resort", "name": "스키장", "type": "revenue_based" },
-        { "id": "horse_racing", "name": "경마장", "type": "revenue_based" },
+        { "id": "ski_resort", "name": "스키장", "type": "standard" },
+        { "id": "horse_racing", "name": "경마장", "type": "standard" },
         {
             "id": "cycling_racing",
             "name": "경륜•경정장",
-            "type": "revenue_based"
+            "type": "standard"
         },
         { "id": "game_room", "name": "게임방", "type": "equipment_count" },
         { "id": "multi_room", "name": "멀티방", "type": "equipment_count" },

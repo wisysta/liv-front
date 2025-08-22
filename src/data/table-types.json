@@ -1,386 +1,386 @@
 {
-  "standard": {
-    "columns": [
-      {
-        "key": "area",
-        "title": "면적(㎡)",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "copyright",
-        "title": "저작권자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "producer",
-        "title": "제작자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "performer",
-        "title": "실연자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "right",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  },
-  "room_count": {
-    "columns": [
-      {
-        "key": "rooms",
-        "title": "객실(개)",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "copyright",
-        "title": "저작권자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "producer",
-        "title": "제작자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "performer",
-        "title": "실연자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "right",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  },
-  "golf_hole": {
-    "columns": [
-      {
-        "key": "holes",
-        "title": "홀(개)",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "copyright",
-        "title": "저작권자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "producer",
-        "title": "제작자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "performer",
-        "title": "실연자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "right",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  },
-  "large_area": {
-    "columns": [
-      {
-        "key": "area",
-        "title": "면적(㎡)",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "copyright",
-        "title": "저작권자",
-        "align": "center",
-        "type": "price"
-      },
-      {
-        "key": "producer",
-        "title": "제작자",
-        "align": "center",
-        "type": "price"
-      },
-      {
-        "key": "performer",
-        "title": "실연자",
-        "align": "center",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "center",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  },
-  "people_count": {
-    "columns": [
-      {
-        "key": "people",
-        "title": "인원(명)",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "copyright",
-        "title": "저작권자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "producer",
-        "title": "제작자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "performer",
-        "title": "실연자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "right",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  },
-  "equipment_count": {
-    "columns": [
-      {
-        "key": "equipment",
-        "title": "구분",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "count",
-        "title": "대수",
-        "align": "right",
-        "type": "text"
-      },
-      {
-        "key": "copyright",
-        "title": "저작권자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "performer",
-        "title": "실연자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "right",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  },
-  "karaoke_area": {
-    "columns": [
-      {
-        "key": "area",
-        "title": "면적(㎡)",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "copyright",
-        "title": "저작권자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "producer",
-        "title": "제작자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "performer",
-        "title": "실연자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "right",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  },
-  "passenger_count": {
-    "columns": [
-      {
-        "key": "capacity",
-        "title": "면적(㎡)",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "boarding",
-        "title": "탑승중 (월)",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "flying",
-        "title": "비행중 (월)",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "performer",
-        "title": "실연자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "right",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  },
-  "restaurant_area": {
-    "columns": [
-      {
-        "key": "area",
-        "title": "면적(㎡)",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "copyright",
-        "title": "저작권자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "right",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  },
-  "entertainment_area": {
-    "columns": [
-      {
-        "key": "area",
-        "title": "면적(㎡)",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "copyright",
-        "title": "저작권자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "right",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  },
-  "cabaret_area": {
-    "columns": [
-      {
-        "key": "area",
-        "title": "면적(㎡)",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "copyright",
-        "title": "저작권자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "right",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  },
-  "casino_area": {
-    "columns": [
-      {
-        "key": "area",
-        "title": "면적(㎡)",
-        "align": "left",
-        "type": "text"
-      },
-      {
-        "key": "copyright",
-        "title": "저작권자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "producer",
-        "title": "제작자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "performer",
-        "title": "실연자",
-        "align": "right",
-        "type": "price"
-      },
-      {
-        "key": "total",
-        "title": "공연권료 합계",
-        "align": "right",
-        "type": "price",
-        "highlight": true
-      }
-    ]
-  }
+    "standard": {
+        "columns": [
+            {
+                "key": "area",
+                "title": "면적(㎡)",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "copyright",
+                "title": "저작권자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "producer",
+                "title": "제작자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "performer",
+                "title": "실연자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    },
+    "room_count": {
+        "columns": [
+            {
+                "key": "rooms",
+                "title": "객실(개)",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "copyright",
+                "title": "저작권자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "producer",
+                "title": "제작자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "performer",
+                "title": "실연자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    },
+    "golf_hole": {
+        "columns": [
+            {
+                "key": "holes",
+                "title": "홀(개)",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "copyright",
+                "title": "저작권자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "producer",
+                "title": "제작자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "performer",
+                "title": "실연자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    },
+    "large_area": {
+        "columns": [
+            {
+                "key": "area",
+                "title": "면적(㎡)",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "copyright",
+                "title": "저작권자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "producer",
+                "title": "제작자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "performer",
+                "title": "실연자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    },
+    "people_count": {
+        "columns": [
+            {
+                "key": "people",
+                "title": "인원(명)",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "copyright",
+                "title": "저작권자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "producer",
+                "title": "제작자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "performer",
+                "title": "실연자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    },
+    "equipment_count": {
+        "columns": [
+            {
+                "key": "equipment",
+                "title": "구분",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "count",
+                "title": "대수",
+                "align": "right",
+                "type": "text"
+            },
+            {
+                "key": "copyright",
+                "title": "저작권자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "performer",
+                "title": "실연자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    },
+    "karaoke_area": {
+        "columns": [
+            {
+                "key": "area",
+                "title": "면적(㎡)",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "copyright",
+                "title": "저작권자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "producer",
+                "title": "제작자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "performer",
+                "title": "실연자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    },
+    "passenger_count": {
+        "columns": [
+            {
+                "key": "capacity",
+                "title": "면적(㎡)",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "boarding",
+                "title": "탑승중 (월)",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "flying",
+                "title": "비행중 (월)",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "performer",
+                "title": "실연자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    },
+    "restaurant_area": {
+        "columns": [
+            {
+                "key": "area",
+                "title": "면적(㎡)",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "copyright",
+                "title": "저작권자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    },
+    "entertainment_area": {
+        "columns": [
+            {
+                "key": "area",
+                "title": "면적(㎡)",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "copyright",
+                "title": "저작권자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    },
+    "cabaret_area": {
+        "columns": [
+            {
+                "key": "area",
+                "title": "면적(㎡)",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "copyright",
+                "title": "저작권자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    },
+    "casino_area": {
+        "columns": [
+            {
+                "key": "area",
+                "title": "면적(㎡)",
+                "align": "left",
+                "type": "text"
+            },
+            {
+                "key": "copyright",
+                "title": "저작권자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "producer",
+                "title": "제작자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "performer",
+                "title": "실연자",
+                "align": "right",
+                "type": "price"
+            },
+            {
+                "key": "total",
+                "title": "공연권료 합계",
+                "align": "right",
+                "type": "price",
+                "highlight": true
+            }
+        ]
+    }
 }
