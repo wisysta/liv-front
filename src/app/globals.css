@@ -37,6 +37,11 @@ body {
 /* iOS 세이프 에어리어 배경색 설정 */
 html {
     background-color: #ffffff;
+    /* Safe Area 전체 영역 처리 */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 @media (prefers-color-scheme: dark) {
