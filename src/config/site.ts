@@ -1,7 +1,8 @@
 export const siteConfig = {
     name: "리브뮤직",
-    title: "리브뮤직 - 공연권료 납부, 쉽게 해결하세요",
-    description: "따뜻한 소통과 친절한 태도로 공연권료 납부를 도와드리겠습니다",
+    title: "공연권료 납부, 리브뮤직으로 간편하게",
+    description:
+        "권리자와 이용자가 함께 신뢰하는 공연권 징수 플랫폼, 리브뮤직이 음악산업의 미래를 이어갑니다.",
     url: "https://www.livmusic.co.kr",
     ogImage: "/OG_IMAGE.jpg",
     logo: "/livmusic-logo-black.svg",
