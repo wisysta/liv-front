@@ -73,6 +73,8 @@ export default async function RootLayout({
 }>) {
     // 활성화된 팝업 데이터 가져오기
     const popups = await getActivePopups();
+    // 첫 번째 팝업만 사용 (단일 팝업 시스템)
+    const activePopup = popups?.[0] ?? null;
 
     return (
         <html lang="ko">
@@ -94,7 +96,7 @@ export default async function RootLayout({
                 <StructuredData type="website" />
                 {children}
                 {/* 팝업 모달 */}
-                <PopupModal popups={popups} />
+                <PopupModal popup={activePopup} />
             </body>
         </html>
     );
