@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { SiteStructure } from "@/components/seo/SiteStructure";
 import { PopupModal } from "@/components/ui/popup-modal";
 import { getActivePopups } from "@/actions/popup-actions";
 import { siteConfig } from "@/config/site";
@@ -94,6 +95,7 @@ export default async function RootLayout({
             <body className="font-pretendard antialiased">
                 <StructuredData type="organization" />
                 <StructuredData type="website" />
+                <SiteStructure />
                 {children}
                 {/* 팝업 모달 */}
                 <PopupModal popup={activePopup} />
