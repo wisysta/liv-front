@@ -76,9 +76,9 @@ export function PopupModal({ popup }: PopupModalProps) {
     }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             {/* 팝업 컨테이너 */}
-            <div className="relative bg-white rounded-2xl shadow-2xl  overflow-hidden">
+            <div className="relative bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-w-md sm:max-w-lg md:max-w-xl">
                 {/* 팝업 이미지 */}
                 <div
                     className={`bg-gray-100 ${
@@ -91,9 +91,9 @@ export function PopupModal({ popup }: PopupModalProps) {
                         alt={popup.title}
                         width={0}
                         height={0}
-                        sizes="100vw"
-                        className="w-auto h-auto max-w-[90vw] max-h-[80vh]"
-                        style={{ objectFit: "none" }}
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, 70vw"
+                        className="w-full h-auto max-h-[70vh] object-contain"
+                        priority
                         onError={(e) => {
                             const target = e.target as HTMLImageElement;
                             target.src =
@@ -103,16 +103,16 @@ export function PopupModal({ popup }: PopupModalProps) {
                 </div>
 
                 {/* 하단 버튼 영역 */}
-                <div className="px-4 py-1">
+                <div className="px-4 py-3">
                     {/* 버튼 그룹 */}
                     <div className="flex items-center text-base text-gray-600">
                         <button
                             onClick={closePopup}
-                            className="flex-1 text-sm sm:text-base text-center hover:text-gray-900 transition-colors py-3 font-medium"
+                            className="flex-1 text-sm sm:text-base text-center hover:text-gray-900 transition-colors py-2 font-medium"
                         >
                             닫기
                         </button>
-                        <span className="text-gray-400 px-2">|</span>
+                        <span className="text-gray-400 px-3">|</span>
                         <button
                             onClick={handleDontShowToday}
                             className="flex-1 text-sm sm:text-base text-center hover:text-gray-900 transition-colors py-2 font-medium"
