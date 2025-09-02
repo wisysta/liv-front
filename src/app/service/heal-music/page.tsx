@@ -236,6 +236,25 @@ export default function HealMusicPage() {
                 </div>
             </section>
 
+            {/* 힐뮤직 신청하기 이미지 */}
+            <section className="bg-white py-12 lg:py-16">
+                <h2 className="text-2xl lg:text-3xl 2xl:text-4xl font-bold text-background-dark text-center mb-12 lg:mb-16 2xl:mb-20">
+                    Heal Music 신청하기
+                </h2>
+                <div className="max-w-6xl mx-auto px-8 sm:px-6 lg:px-8">
+                    <div className="text-center">
+                        <Image
+                            src="/힐뮤직_신청하기.png"
+                            alt="Heal Music 신청하기 안내"
+                            width={800}
+                            height={600}
+                            className="w-full h-auto max-w-4xl mx-auto rounded-lg shadow-lg"
+                            priority
+                        />
+                    </div>
+                </div>
+            </section>
+
             {/* Heal Music을 선택하는 이유 */}
             <section className="bg-white py-20 lg:py-32">
                 <div className="max-w-6xl mx-auto px-8 sm:px-6 lg:px-8">
