@@ -67,15 +67,25 @@ export default function CompanyHistoryPage() {
 
     const heroSection = useScrollAnimation({ delay: 150 });
 
-    // 동적으로 타임라인 애니메이션 생성
-    const timelineRefs = HISTORY_DATA.map((_, index) =>
-        useScrollAnimation({
-            delay: index === 0 ? 300 : 0,
-            threshold: index === 0 ? 0.1 : 0.3,
-            rootMargin:
-                index === 0 ? "0px 0px -50px 0px" : "0px 0px -150px 0px",
-        })
-    );
+    // 타임라인 애니메이션 refs - 각각 개별적으로 생성
+    const timeline0 = useScrollAnimation({
+        delay: 300,
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+    });
+    const timeline1 = useScrollAnimation({
+        delay: 0,
+        threshold: 0.3,
+        rootMargin: "0px 0px -150px 0px",
+    });
+    const timeline2 = useScrollAnimation({
+        delay: 0,
+        threshold: 0.3,
+        rootMargin: "0px 0px -150px 0px",
+    });
+
+    // 타임라인 refs 배열
+    const timelineRefs = [timeline0, timeline1, timeline2];
 
     return (
         <PageLayout
