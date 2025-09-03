@@ -77,19 +77,6 @@ export const areaBasedConfig: CalculationConfig = {
             isRural: data.isRural === "true",
         });
 
-        const breakdown = [
-            {
-                label: "리브뮤직 납부 공연권료(3단체)",
-                amount: result.copyrightAmount,
-                isBold: true,
-            },
-            {
-                label: "한국음악저작권협회 납부액",
-                amount: result.neighboringAmount,
-                isBold: true,
-            },
-        ];
-
         return {
             copyrightAmount: result.copyrightAmount,
             koscapAmount: result.koscapAmount,
@@ -97,7 +84,8 @@ export const areaBasedConfig: CalculationConfig = {
             totalAmount: result.totalAmount,
             tierInfo: result.tierInfo,
             industryNotes: result.industryNotes || [],
-            breakdown,
+            hasNeighboringRights: result.hasNeighboringRights ?? true,
+            breakdown: result.breakdown || [],
         };
     },
 };
@@ -133,10 +121,10 @@ export const hotelConfig: CalculationConfig = {
             required: true,
             placeholder: "성급 선택(1성급~5성급)",
             options: [
-                { value: "grade3", label: "3급호텔 (70% 적용)" },
-                { value: "grade2", label: "2급호텔 (80% 적용)" },
-                { value: "grade1", label: "1급호텔 (90% 적용)" },
-                { value: "special", label: "특급호텔 (4성급, 5성급)" },
+                { value: "special", label: "5성, 4성" },
+                { value: "grade1", label: "3성 (90% 적용)" },
+                { value: "grade2", label: "2성 (80% 적용)" },
+                { value: "grade3", label: "1성 (70% 적용)" },
             ],
         },
     ],
@@ -166,18 +154,8 @@ export const hotelConfig: CalculationConfig = {
             totalAmount: result.totalAmount,
             tierInfo: result.tierInfo,
             industryNotes: result.industryNotes || [],
-            breakdown: [
-                {
-                    label: "리브뮤직 납부 공연권료(3단체)",
-                    amount: result.copyrightAmount,
-                    isBold: true,
-                },
-                {
-                    label: "한국음악저작권협회 납부액",
-                    amount: result.neighboringAmount,
-                    isBold: true,
-                },
-            ],
+            hasNeighboringRights: result.hasNeighboringRights ?? true,
+            breakdown: result.breakdown || [],
         };
     },
 };
@@ -230,18 +208,8 @@ export const condoConfig: CalculationConfig = {
             totalAmount: result.totalAmount,
             tierInfo: result.tierInfo,
             industryNotes: result.industryNotes || [],
-            breakdown: [
-                {
-                    label: "리브뮤직 납부 공연권료(3단체)",
-                    amount: result.copyrightAmount,
-                    isBold: true,
-                },
-                {
-                    label: "한국음악저작권협회 납부액",
-                    amount: result.neighboringAmount,
-                    isBold: true,
-                },
-            ],
+            hasNeighboringRights: result.hasNeighboringRights ?? true,
+            breakdown: result.breakdown || [],
         };
     },
 };
@@ -292,18 +260,8 @@ export const golfCourseConfig: CalculationConfig = {
             totalAmount: result.totalAmount,
             tierInfo: result.tierInfo,
             industryNotes: result.industryNotes || [],
-            breakdown: [
-                {
-                    label: "리브뮤직 납부 공연권료(3단체)",
-                    amount: result.copyrightAmount,
-                    isBold: true,
-                },
-                {
-                    label: "한국음악저작권협회 납부액",
-                    amount: result.neighboringAmount,
-                    isBold: true,
-                },
-            ],
+            hasNeighboringRights: result.hasNeighboringRights ?? true,
+            breakdown: result.breakdown || [],
         };
     },
 };
@@ -418,18 +376,8 @@ export const karaokeConfig: CalculationConfig = {
             totalAmount: result.totalAmount,
             tierInfo: result.tierInfo,
             industryNotes: result.industryNotes || [],
-            breakdown: [
-                {
-                    label: "리브뮤직 납부 공연권료(3단체)",
-                    amount: result.copyrightAmount,
-                    isBold: true,
-                },
-                {
-                    label: "한국음악저작권협회 납부액",
-                    amount: result.neighboringAmount,
-                    isBold: true,
-                },
-            ],
+            hasNeighboringRights: result.hasNeighboringRights ?? true,
+            breakdown: result.breakdown || [],
             customData: {
                 roomBreakdown: result.roomBreakdown,
             },
@@ -461,18 +409,69 @@ export const personBasedConfig: CalculationConfig = {
                 return !isNaN(num) && num > 0 && Number.isInteger(num);
             },
         },
+        {
+            id: "profitType",
+            type: "radio",
+            label: "운영 형태",
+            required: true,
+            options: [
+                { value: "profit", label: "영리" },
+                { value: "nonprofit", label: "비영리" },
+            ],
+            // 노래교실과 에어로빅장에만 표시
+            conditionalDisplay: (
+                formData: Record<string, any>,
+                industries?: Array<any>
+            ) => {
+                const industryValue = formData.industry || "";
+
+                // industries 배열에서 선택된 업종 찾기
+                if (industries) {
+                    const selectedIndustry = industries.find(
+                        (ind) =>
+                            `${ind.groupId || ind.id}-${ind.id}` ===
+                            industryValue
+                    );
+                    const shouldShow =
+                        selectedIndustry?.name === "노래교실" ||
+                        selectedIndustry?.name === "에어로빅장";
+                    console.log("conditionalDisplay 체크 (업종명 기준):", {
+                        industryValue,
+                        selectedIndustry,
+                        shouldShow,
+                    });
+                    return shouldShow;
+                }
+
+                // 폴백: 기존 로직
+                const parts = industryValue.split("-");
+                const industryId = parts.length > 1 ? parts[1] : industryValue;
+                const shouldShow =
+                    industryId === "music_class" || industryId === "aerobics";
+                console.log("conditionalDisplay 체크 (폴백):", {
+                    industryValue,
+                    parts,
+                    industryId,
+                    shouldShow,
+                });
+                return shouldShow;
+            },
+        },
     ],
     calculateFunction: async (
         data: Record<string, any>
     ): Promise<CalculationResultData> => {
         const industryValue = data.industry;
         const parts = industryValue.split("-");
+
+        // 영리 선택 또는 다른 업종의 경우 기존 계산 로직 실행
         const groupId =
             parts.length > 1 ? parseInt(parts[0]) : parseInt(industryValue);
 
         const result = await calculatePersonFee({
             industryGroupId: groupId,
             personCount: parseInt(data.capacity),
+            profitType: data.profitType || "profit",
         });
 
         return {
@@ -482,18 +481,8 @@ export const personBasedConfig: CalculationConfig = {
             totalAmount: result.totalAmount,
             tierInfo: result.tierInfo,
             industryNotes: result.industryNotes || [],
-            breakdown: [
-                {
-                    label: "리브뮤직 납부 공연권료(3단체)",
-                    amount: result.livMusicAmount,
-                    isBold: true,
-                },
-                {
-                    label: "한국음악저작권협회 납부액",
-                    amount: result.storeUsageFee,
-                    isBold: true,
-                },
-            ],
+            hasNeighboringRights: result.hasNeighboringRights ?? true,
+            breakdown: result.breakdown || [],
         };
     },
 };
@@ -582,18 +571,8 @@ export const gameRoomConfig: CalculationConfig = {
             neighboringAmount: result.neighboringAmount,
             totalAmount: result.totalAmount,
             industryNotes: result.industryNotes || [],
-            breakdown: [
-                {
-                    label: "리브뮤직 납부 공연권료(3단체)",
-                    amount: result.copyrightAmount,
-                    isBold: true,
-                },
-                {
-                    label: "한국음악저작권협회 납부액",
-                    amount: result.neighboringAmount,
-                    isBold: true,
-                },
-            ],
+            hasNeighboringRights: result.hasNeighboringRights ?? true,
+            breakdown: result.breakdown || [],
             customData: {
                 deviceBreakdown: result.deviceBreakdown,
                 equipmentInfo: result.equipmentInfo,

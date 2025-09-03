@@ -14,6 +14,10 @@ export interface CalculationField {
     unit?: string;
     formatCurrency?: boolean;
     defaultValue?: string;
+    conditionalDisplay?: (
+        formData: Record<string, any>,
+        industries?: Array<any>
+    ) => boolean;
 }
 
 export interface CalculationConfig {
@@ -286,7 +290,9 @@ function SelectField({
                         <div className="bg-white rounded-lg shadow-xl border border-gray-200 w-full max-w-md mx-4 max-h-[480px] flex flex-col">
                             <div className="py-6 px-4 border-b border-gray-200 text-center">
                                 <h3 className="text-lg font-bold text-background-dark mb-2">
-                                    해당하는 업종을 선택하세요
+                                    {field.id === "hotelGrade"
+                                        ? "호텔 등급을 선택하세요"
+                                        : "해당하는 업종을 선택하세요"}
                                 </h3>
                                 <p className="text-sm text-gray-600">
                                     매장에서 음악이 흘러나오고 있다면, 대상이 될
@@ -298,7 +304,11 @@ function SelectField({
                             <div className="p-4 border-b border-gray-200">
                                 <input
                                     type="text"
-                                    placeholder="업종 검색..."
+                                    placeholder={
+                                        field.id === "hotelGrade"
+                                            ? "등급 검색..."
+                                            : "업종 검색..."
+                                    }
                                     value={searchTerm}
                                     onChange={(e) =>
                                         setSearchTerm(e.target.value)
@@ -457,10 +467,18 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
             </h3>
 
             {result.isExempt ? (
-                <div className="text-center py-8 sm:py-12">
-                    <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-primary-purple mb-4">
-                        {result.exemptMessage || "징수 제외 대상입니다"}
+                <div className="text-center py-6 sm:py-8">
+                    <div className="text-base sm:text-xl text-gray-600 mb-4">
+                        해당 조건은 징수 대상이 아닙니다.
                     </div>
+                    <div className="text-xl sm:text-3xl font-bold text-primary-purple/80 mb-6">
+                        납부금액: 0원
+                    </div>
+                    {result.exemptMessage && (
+                        <div className="text-sm sm:text-base text-gray-700 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            {result.exemptMessage}
+                        </div>
+                    )}
                 </div>
             ) : result.totalAmount === 0 ? (
                 <div className="text-center py-6 sm:py-8">
@@ -673,7 +691,6 @@ export function BaseCalculator({
 
         // 업종 필드가 변경된 경우 핸들러 호출
         if (fieldId === "industry" && config.onIndustryChange) {
-            console.log("BaseCalculator: 업종 변경됨 ->", value);
             config.onIndustryChange(value);
         }
     };
@@ -683,6 +700,14 @@ export function BaseCalculator({
         const newErrors: Record<string, string> = {};
 
         config.fields.forEach((field) => {
+            // 조건부 표시 필드가 표시되지 않는 경우 검증 건너뛰기
+            if (
+                field.conditionalDisplay &&
+                !field.conditionalDisplay(formData, industries)
+            ) {
+                return;
+            }
+
             const value = formData[field.id];
 
             if (field.required && (!value || value.trim() === "")) {
@@ -710,8 +735,77 @@ export function BaseCalculator({
 
         setIsCalculating(true);
         try {
-            const result = await config.calculateFunction(formData);
+            // 계산 데이터 준비
+            const calculationData = { ...formData };
+            const industryValue = formData.industry || "";
+
+            // 선택된 업종 찾기
+            const selectedIndustry = industries?.find(
+                (ind) => `${ind.groupId || ind.id}-${ind.id}` === industryValue
+            );
+
+            // 노래교실과 에어로빅장이 아닌 경우에만 profitType을 기본값으로 설정
+            const isNonprofitTarget =
+                selectedIndustry?.name === "노래교실" ||
+                selectedIndustry?.name === "에어로빅장";
+
+            if (!isNonprofitTarget) {
+                calculationData.profitType = "profit"; // 기본값으로 영리 설정
+            }
+
+            console.log("selectedIndustry:", selectedIndustry);
+
+            console.log("isNonprofitTarget:", isNonprofitTarget);
+            console.log(
+                "calculationData.profitType:",
+                calculationData.profitType
+            );
+            console.log(
+                "조건 체크:",
+                isNonprofitTarget && calculationData.profitType === "nonprofit"
+            );
+
+            if (
+                isNonprofitTarget &&
+                calculationData.profitType === "nonprofit"
+            ) {
+                console.log("비영리 조건 만족 - 프론트엔드에서 처리");
+                const result = {
+                    copyrightAmount: 0,
+                    neighboringAmount: 0,
+                    totalAmount: 0,
+                    isExempt: true,
+                    exemptMessage:
+                        "비영리 운영과 관련된 자세한 내용은 리브뮤직으로 문의해 주세요.\n1811-7696",
+                    breakdown: [],
+                    industryNotes: [],
+                    hasNeighboringRights: true,
+                };
+                setCalculationResult(result);
+
+                // 모바일에서는 결과 단계로 전환
+                if (window.innerWidth < 1024) {
+                    setCurrentStep("result");
+                    setTimeout(() => setShowResult(true), 100);
+                }
+                return;
+            }
+
+            const result = await config.calculateFunction(calculationData);
             console.log("BaseCalculator: 계산 결과 ->", result);
+            console.log(
+                "BaseCalculator: hasNeighboringRights ->",
+                result.hasNeighboringRights
+            );
+            console.log("BaseCalculator: breakdown ->", result.breakdown);
+            if (result.breakdown) {
+                result.breakdown.forEach((item, index) => {
+                    console.log(
+                        `BaseCalculator: breakdown[${index}].label ->`,
+                        item.label
+                    );
+                });
+            }
             setCalculationResult(result);
 
             // 모바일에서는 결과 단계로 전환
@@ -750,6 +844,26 @@ export function BaseCalculator({
                         {config.fields.map((field) => {
                             const value = formData[field.id] || "";
                             const error = errors[field.id];
+
+                            // 조건부 표시 체크
+                            if (
+                                field.conditionalDisplay &&
+                                !field.conditionalDisplay(formData, industries)
+                            ) {
+                                console.log(
+                                    `필드 ${field.id} 숨김 - formData:`,
+                                    formData
+                                );
+                                return null;
+                            }
+
+                            // profitType 필드인 경우 디버깅 로그
+                            if (field.id === "profitType") {
+                                console.log(
+                                    "profitType 필드 표시됨 - formData:",
+                                    formData
+                                );
+                            }
 
                             switch (field.type) {
                                 case "industry":
@@ -897,6 +1011,26 @@ export function BaseCalculator({
                     {config.fields.map((field) => {
                         const value = formData[field.id] || "";
                         const error = errors[field.id];
+
+                        // 조건부 표시 체크
+                        if (
+                            field.conditionalDisplay &&
+                            !field.conditionalDisplay(formData, industries)
+                        ) {
+                            console.log(
+                                `필드 ${field.id} 숨김 (데스크톱) - formData:`,
+                                formData
+                            );
+                            return null;
+                        }
+
+                        // profitType 필드인 경우 디버깅 로그
+                        if (field.id === "profitType") {
+                            console.log(
+                                "profitType 필드 표시됨 (데스크톱) - formData:",
+                                formData
+                            );
+                        }
 
                         switch (field.type) {
                             case "industry":

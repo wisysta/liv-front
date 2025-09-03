@@ -90,6 +90,7 @@ export function UnifiedCalculator({
             } else {
                 const typeMapping: Record<string, CalculatorType> = {
                     person: "person",
+                    people_count: "person", // people_count 타입도 person 계산기 사용
                     game_room: "game_room",
                     aircraft: "aircraft",
                 };
@@ -134,7 +135,7 @@ export function UnifiedCalculator({
         } else {
             const typeMapping: Record<string, string[]> = {
                 area: ["area"],
-                person: ["person"],
+                person: ["person", "people_count"], // person과 people_count 타입 모두 포함
                 game_room: ["game_room"],
                 aircraft: ["aircraft"],
             };

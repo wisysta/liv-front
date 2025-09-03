@@ -3,6 +3,7 @@
 interface PersonCalculationRequest {
     industryGroupId: number;
     personCount: number;
+    profitType?: "profit" | "nonprofit"; // 영리/비영리 선택 (노래교실, 에어로빅장용)
 }
 
 interface PersonCalculationResponse {
@@ -20,13 +21,22 @@ interface PersonCalculationResponse {
         copyrightAmount: number;
         koscapRate: number;
         neighboringRate: number;
-    };
+    } | null;
     industryNotes: string[];
+    hasNeighboringRights?: boolean; // 저작인접권 여부
+    breakdown?: Array<{
+        label: string;
+        amount: number;
+        isBold: boolean;
+    }>; // 계산 결과 항목들
+    isExempt?: boolean; // 징수제외 여부
+    exemptMessage?: string; // 징수제외 메시지
 }
 
 export async function calculatePersonFee({
     industryGroupId,
     personCount,
+    profitType = "profit",
 }: PersonCalculationRequest): Promise<PersonCalculationResponse> {
     try {
         const response = await fetch(
@@ -41,6 +51,7 @@ export async function calculatePersonFee({
                 body: JSON.stringify({
                     industryGroupId,
                     personCount,
+                    profitType,
                 }),
             }
         );

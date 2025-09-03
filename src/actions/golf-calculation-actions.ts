@@ -17,6 +17,12 @@ export interface GolfCalculationResult {
         additionalAmount?: number;
     };
     industryNotes?: string[];
+    hasNeighboringRights?: boolean; // 저작인접권 여부
+    breakdown?: Array<{
+        label: string;
+        amount: number;
+        isBold: boolean;
+    }>; // 계산 결과 항목들
 }
 
 export interface GolfCalculationResponse {
