@@ -87,7 +87,7 @@ export function ApiIndustrySelector({
             className="fixed inset-0 backdrop-blur-sm bg-white/20 flex items-center justify-center z-50"
             onClick={handleBackgroundClick}
         >
-            <div className="bg-white rounded-lg shadow-xl border border-gray-200 w-full max-w-md mx-4 max-h-96 flex flex-col">
+            <div className="bg-white rounded-lg shadow-xl border border-gray-200 w-full max-w-md mx-4 max-h-[480px] flex flex-col">
                 <div className="p-4 border-b border-gray-200 text-center">
                     <h3 className="text-lg font-bold text-background-dark mb-2">
                         해당하는 업종을 선택하세요
@@ -110,7 +110,7 @@ export function ApiIndustrySelector({
                 </div>
 
                 {/* 업종 목록 */}
-                <div className="overflow-y-auto max-h-80">
+                <div className="overflow-y-auto max-h-[320px]">
                     {industryList.length === 0 ? (
                         <div className="p-4 text-center text-gray-500 text-sm">
                             업종 데이터를 불러오는 중...

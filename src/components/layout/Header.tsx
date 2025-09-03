@@ -30,7 +30,9 @@ export function Header({
                         alt="리브뮤직 로고"
                         width={105}
                         height={20}
-                        className="h-4 sm:h-5 w-auto transition-opacity duration-300"
+                        className={`h-4 sm:h-5 w-auto transition-opacity duration-300 ${
+                            headerOverlay ? "opacity-100" : "opacity-100"
+                        }`}
                         sizes="(max-width: 640px) 80px, 105px"
                         quality={90}
                         priority

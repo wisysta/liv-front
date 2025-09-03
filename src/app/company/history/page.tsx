@@ -46,6 +46,7 @@ const HISTORY_DATA: TimelineYear[] = [
 
 export default function CompanyHistoryPage() {
     const [hasScrolled, setHasScrolled] = useState(false);
+    const currentYear = new Date().getFullYear();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -58,26 +59,23 @@ export default function CompanyHistoryPage() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [hasScrolled]);
 
+    // 현재 년도와 이전 년도까지 자동으로 표시할지 결정하는 함수
+    const shouldShowAutomatically = (yearIndex: number) => {
+        const yearData = HISTORY_DATA[yearIndex];
+        return yearData && yearData.year >= currentYear - 1;
+    };
+
     const heroSection = useScrollAnimation({ delay: 150 });
 
-    // 각 타임라인에 대한 개별 useScrollAnimation 호출
-    const timeline2025 = useScrollAnimation({
-        delay: 300,
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-    });
-    const timeline2024 = useScrollAnimation({
-        delay: 0,
-        threshold: 0.3,
-        rootMargin: "0px 0px -150px 0px",
-    });
-    const timeline2023 = useScrollAnimation({
-        delay: 0,
-        threshold: 0.3,
-        rootMargin: "0px 0px -150px 0px",
-    });
-
-    const timelineRefs = [timeline2025, timeline2024, timeline2023];
+    // 동적으로 타임라인 애니메이션 생성
+    const timelineRefs = HISTORY_DATA.map((_, index) =>
+        useScrollAnimation({
+            delay: index === 0 ? 300 : 0,
+            threshold: index === 0 ? 0.1 : 0.3,
+            rootMargin:
+                index === 0 ? "0px 0px -50px 0px" : "0px 0px -150px 0px",
+        })
+    );
 
     return (
         <PageLayout
@@ -119,139 +117,112 @@ export default function CompanyHistoryPage() {
             <section className="bg-white py-16 lg:py-24 2xl:py-32">
                 <div className="max-w-4xl mx-auto px-6 sm:px-6 lg:px-8">
                     <div className="relative">
-                        <div className="">
-                            {HISTORY_DATA.map((block, blockIndex) => (
+                        {HISTORY_DATA.map((block, blockIndex) => (
+                            <div
+                                key={block.year}
+                                ref={timelineRefs[blockIndex]?.ref}
+                                className={`relative transition-all duration-700 ease-out ${
+                                    shouldShowAutomatically(blockIndex) ||
+                                    (hasScrolled &&
+                                        timelineRefs[blockIndex]?.isVisible)
+                                        ? "opacity-100 translate-y-0"
+                                        : "opacity-0 translate-y-8"
+                                }`}
+                                style={{
+                                    transitionDelay: `${blockIndex * 200}ms`,
+                                }}
+                            >
+                                {/* 연도와 도트 */}
                                 <div
-                                    key={block.year}
-                                    ref={timelineRefs[blockIndex]?.ref}
-                                    className={`relative transition-all duration-700 ease-out ${
-                                        (blockIndex <= 1 &&
-                                            timelineRefs[blockIndex]
-                                                ?.isVisible) ||
-                                        (blockIndex > 1 &&
-                                            hasScrolled &&
-                                            timelineRefs[blockIndex]?.isVisible)
-                                            ? "opacity-100 translate-y-0"
-                                            : "opacity-0 translate-y-8"
+                                    className={`relative flex items-start ${
+                                        blockIndex === 0
+                                            ? "min-h-[240px] lg:min-h-[270px] 2xl:min-h-[340px]"
+                                            : "min-h-[180px] lg:min-h-[200px] 2xl:min-h-[240px]"
                                     }`}
-                                    style={{
-                                        transitionDelay: `${
-                                            blockIndex * 200
-                                        }ms`,
-                                    }}
                                 >
-                                    {/* 연도와 도트 */}
-                                    <div
-                                        className={`relative flex items-start ${
-                                            blockIndex === 0
-                                                ? "min-h-[240px] lg:min-h-[270px] 2xl:min-h-[340px]"
-                                                : "min-h-[180px] lg:min-h-[200px] 2xl:min-h-[240px]"
-                                        }`}
-                                    >
-                                        {/* 연도 */}
-                                        <div className="pr-4 sm:pr-12 text-right">
-                                            <h3 className="text-xl sm:text-3xl font-bold text-background-dark">
-                                                {block.year}
-                                            </h3>
-                                        </div>
+                                    {/* 연도 */}
+                                    <div className="pr-4 sm:pr-12 text-right">
+                                        <h3 className="text-xl sm:text-3xl font-bold text-background-dark">
+                                            {block.year}
+                                        </h3>
+                                    </div>
 
-                                        {/* 도트와 수직라인 */}
-                                        <div className="relative flex flex-col items-center flex-shrink-0">
-                                            <div className="relative top-2 h-3 w-3 rounded-full bg-primary-purple z-10" />
-                                            {/* 모든 항목에 수직 라인 표시 */}
-                                            {blockIndex <
-                                                HISTORY_DATA.length - 1 && (
-                                                <div
-                                                    className={`w-1 mt-4 bg-primary-purple transition-all duration-1000 ease-out ${
+                                    {/* 도트와 수직라인 */}
+                                    <div className="relative flex flex-col items-center flex-shrink-0">
+                                        <div className="relative top-2 h-3 w-3 rounded-full bg-primary-purple z-10" />
+                                        {/* 모든 항목에 수직 라인 표시 */}
+                                        {blockIndex <
+                                            HISTORY_DATA.length - 1 && (
+                                            <div
+                                                className={`w-1 mt-4 bg-primary-purple transition-all duration-1000 ease-out ${
+                                                    hasScrolled &&
+                                                    timelineRefs[blockIndex + 1]
+                                                        ?.isVisible
+                                                        ? blockIndex === 0
+                                                            ? "h-64 lg:h-80 2xl:h-96 opacity-100"
+                                                            : "h-48 lg:h-56 2xl:h-64 opacity-100"
+                                                        : "h-0 opacity-0"
+                                                }`}
+                                                style={{
+                                                    transitionDelay:
                                                         hasScrolled &&
-                                                        timelineRefs[
-                                                            blockIndex + 1
-                                                        ]?.isVisible
-                                                            ? blockIndex === 0
-                                                                ? "h-64 lg:h-80 2xl:h-96 opacity-100"
-                                                                : "h-48 lg:h-56 2xl:h-64 opacity-100"
-                                                            : "h-0 opacity-0"
-                                                    }`}
-                                                    style={{
-                                                        transitionDelay:
-                                                            hasScrolled &&
-                                                            timelineRefs[
-                                                                blockIndex
-                                                            ]?.isVisible
-                                                                ? "300ms"
-                                                                : "0ms",
-                                                    }}
-                                                />
-                                            )}
-                                        </div>
+                                                        timelineRefs[blockIndex]
+                                                            ?.isVisible
+                                                            ? "300ms"
+                                                            : "0ms",
+                                                }}
+                                            />
+                                        )}
+                                    </div>
 
-                                        {/* 이벤트 목록 */}
-                                        <div className="ml-6 sm:ml-8 flex-1">
-                                            <div className="space-y-10 sm:space-y-12 lg:space-y-16 2xl:space-y-20 mt-1 sm:mt-0">
-                                                {block.events.map(
-                                                    (event, idx) => (
-                                                        <div
-                                                            key={`${block.year}-${idx}`}
-                                                            className={`flex gap-2 sm:gap-8 transition-all duration-700 ease-out ${
-                                                                (blockIndex <=
-                                                                    1 &&
-                                                                    timelineRefs[
-                                                                        blockIndex
-                                                                    ]
-                                                                        ?.isVisible) ||
-                                                                (blockIndex >
-                                                                    1 &&
-                                                                    hasScrolled &&
-                                                                    timelineRefs[
-                                                                        blockIndex
-                                                                    ]
-                                                                        ?.isVisible)
-                                                                    ? "opacity-100 translate-x-0"
-                                                                    : "opacity-0 translate-x-8"
-                                                            }`}
-                                                            style={{
-                                                                transitionDelay: `${
-                                                                    (blockIndex <=
-                                                                        1 &&
-                                                                        timelineRefs[
-                                                                            blockIndex
-                                                                        ]
-                                                                            ?.isVisible) ||
-                                                                    (blockIndex >
-                                                                        1 &&
-                                                                        hasScrolled &&
-                                                                        timelineRefs[
-                                                                            blockIndex
-                                                                        ]
-                                                                            ?.isVisible)
-                                                                        ? blockIndex *
-                                                                              200 +
-                                                                          idx *
-                                                                              150 +
-                                                                          400
-                                                                        : 0
-                                                                }ms`,
-                                                            }}
-                                                        >
-                                                            {/* 월 */}
-                                                            <div className="w-8 sm:w-12 text-gray-500 font-medium text-sm sm:text-lg">
-                                                                {event.month}
-                                                            </div>
-                                                            {/* 설명 */}
-                                                            <div className="flex-1 text-background-dark font-semibold text-sm sm:text-lg">
-                                                                {
-                                                                    event.description
-                                                                }
-                                                            </div>
+                                    {/* 이벤트 목록 */}
+                                    <div className="ml-6 sm:ml-8 flex-1">
+                                        <div className="space-y-10 sm:space-y-12 lg:space-y-16 2xl:space-y-20 mt-1 sm:mt-0">
+                                            {block.events.map((event, idx) => {
+                                                const isVisible =
+                                                    shouldShowAutomatically(
+                                                        blockIndex
+                                                    ) ||
+                                                    (hasScrolled &&
+                                                        timelineRefs[blockIndex]
+                                                            ?.isVisible);
+
+                                                return (
+                                                    <div
+                                                        key={`${block.year}-${idx}`}
+                                                        className={`flex gap-2 sm:gap-8 transition-all duration-700 ease-out ${
+                                                            isVisible
+                                                                ? "opacity-100 translate-x-0"
+                                                                : "opacity-0 translate-x-8"
+                                                        }`}
+                                                        style={{
+                                                            transitionDelay: `${
+                                                                isVisible
+                                                                    ? blockIndex *
+                                                                          200 +
+                                                                      idx *
+                                                                          150 +
+                                                                      400
+                                                                    : 0
+                                                            }ms`,
+                                                        }}
+                                                    >
+                                                        {/* 월 */}
+                                                        <div className="w-8 sm:w-12 text-gray-500 font-medium text-sm sm:text-lg">
+                                                            {event.month}
                                                         </div>
-                                                    )
-                                                )}
-                                            </div>
+                                                        {/* 설명 */}
+                                                        <div className="flex-1 text-background-dark font-semibold text-sm sm:text-lg">
+                                                            {event.description}
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
                                         </div>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

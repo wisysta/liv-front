@@ -11,7 +11,7 @@ function ApplicationInfoPage() {
     const descriptionAnimation = useScrollAnimation({ delay: 400 });
     return (
         <PageLayout
-            headerOverlay={false}
+            headerOverlay={true}
             fullHeight={false}
             headerVariant="light"
         >
@@ -42,12 +42,34 @@ function ApplicationInfoPage() {
                                 우리 가게도 해당이 될까요?
                             </h2>
 
-                            <p className="text-sm sm:text-base lg:text-lg 2xl:text-xl leading-relaxed font-normal">
+                            <p className="text-sm sm:text-base lg:text-lg 2xl:text-xl leading-relaxed font-normal mb-8 lg:mb-12">
                                 가게에서 배경음악(BGM), TV에서 음악 방송을
-                                켜두는 등 <br className="hidden lg:block" />
+                                켜두는 등 <br />
                                 매장에서 음악이 흘러나오고 있다면, 대상이 될 수
                                 있습니다.
                             </p>
+
+                            <a
+                                href="https://findcopyright.or.kr"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-primary-purple text-white font-semibold py-3 px-6 lg:px-8 rounded-full hover:bg-primary-purple/90 transition-colors text-sm lg:text-base"
+                            >
+                                <svg
+                                    className="w-5 h-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                    />
+                                </svg>
+                                저작권비즈니스지원센터
+                            </a>
                         </div>
                     </div>
                 </div>

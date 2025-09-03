@@ -189,8 +189,8 @@ export function HeroVision() {
                                 복잡한 음악 이용계약과 공연권료 납부 절차를
                                 하나로 통합해 <br /> 이용자에게는 편리함을
                                 제공하고, 창작자와 가창자 등 <br />
-                                권리자에게는 정당한 권리가 돌아가는 건강한 음악
-                                생태계를 <br /> 만들어갑니다
+                                권리자에게는 정당한 권리가 돌아가는 <br />
+                                건강한 음악 생태계를 만들어갑니다
                             </p>
 
                             <p className="text-sm sm:text-base lg:text-lg font-semibold">

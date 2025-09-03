@@ -1,35 +1,35 @@
 {
-  "type": "passenger_count",
-  "industries": [
-    {
-      "id": "aircraft",
-      "name": "항공기",
-      "data": [
+    "type": "passenger_count",
+    "industries": [
         {
-          "capacity": "0-200명",
-          "boarding": "17,000원",
-          "flying": "69,000원",
-          "producer": "-",
-          "performer": "-",
-          "total": "-"
-        },
-        {
-          "capacity": "200명-300명",
-          "boarding": "22,000원",
-          "flying": "92,000원",
-          "producer": "-",
-          "performer": "-",
-          "total": "-"
-        },
-        {
-          "capacity": "300명 이상",
-          "boarding": "26,000원",
-          "flying": "115,000원",
-          "producer": "-",
-          "performer": "-",
-          "total": "-"
+            "id": "aircraft",
+            "name": "항공기",
+            "data": [
+                {
+                    "capacity": "0 이상 200명 미만",
+                    "boarding": "17,000원",
+                    "flying": "69,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "-"
+                },
+                {
+                    "capacity": "200명 이상 300명 미만",
+                    "boarding": "22,000원",
+                    "flying": "92,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "-"
+                },
+                {
+                    "capacity": "300명 이상",
+                    "boarding": "26,000원",
+                    "flying": "115,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "-"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

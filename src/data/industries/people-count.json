@@ -6,35 +6,35 @@
             "name": "무도학원",
             "data": [
                 {
-                    "people": "0-50명",
+                    "people": "0 이상 50명 미만",
                     "copyright": "21,000원",
                     "producer": "16,170원",
                     "performer": "14,700원",
                     "total": "51,870원"
                 },
                 {
-                    "people": "50-100명",
+                    "people": "50명 이상 100명 미만",
                     "copyright": "26,000원",
                     "producer": "20,020원",
                     "performer": "18,200원",
                     "total": "64,220원"
                 },
                 {
-                    "people": "100-150명",
+                    "people": "100명 이상 150명 미만",
                     "copyright": "31,000원",
                     "producer": "23,870원",
                     "performer": "21,700원",
                     "total": "76,570원"
                 },
                 {
-                    "people": "150-200명",
+                    "people": "150명 이상 200명 미만",
                     "copyright": "36,000원",
                     "producer": "27,720원",
                     "performer": "25,200원",
                     "total": "88,920원"
                 },
                 {
-                    "people": "200-250명",
+                    "people": "200명 이상 250명 미만",
                     "copyright": "42,000원",
                     "producer": "32,340원",
                     "performer": "29,400원",
@@ -82,35 +82,35 @@
             "name": "에어로빅장",
             "data": [
                 {
-                    "people": "0-50명",
+                    "people": "0 이상 50명 미만",
                     "copyright": "21,000원",
                     "producer": "16,170원",
                     "performer": "14,700원",
                     "total": "51,870원"
                 },
                 {
-                    "people": "50-100명",
+                    "people": "50명 이상 100명 미만",
                     "copyright": "26,000원",
                     "producer": "20,020원",
                     "performer": "18,200원",
                     "total": "64,220원"
                 },
                 {
-                    "people": "100-150명",
+                    "people": "100명 이상 150명 미만",
                     "copyright": "31,000원",
                     "producer": "23,870원",
                     "performer": "21,700원",
                     "total": "76,570원"
                 },
                 {
-                    "people": "150-200명",
+                    "people": "150명 이상 200명 미만",
                     "copyright": "36,000원",
                     "producer": "27,720원",
                     "performer": "25,200원",
                     "total": "88,920원"
                 },
                 {
-                    "people": "200-250명",
+                    "people": "200명 이상 250명 미만",
                     "copyright": "42,000원",
                     "producer": "32,340원",
                     "performer": "29,400원",
@@ -158,74 +158,74 @@
             "name": "노래교실",
             "data": [
                 {
-                    "people": "0-50명",
+                    "people": "0 이상 50명 미만",
                     "copyright": "21,000원",
-                    "producer": "16,170원",
-                    "performer": "14,700원",
-                    "total": "51,870원"
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "21,000원"
                 },
                 {
-                    "people": "50-100명",
+                    "people": "50명 이상 100명 미만",
                     "copyright": "26,000원",
-                    "producer": "20,020원",
-                    "performer": "18,200원",
-                    "total": "64,220원"
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "26,000원"
                 },
                 {
-                    "people": "100-150명",
+                    "people": "100명 이상 150명 미만",
                     "copyright": "31,000원",
-                    "producer": "23,870원",
-                    "performer": "21,700원",
-                    "total": "76,570원"
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "31,000원"
                 },
                 {
-                    "people": "150-200명",
+                    "people": "150명 이상 200명 미만",
                     "copyright": "36,000원",
-                    "producer": "27,720원",
-                    "performer": "25,200원",
-                    "total": "88,920원"
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "36,000원"
                 },
                 {
-                    "people": "200-250명",
+                    "people": "200명 이상 250명 미만",
                     "copyright": "42,000원",
-                    "producer": "32,340원",
-                    "performer": "29,400원",
-                    "total": "103,740원"
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "42,000원"
                 },
                 {
                     "people": "250-300명",
                     "copyright": "52,000원",
-                    "producer": "40,040원",
-                    "performer": "36,400원",
-                    "total": "128,440원"
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "52,000원"
                 },
                 {
                     "people": "300-350명",
                     "copyright": "63,000원",
-                    "producer": "48,510원",
-                    "performer": "44,100원",
-                    "total": "155,610원"
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "63,000원"
                 },
                 {
                     "people": "350-400명",
                     "copyright": "73,000원",
-                    "producer": "56,210원",
-                    "performer": "51,100원",
-                    "total": "180,310원"
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "73,000원"
                 },
                 {
                     "people": "400-500명",
                     "copyright": "89,000원",
-                    "producer": "68,530원",
-                    "performer": "62,300원",
-                    "total": "219,830원"
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "89,000원"
                 },
                 {
                     "people": "500명 이상",
                     "copyright": "105,000원",
-                    "producer": "80,850원",
-                    "performer": "73,500원",
-                    "total": "259,350원"
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "105,000원"
                 }
             ]
         },

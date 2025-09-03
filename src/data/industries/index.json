@@ -21,7 +21,6 @@
             "type": "standard"
         },
         { "id": "draft_beer", "name": "생맥주 전문점", "type": "standard" },
-        { "id": "restaurant", "name": "일반음식점", "type": "standard" },
         { "id": "bar", "name": "기타 주점", "type": "standard" },
         { "id": "gym", "name": "체력단련장", "type": "standard" },
         {
@@ -103,7 +102,6 @@
             "name": "나이트클럽",
             "type": "entertainment_area"
         },
-        { "id": "room_salon", "name": "룸살롱", "type": "entertainment_area" },
         {
             "id": "entertainment_bar",
             "name": "유흥주점",

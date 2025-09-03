@@ -1,53 +1,53 @@
 {
-  "type": "casino_area",
-  "industries": [
-    {
-      "id": "casino",
-      "name": "카지노",
-      "data": [
+    "type": "casino_area",
+    "industries": [
         {
-          "area": "0-1000㎡",
-          "copyright": "35,000원",
-          "producer": "19,250원",
-          "performer": "17,500원",
-          "total": "71,750원"
-        },
-        {
-          "area": "1000㎡-1500㎡",
-          "copyright": "70,000원",
-          "producer": "38,500원",
-          "performer": "35,000원",
-          "total": "143,500원"
-        },
-        {
-          "area": "1500㎡-2000㎡",
-          "copyright": "140,000원",
-          "producer": "77,000원",
-          "performer": "70,000원",
-          "total": "287,000원"
-        },
-        {
-          "area": "2000㎡-2500㎡",
-          "copyright": "200,000원",
-          "producer": "110,000원",
-          "performer": "100,000원",
-          "total": "410,000원"
-        },
-        {
-          "area": "2500㎡-3000㎡",
-          "copyright": "260,000원",
-          "producer": "143,000원",
-          "performer": "130,000원",
-          "total": "533,000원"
-        },
-        {
-          "area": "3000㎡ 이상",
-          "copyright": "320,000원",
-          "producer": "176,000원",
-          "performer": "160,000원",
-          "total": "656,000원"
+            "id": "casino",
+            "name": "카지노",
+            "data": [
+                {
+                    "area": "0-1000㎡ 미만",
+                    "copyright": "35,000원",
+                    "producer": "19,250원",
+                    "performer": "17,500원",
+                    "total": "71,750원"
+                },
+                {
+                    "area": "1000㎡ 이상 1500㎡ 미만",
+                    "copyright": "70,000원",
+                    "producer": "38,500원",
+                    "performer": "35,000원",
+                    "total": "143,500원"
+                },
+                {
+                    "area": "1500㎡ 이상 2000㎡ 미만",
+                    "copyright": "140,000원",
+                    "producer": "77,000원",
+                    "performer": "70,000원",
+                    "total": "287,000원"
+                },
+                {
+                    "area": "2000㎡ 이상 2500㎡ 미만",
+                    "copyright": "200,000원",
+                    "producer": "110,000원",
+                    "performer": "100,000원",
+                    "total": "410,000원"
+                },
+                {
+                    "area": "2500㎡ 이상 3000㎡ 미만",
+                    "copyright": "260,000원",
+                    "producer": "143,000원",
+                    "performer": "130,000원",
+                    "total": "533,000원"
+                },
+                {
+                    "area": "3000㎡ 이상",
+                    "copyright": "320,000원",
+                    "producer": "176,000원",
+                    "performer": "160,000원",
+                    "total": "656,000원"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

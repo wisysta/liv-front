@@ -25,7 +25,7 @@ export default function IndustryPerformanceFeePage() {
 
     return (
         <PageLayout
-            headerOverlay={false}
+            headerOverlay={true}
             fullHeight={false}
             headerVariant="light"
         >

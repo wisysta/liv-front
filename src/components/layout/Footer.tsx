@@ -58,8 +58,8 @@ export function Footer() {
                 <div className="space-y-2">
                     <h3 className="font-bold text-sm mb-3 sm:mb-4">고객센터</h3>
                     <div className="text-xs space-y-1.5 sm:space-y-2 text-gray-300">
-                        <p>평일 : 09:00 ~ 18:00</p>
-                        <p>점심시간 : 12:00 - 13:00</p>
+                        <p>09:30 ~ 18:30 평일</p>
+                        <p>12:30 ~ 13:30 점심시간</p>
                         <p>주말 및 공휴일 휴무</p>
                     </div>
                 </div>

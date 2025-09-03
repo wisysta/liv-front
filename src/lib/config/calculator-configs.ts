@@ -84,7 +84,7 @@ export const areaBasedConfig: CalculationConfig = {
                 isBold: true,
             },
             {
-                label: "월 매장음악사용료",
+                label: "한국음악저작권협회 납부액",
                 amount: result.neighboringAmount,
                 isBold: true,
             },
@@ -173,7 +173,7 @@ export const hotelConfig: CalculationConfig = {
                     isBold: true,
                 },
                 {
-                    label: "월 매장음악사용료",
+                    label: "한국음악저작권협회 납부액",
                     amount: result.neighboringAmount,
                     isBold: true,
                 },
@@ -237,7 +237,7 @@ export const condoConfig: CalculationConfig = {
                     isBold: true,
                 },
                 {
-                    label: "월 매장음악사용료",
+                    label: "한국음악저작권협회 납부액",
                     amount: result.neighboringAmount,
                     isBold: true,
                 },
@@ -299,7 +299,7 @@ export const golfCourseConfig: CalculationConfig = {
                     isBold: true,
                 },
                 {
-                    label: "월 매장음악사용료",
+                    label: "한국음악저작권협회 납부액",
                     amount: result.neighboringAmount,
                     isBold: true,
                 },
@@ -425,7 +425,7 @@ export const karaokeConfig: CalculationConfig = {
                     isBold: true,
                 },
                 {
-                    label: "월 매장음악사용료",
+                    label: "한국음악저작권협회 납부액",
                     amount: result.neighboringAmount,
                     isBold: true,
                 },
@@ -489,7 +489,7 @@ export const personBasedConfig: CalculationConfig = {
                     isBold: true,
                 },
                 {
-                    label: "월 매장음악사용료",
+                    label: "한국음악저작권협회 납부액",
                     amount: result.storeUsageFee,
                     isBold: true,
                 },
@@ -589,7 +589,7 @@ export const gameRoomConfig: CalculationConfig = {
                     isBold: true,
                 },
                 {
-                    label: "월 매장음악사용료",
+                    label: "한국음악저작권협회 납부액",
                     amount: result.neighboringAmount,
                     isBold: true,
                 },

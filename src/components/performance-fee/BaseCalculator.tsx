@@ -42,6 +42,7 @@ export interface CalculationResultData {
     customData?: any; // 노래연습장 방 상세 정보 등 커스텀 데이터
     isExempt?: boolean; // 징수제외 여부
     exemptMessage?: string; // 징수제외 메시지
+    hasNeighboringRights?: boolean; // 저작인접권 여부
 }
 
 // 공통 UI 컴포넌트들
@@ -209,9 +210,25 @@ function SelectField({
     const selectedOption = options.find((opt) => opt.value === value);
 
     // 검색어로 필터링된 옵션들
-    const filteredOptions = options.filter((option) =>
-        option.label.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredOptions = options.filter((option) => {
+        const searchLower = searchTerm.toLowerCase();
+        const optionLabelLower = option.label.toLowerCase();
+
+        // 기본 검색
+        if (optionLabelLower.includes(searchLower)) {
+            return true;
+        }
+
+        // 별칭 검색 (헬스, 헬스장 -> 체력단련장)
+        if (
+            (searchLower.includes("헬스") || searchLower.includes("헬스장")) &&
+            optionLabelLower.includes("체력단련장")
+        ) {
+            return true;
+        }
+
+        return false;
+    });
 
     // 드롭다운 닫기
     const closeDropdown = () => {
@@ -266,7 +283,7 @@ function SelectField({
                         className="fixed inset-0 backdrop-blur-sm bg-white/20 flex items-center justify-center z-50"
                         onClick={handleBackgroundClick}
                     >
-                        <div className="bg-white rounded-lg shadow-xl border border-gray-200 w-full max-w-md mx-4 max-h-96 flex flex-col">
+                        <div className="bg-white rounded-lg shadow-xl border border-gray-200 w-full max-w-md mx-4 max-h-[480px] flex flex-col">
                             <div className="py-6 px-4 border-b border-gray-200 text-center">
                                 <h3 className="text-lg font-bold text-background-dark mb-2">
                                     해당하는 업종을 선택하세요
@@ -293,7 +310,7 @@ function SelectField({
                             </div>
 
                             {/* 옵션 목록 */}
-                            <div className="overflow-y-auto max-h-100">
+                            <div className="overflow-y-auto max-h-[320px]">
                                 {filteredOptions.length > 0 ? (
                                     filteredOptions.map((option) => (
                                         <button
@@ -412,6 +429,7 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
             copyrightAmount: 0,
             neighboringAmount: 0,
             totalAmount: -1, // 징수 대상이 아님 메시지 방지
+            hasNeighboringRights: true, // 기본값은 저작인접권 있음
             breakdown: [
                 {
                     label: "리브뮤직 납부 공연권료(3단체)",
@@ -435,7 +453,7 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
     return (
         <div>
             <h3 className="text-base sm:text-lg lg:text-xl 2xl:text-2xl font-bold text-black mb-6 sm:mb-8">
-                이용권 금액 조회 결과
+                공연권료 계산 결과
             </h3>
 
             {result.isExempt ? (
@@ -478,15 +496,24 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
                                     {item.amount.toLocaleString()}원
                                 </span>
                             </div>
-                            {/* 리브뮤직 납부 공연권료(3단체) 아래에 단체 정보 표시 */}
-                            {item.label.includes(
+                            {/* 리브뮤직 납부 공연권료 아래에 단체 정보 표시 */}
+                            {(item.label.includes(
                                 "리브뮤직 납부 공연권료(3단체)"
-                            ) && (
+                            ) ||
+                                item.label.includes(
+                                    "리브뮤직 납부 공연권료"
+                                )) && (
                                 <div className="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2 ml-0">
-                                    함께하는음악저작권협회,
-                                    한국음악실연자연합회,
-                                    <br />
-                                    한국연예제작자협회
+                                    {result.hasNeighboringRights !== false ? (
+                                        <>
+                                            함께하는음악저작권협회,
+                                            한국음악실연자연합회,
+                                            <br />
+                                            한국연예제작자협회
+                                        </>
+                                    ) : (
+                                        "함께하는음악저작권협회"
+                                    )}
                                 </div>
                             )}
                         </div>
@@ -502,9 +529,11 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
                                 {result.customData?.isAnnualPayment
                                     ? "연 납부액"
                                     : "월 납부액"}{" "}
-                                <span className="text-xs sm:text-sm font-normal">
-                                    (VAT 포함)
-                                </span>
+                                {result.hasNeighboringRights !== false && (
+                                    <span className="text-xs sm:text-sm font-normal">
+                                        (VAT 포함)
+                                    </span>
+                                )}
                             </div>
                             <div className="text-base sm:text-xl lg:text-2xl 2xl:text-3xl font-bold">
                                 {(result.totalAmount === -1
@@ -521,7 +550,7 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
             {/* 그룹별 비고 */}
             {result.industryNotes && result.industryNotes.length > 0 && (
                 <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200">
-                    <h4 className="text-xs sm:text-sm font-semibold text-gray-800 mb-2 sm:mb-3">
+                    <h4 className="text-xs sm:text-base font-semibold text-gray-800 mb-2 sm:mb-3">
                         업종별 안내사항
                     </h4>
                     <ul className="text-xs text-gray-700 space-y-1 sm:space-y-1.5">
@@ -531,7 +560,7 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
                                     <span className="mr-1 sm:mr-2 text-gray-600 text-xs sm:text-sm">
                                         •
                                     </span>
-                                    <span className="leading-relaxed">
+                                    <span className="leading-relaxed text-xs lg:text-sm">
                                         {note}
                                     </span>
                                 </li>
@@ -543,7 +572,7 @@ function CalculationResult({ result, isCalculating }: CalculationResultProps) {
 
             {/* 일반 안내사항 */}
             <div className="mt-4 sm:mt-6">
-                <p className="text-xs text-gray-700 leading-relaxed">
+                <p className="text-xs lg:text-[13px] text-gray-700 leading-relaxed">
                     - 한국음악저작권협회(KOMCA)의 공연권은 리브뮤직에서 통합
                     징수하지 않습니다.
                     <br />
@@ -821,7 +850,7 @@ export function BaseCalculator({
                         }`}
                     >
                         <h3 className="text-base sm:text-lg font-bold text-black mb-6">
-                            이용권 금액 조회 결과
+                            공연권료 계산 결과
                         </h3>
 
                         <CalculationResult
@@ -851,7 +880,7 @@ export function BaseCalculator({
                                     d="M9 5l7 7-7 7"
                                 />
                             </svg>
-                            업종별 공연권료
+                            공연권료 다시 계산하기
                         </button>
                     </div>
                 )}

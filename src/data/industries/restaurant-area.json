@@ -1,69 +1,309 @@
 {
-  "type": "restaurant_area",
-  "industries": [
-    {
-      "id": "restaurant",
-      "name": "레스토랑",
-      "data": [
-        { "area": "0-66㎡", "copyright": "23,000원", "producer": "-", "performer": "-", "total": "23,000원" },
-        { "area": "66㎡-99㎡", "copyright": "23,000원", "producer": "-", "performer": "-", "total": "23,000원" },
-        { "area": "99㎡-132㎡", "copyright": "28,000원", "producer": "-", "performer": "-", "total": "28,000원" },
-        { "area": "132㎡-165㎡", "copyright": "34,000원", "producer": "-", "performer": "-", "total": "34,000원" },
-        { "area": "165㎡-231㎡", "copyright": "46,000원", "producer": "-", "performer": "-", "total": "46,000원" },
-        { "area": "231㎡-330㎡", "copyright": "57,000원", "producer": "-", "performer": "-", "total": "57,000원" },
-        { "area": "330㎡-490㎡", "copyright": "69,000원", "producer": "-", "performer": "-", "total": "69,000원" },
-        { "area": "490㎡-660㎡", "copyright": "81,000원", "producer": "-", "performer": "-", "total": "81,000원" },
-        { "area": "660㎡-990㎡", "copyright": "92,000원", "producer": "-", "performer": "-", "total": "92,000원" },
-        { "area": "990㎡ 이상", "copyright": "103,000원", "producer": "-", "performer": "-", "total": "103,000원" }
-      ]
-    },
-    {
-      "id": "coffee_shop",
-      "name": "커피숍",
-      "data": [
-        { "area": "0-66㎡", "copyright": "23,000원", "producer": "-", "performer": "-", "total": "23,000원" },
-        { "area": "66㎡-99㎡", "copyright": "23,000원", "producer": "-", "performer": "-", "total": "23,000원" },
-        { "area": "99㎡-132㎡", "copyright": "28,000원", "producer": "-", "performer": "-", "total": "28,000원" },
-        { "area": "132㎡-165㎡", "copyright": "34,000원", "producer": "-", "performer": "-", "total": "34,000원" },
-        { "area": "165㎡-231㎡", "copyright": "46,000원", "producer": "-", "performer": "-", "total": "46,000원" },
-        { "area": "231㎡-330㎡", "copyright": "57,000원", "producer": "-", "performer": "-", "total": "57,000원" },
-        { "area": "330㎡-490㎡", "copyright": "69,000원", "producer": "-", "performer": "-", "total": "69,000원" },
-        { "area": "490㎡-660㎡", "copyright": "81,000원", "producer": "-", "performer": "-", "total": "81,000원" },
-        { "area": "660㎡-990㎡", "copyright": "92,000원", "producer": "-", "performer": "-", "total": "92,000원" },
-        { "area": "990㎡ 이상", "copyright": "103,000원", "producer": "-", "performer": "-", "total": "103,000원" }
-      ]
-    },
-    {
-      "id": "cafe_performance",
-      "name": "카페에서 음악 공연",
-      "data": [
-        { "area": "0-66㎡", "copyright": "23,000원", "producer": "-", "performer": "-", "total": "23,000원" },
-        { "area": "66㎡-99㎡", "copyright": "23,000원", "producer": "-", "performer": "-", "total": "23,000원" },
-        { "area": "99㎡-132㎡", "copyright": "28,000원", "producer": "-", "performer": "-", "total": "28,000원" },
-        { "area": "132㎡-165㎡", "copyright": "34,000원", "producer": "-", "performer": "-", "total": "34,000원" },
-        { "area": "165㎡-231㎡", "copyright": "46,000원", "producer": "-", "performer": "-", "total": "46,000원" },
-        { "area": "231㎡-330㎡", "copyright": "57,000원", "producer": "-", "performer": "-", "total": "57,000원" },
-        { "area": "330㎡-490㎡", "copyright": "69,000원", "producer": "-", "performer": "-", "total": "69,000원" },
-        { "area": "490㎡-660㎡", "copyright": "81,000원", "producer": "-", "performer": "-", "total": "81,000원" },
-        { "area": "660㎡-990㎡", "copyright": "92,000원", "producer": "-", "performer": "-", "total": "92,000원" },
-        { "area": "990㎡ 이상", "copyright": "103,000원", "producer": "-", "performer": "-", "total": "103,000원" }
-      ]
-    },
-    {
-      "id": "buffet_performance",
-      "name": "뷔페에서 음악 공연",
-      "data": [
-        { "area": "0-66㎡", "copyright": "23,000원", "producer": "-", "performer": "-", "total": "23,000원" },
-        { "area": "66㎡-99㎡", "copyright": "23,000원", "producer": "-", "performer": "-", "total": "23,000원" },
-        { "area": "99㎡-132㎡", "copyright": "28,000원", "producer": "-", "performer": "-", "total": "28,000원" },
-        { "area": "132㎡-165㎡", "copyright": "34,000원", "producer": "-", "performer": "-", "total": "34,000원" },
-        { "area": "165㎡-231㎡", "copyright": "46,000원", "producer": "-", "performer": "-", "total": "46,000원" },
-        { "area": "231㎡-330㎡", "copyright": "57,000원", "producer": "-", "performer": "-", "total": "57,000원" },
-        { "area": "330㎡-490㎡", "copyright": "69,000원", "producer": "-", "performer": "-", "total": "69,000원" },
-        { "area": "490㎡-660㎡", "copyright": "81,000원", "producer": "-", "performer": "-", "total": "81,000원" },
-        { "area": "660㎡-990㎡", "copyright": "92,000원", "producer": "-", "performer": "-", "total": "92,000원" },
-        { "area": "990㎡ 이상", "copyright": "103,000원", "producer": "-", "performer": "-", "total": "103,000원" }
-      ]
-    }
-  ]
+    "type": "restaurant_area",
+    "industries": [
+        {
+            "id": "restaurant",
+            "name": "레스토랑",
+            "data": [
+                {
+                    "area": "0-66㎡ 미만",
+                    "copyright": "23,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "23,000원"
+                },
+                {
+                    "area": "66㎡ 이상 99㎡",
+                    "copyright": "23,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "23,000원"
+                },
+                {
+                    "area": "99㎡ 이상 132㎡",
+                    "copyright": "28,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "28,000원"
+                },
+                {
+                    "area": "132㎡ 이상 165㎡",
+                    "copyright": "34,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "34,000원"
+                },
+                {
+                    "area": "165㎡ 이상 231㎡",
+                    "copyright": "46,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "46,000원"
+                },
+                {
+                    "area": "231㎡ 이상 330㎡",
+                    "copyright": "57,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "57,000원"
+                },
+                {
+                    "area": "330㎡ 이상 490㎡",
+                    "copyright": "69,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "69,000원"
+                },
+                {
+                    "area": "490㎡ 이상 660㎡",
+                    "copyright": "81,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "81,000원"
+                },
+                {
+                    "area": "660㎡ 이상 990㎡",
+                    "copyright": "92,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "92,000원"
+                },
+                {
+                    "area": "990㎡ 이상",
+                    "copyright": "103,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "103,000원"
+                }
+            ]
+        },
+        {
+            "id": "coffee_shop",
+            "name": "커피숍",
+            "data": [
+                {
+                    "area": "0-66㎡ 미만",
+                    "copyright": "23,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "23,000원"
+                },
+                {
+                    "area": "66㎡ 이상 99㎡",
+                    "copyright": "23,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "23,000원"
+                },
+                {
+                    "area": "99㎡ 이상 132㎡",
+                    "copyright": "28,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "28,000원"
+                },
+                {
+                    "area": "132㎡ 이상 165㎡",
+                    "copyright": "34,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "34,000원"
+                },
+                {
+                    "area": "165㎡ 이상 231㎡",
+                    "copyright": "46,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "46,000원"
+                },
+                {
+                    "area": "231㎡ 이상 330㎡",
+                    "copyright": "57,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "57,000원"
+                },
+                {
+                    "area": "330㎡ 이상 490㎡",
+                    "copyright": "69,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "69,000원"
+                },
+                {
+                    "area": "490㎡ 이상 660㎡",
+                    "copyright": "81,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "81,000원"
+                },
+                {
+                    "area": "660㎡ 이상 990㎡",
+                    "copyright": "92,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "92,000원"
+                },
+                {
+                    "area": "990㎡ 이상",
+                    "copyright": "103,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "103,000원"
+                }
+            ]
+        },
+        {
+            "id": "cafe_performance",
+            "name": "카페에서 음악 공연",
+            "data": [
+                {
+                    "area": "0-66㎡ 미만",
+                    "copyright": "23,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "23,000원"
+                },
+                {
+                    "area": "66㎡ 이상 99㎡",
+                    "copyright": "23,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "23,000원"
+                },
+                {
+                    "area": "99㎡ 이상 132㎡",
+                    "copyright": "28,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "28,000원"
+                },
+                {
+                    "area": "132㎡ 이상 165㎡",
+                    "copyright": "34,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "34,000원"
+                },
+                {
+                    "area": "165㎡ 이상 231㎡",
+                    "copyright": "46,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "46,000원"
+                },
+                {
+                    "area": "231㎡ 이상 330㎡",
+                    "copyright": "57,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "57,000원"
+                },
+                {
+                    "area": "330㎡ 이상 490㎡",
+                    "copyright": "69,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "69,000원"
+                },
+                {
+                    "area": "490㎡ 이상 660㎡",
+                    "copyright": "81,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "81,000원"
+                },
+                {
+                    "area": "660㎡ 이상 990㎡",
+                    "copyright": "92,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "92,000원"
+                },
+                {
+                    "area": "990㎡ 이상",
+                    "copyright": "103,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "103,000원"
+                }
+            ]
+        },
+        {
+            "id": "buffet_performance",
+            "name": "뷔페에서 음악 공연",
+            "data": [
+                {
+                    "area": "0-66㎡ 미만",
+                    "copyright": "23,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "23,000원"
+                },
+                {
+                    "area": "66㎡ 이상 99㎡",
+                    "copyright": "23,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "23,000원"
+                },
+                {
+                    "area": "99㎡ 이상 132㎡",
+                    "copyright": "28,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "28,000원"
+                },
+                {
+                    "area": "132㎡ 이상 165㎡",
+                    "copyright": "34,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "34,000원"
+                },
+                {
+                    "area": "165㎡ 이상 231㎡",
+                    "copyright": "46,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "46,000원"
+                },
+                {
+                    "area": "231㎡ 이상 330㎡",
+                    "copyright": "57,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "57,000원"
+                },
+                {
+                    "area": "330㎡ 이상 490㎡",
+                    "copyright": "69,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "69,000원"
+                },
+                {
+                    "area": "490㎡ 이상 660㎡",
+                    "copyright": "81,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "81,000원"
+                },
+                {
+                    "area": "660㎡ 이상 990㎡",
+                    "copyright": "92,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "92,000원"
+                },
+                {
+                    "area": "990㎡ 이상",
+                    "copyright": "103,000원",
+                    "producer": "-",
+                    "performer": "-",
+                    "total": "103,000원"
+                }
+            ]
+        }
+    ]
 }

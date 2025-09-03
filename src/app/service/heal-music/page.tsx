@@ -11,8 +11,14 @@ export default function HealMusicPage() {
     // 타이핑 애니메이션 상태
     const [typingText, setTypingText] = useState("");
     const [typingCompleted, setTypingCompleted] = useState(false);
-    const fullText =
+    const [isMobile, setIsMobile] = useState(false);
+
+    const fullTextDesktop =
         "Heal Music은 단순한 라이선스를 넘어,\n건강한 산업 생태계를 함께 만들어가는 상생의 시작점입니다.";
+    const fullTextMobile =
+        "Heal Music은 단순한 라이선스를 넘어,\n건강한 산업 생태계를 함께 만들어가는\n상생의 시작점입니다.";
+
+    const fullText = isMobile ? fullTextMobile : fullTextDesktop;
 
     // 스크롤 애니메이션 훅들
     const sectionContainer = useScrollAnimation({ delay: 0 }); // 전체 섹션용
@@ -30,6 +36,24 @@ export default function HealMusicPage() {
         false,
         false,
     ]);
+
+    // 화면 크기 감지
+    useEffect(() => {
+        const checkMobile = () => {
+            const newIsMobile = window.innerWidth < 1024; // lg 브레이크포인트
+            if (newIsMobile !== isMobile) {
+                setIsMobile(newIsMobile);
+                // 화면 크기가 변경되면 타이핑 텍스트 리셋
+                setTypingText("");
+                setTypingCompleted(false);
+            }
+        };
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+
+        return () => window.removeEventListener("resize", checkMobile);
+    }, [isMobile]);
 
     // 타이핑 애니메이션 효과
     useEffect(() => {
@@ -109,13 +133,28 @@ export default function HealMusicPage() {
                         className="space-y-12 lg:space-y-16 text-background-dark"
                     >
                         <p className="text-base sm:text-lg lg:text-xl 2xl:text-2xl leading-relaxed font-normal">
-                            그동안 음악 사용과 관련해 명확하지 않은 기준으로
-                            인해
-                            <br />
-                            혼란을 겪었던 현장의 목소리를 듣고,
-                            <br />
-                            리브뮤직은 이용자와 음악 권리자 모두가 만족할 수
-                            있는 구조를 고민했습니다
+                            {/* 데스크톱 버전 */}
+                            <span className="hidden lg:inline">
+                                그동안 음악 사용과 관련해 명확하지 않은 기준으로
+                                인해
+                                <br />
+                                혼란을 겪었던 현장의 목소리를 듣고,
+                                <br />
+                                리브뮤직은 이용자와 음악 권리자 모두가 만족할 수
+                                있는 구조를 고민했습니다
+                            </span>
+                            {/* 모바일 버전 */}
+                            <span className="lg:hidden">
+                                그 동안 음악 사용과 관련해
+                                <br />
+                                명확하지 않은 기준으로 인해
+                                <br />
+                                혼란을 겪었던 현장의 목소리를 듣고,
+                                <br />
+                                리브뮤직은 이용자와 음악 권리자 모두가
+                                <br />
+                                만족할 수 있는 구조를 고민했습니다.
+                            </span>
                         </p>
                         <p
                             ref={typingParagraph.ref}

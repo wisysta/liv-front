@@ -9,8 +9,8 @@ import { siteConfig } from "@/config/site";
 export const viewport = {
     width: "device-width",
     initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
+    maximumScale: 2,
+    userScalable: true,
     viewportFit: "cover",
 };
 

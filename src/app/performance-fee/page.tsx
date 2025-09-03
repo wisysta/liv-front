@@ -34,7 +34,7 @@ export default function PerformanceFeeInfoPage() {
                     {
                         text: "손님이 있는 매장에서 음악을 트는 것, 유튜브 영상이나 TV를 재생해 음악이 흘러나오는 경우,\n라이브 공연, DJ 세션, 이벤트 음악 활용 등 모두 공연에 해당됩니다",
                         mobileText:
-                            "손님이 있는 매장에서 음악을 트는 것,\n유튜브 영상이나 TV를 재생해 음악이 흘러나오는 경우,\n라이브 공연, DJ 세션, 이벤트 음악 활용 등 모두\n 공연에 해당됩니다",
+                            "손님이 있는 매장에서 음악을 트는 것,\n유튜브 영상이나 TV를 재생해 음악이 흘러나오는 경우,\n라이브 공연, DJ 세션, 이벤트 음악 활용 등\n모두 공연에 해당됩니다",
                         className: "text-base lg:text-lg 2xl:text-xl",
                     },
                 ]}
@@ -91,7 +91,7 @@ export default function PerformanceFeeInfoPage() {
                             </p>
 
                             <Link
-                                href="#calculator"
+                                href="/performance-fee/calculator"
                                 className="inline-block bg-primary-purple text-white font-semibold py-3 px-8 lg:px-12 rounded-full hover:bg-primary-purple/90 transition-colors text-sm lg:text-base mb-0 sm:mb-8 lg:mb-14"
                             >
                                 공연권료 계산기

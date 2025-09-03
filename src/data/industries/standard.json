@@ -6,35 +6,35 @@
             "name": "커피전문점",
             "data": [
                 {
-                    "area": "50㎡-100㎡",
+                    "area": "50㎡ 이상 100㎡ 미만",
                     "copyright": "2,000원",
                     "producer": "1,100원",
                     "performer": "1,000원",
                     "total": "4,100원"
                 },
                 {
-                    "area": "100㎡-200㎡",
+                    "area": "100㎡ 이상 200㎡ 미만",
                     "copyright": "3,600원",
                     "producer": "1,980원",
                     "performer": "1,800원",
                     "total": "7,380원"
                 },
                 {
-                    "area": "200㎡-300㎡",
+                    "area": "200㎡ 이상 300㎡ 미만",
                     "copyright": "4,900원",
                     "producer": "2,695원",
                     "performer": "2,450원",
                     "total": "10,045원"
                 },
                 {
-                    "area": "300㎡-500㎡",
+                    "area": "300㎡ 이상 500㎡ 미만",
                     "copyright": "6,200원",
                     "producer": "3,410원",
                     "performer": "3,100원",
                     "total": "12,710원"
                 },
                 {
-                    "area": "500㎡-1000㎡",
+                    "area": "500㎡ 이상 1000㎡ 미만",
                     "copyright": "7,800원",
                     "producer": "4,290원",
                     "performer": "3,900원",
@@ -54,35 +54,35 @@
             "name": "일반음식점",
             "data": [
                 {
-                    "area": "50㎡-100㎡",
+                    "area": "50㎡ 이상 100㎡ 미만",
                     "copyright": "1,800원",
                     "producer": "990원",
                     "performer": "900원",
                     "total": "3,690원"
                 },
                 {
-                    "area": "100㎡-200㎡",
+                    "area": "100㎡ 이상 200㎡ 미만",
                     "copyright": "3,240원",
                     "producer": "1,782원",
                     "performer": "1,620원",
                     "total": "6,642원"
                 },
                 {
-                    "area": "200㎡-300㎡",
+                    "area": "200㎡ 이상 300㎡ 미만",
                     "copyright": "4,410원",
                     "producer": "2,425원",
                     "performer": "2,205원",
                     "total": "9,040원"
                 },
                 {
-                    "area": "300㎡-500㎡",
+                    "area": "300㎡ 이상 500㎡ 미만",
                     "copyright": "5,580원",
                     "producer": "3,069원",
                     "performer": "2,790원",
                     "total": "11,439원"
                 },
                 {
-                    "area": "500㎡-1000㎡",
+                    "area": "500㎡ 이상 1000㎡ 미만",
                     "copyright": "7,020원",
                     "producer": "3,861원",
                     "performer": "3,510원",
@@ -102,35 +102,35 @@
             "name": "기타 주점",
             "data": [
                 {
-                    "area": "50㎡-100㎡",
+                    "area": "50㎡ 이상 100㎡ 미만",
                     "copyright": "2,000원",
                     "producer": "1,100원",
                     "performer": "1,000원",
                     "total": "4,100원"
                 },
                 {
-                    "area": "100㎡-200㎡",
+                    "area": "100㎡ 이상 200㎡ 미만",
                     "copyright": "3,600원",
                     "producer": "1,980원",
                     "performer": "1,800원",
                     "total": "7,380원"
                 },
                 {
-                    "area": "200㎡-300㎡",
+                    "area": "200㎡ 이상 300㎡ 미만",
                     "copyright": "4,900원",
                     "producer": "2,695원",
                     "performer": "2,450원",
                     "total": "10,045원"
                 },
                 {
-                    "area": "300㎡-500㎡",
+                    "area": "300㎡ 이상 500㎡ 미만",
                     "copyright": "6,200원",
                     "producer": "3,410원",
                     "performer": "3,100원",
                     "total": "12,710원"
                 },
                 {
-                    "area": "500㎡-1000㎡",
+                    "area": "500㎡ 이상 1000㎡ 미만",
                     "copyright": "7,800원",
                     "producer": "4,290원",
                     "performer": "3,900원",
@@ -150,35 +150,35 @@
             "name": "체력단련장",
             "data": [
                 {
-                    "area": "50㎡-100㎡",
+                    "area": "50㎡ 이상 100㎡ 미만",
                     "copyright": "5,700원",
                     "producer": "3,135원",
                     "performer": "2,850원",
                     "total": "11,685원"
                 },
                 {
-                    "area": "100㎡-200㎡",
+                    "area": "100㎡ 이상 200㎡ 미만",
                     "copyright": "11,000원",
                     "producer": "6,050원",
                     "performer": "5,500원",
                     "total": "22,550원"
                 },
                 {
-                    "area": "200㎡-300㎡",
+                    "area": "200㎡ 이상 300㎡ 미만",
                     "copyright": "14,400원",
                     "producer": "7,920원",
                     "performer": "7,200원",
                     "total": "29,520원"
                 },
                 {
-                    "area": "300㎡-500㎡",
+                    "area": "300㎡ 이상 500㎡ 미만",
                     "copyright": "18,500원",
                     "producer": "10,175원",
                     "performer": "9,250원",
                     "total": "37,925원"
                 },
                 {
-                    "area": "500㎡-1000㎡",
+                    "area": "500㎡ 이상 1000㎡ 미만",
                     "copyright": "23,200원",
                     "producer": "12,760원",
                     "performer": "11,160원",
@@ -296,35 +296,35 @@
             "name": "기타 비알콜 음료점",
             "data": [
                 {
-                    "area": "50㎡-100㎡",
+                    "area": "50㎡ 이상 100㎡ 미만",
                     "copyright": "2,000원",
                     "producer": "1,100원",
                     "performer": "1,000원",
                     "total": "4,100원"
                 },
                 {
-                    "area": "100㎡-200㎡",
+                    "area": "100㎡ 이상 200㎡ 미만",
                     "copyright": "3,600원",
                     "producer": "1,980원",
                     "performer": "1,800원",
                     "total": "7,380원"
                 },
                 {
-                    "area": "200㎡-300㎡",
+                    "area": "200㎡ 이상 300㎡ 미만",
                     "copyright": "4,900원",
                     "producer": "2,695원",
                     "performer": "2,450원",
                     "total": "10,045원"
                 },
                 {
-                    "area": "300㎡-500㎡",
+                    "area": "300㎡ 이상 500㎡ 미만",
                     "copyright": "6,200원",
                     "producer": "3,410원",
                     "performer": "3,100원",
                     "total": "12,710원"
                 },
                 {
-                    "area": "500㎡-1000㎡",
+                    "area": "500㎡ 이상 1000㎡ 미만",
                     "copyright": "7,800원",
                     "producer": "4,290원",
                     "performer": "3,900원",
@@ -344,35 +344,35 @@
             "name": "생맥주 전문점",
             "data": [
                 {
-                    "area": "50㎡-100㎡",
+                    "area": "50㎡ 이상 100㎡ 미만",
                     "copyright": "2,000원",
                     "producer": "1,100원",
                     "performer": "1,000원",
                     "total": "4,100원"
                 },
                 {
-                    "area": "100㎡-200㎡",
+                    "area": "100㎡ 이상 200㎡ 미만",
                     "copyright": "3,600원",
                     "producer": "1,980원",
                     "performer": "1,800원",
                     "total": "7,380원"
                 },
                 {
-                    "area": "200㎡-300㎡",
+                    "area": "200㎡ 이상 300㎡ 미만",
                     "copyright": "4,900원",
                     "producer": "2,695원",
                     "performer": "2,450원",
                     "total": "10,045원"
                 },
                 {
-                    "area": "300㎡-500㎡",
+                    "area": "300㎡ 이상 500㎡ 미만",
                     "copyright": "6,200원",
                     "producer": "3,410원",
                     "performer": "3,100원",
                     "total": "12,710원"
                 },
                 {
-                    "area": "500㎡-1000㎡",
+                    "area": "500㎡ 이상 1000㎡ 미만",
                     "copyright": "7,800원",
                     "producer": "4,290원",
                     "performer": "3,900원",
@@ -399,56 +399,56 @@
                     "total": "56,810원"
                 },
                 {
-                    "area": "66㎡-99㎡",
+                    "area": "66㎡ 이상 99㎡",
                     "copyright": "28,000원",
                     "producer": "19,600원",
                     "performer": "21,560원",
                     "total": "69,160원"
                 },
                 {
-                    "area": "99㎡-132㎡",
+                    "area": "99㎡ 이상 132㎡",
                     "copyright": "34,000원",
                     "producer": "23,800원",
                     "performer": "26,180원",
                     "total": "83,980원"
                 },
                 {
-                    "area": "132㎡-165㎡",
+                    "area": "132㎡ 이상 165㎡",
                     "copyright": "46,000원",
                     "producer": "32,200원",
                     "performer": "35,420원",
                     "total": "113,620원"
                 },
                 {
-                    "area": "165㎡-231㎡",
+                    "area": "165㎡ 이상 231㎡",
                     "copyright": "57,000원",
                     "producer": "39,900원",
                     "performer": "43,890원",
                     "total": "140,790원"
                 },
                 {
-                    "area": "231㎡-330㎡",
+                    "area": "231㎡ 이상 330㎡",
                     "copyright": "69,000원",
                     "producer": "48,300원",
                     "performer": "53,130원",
                     "total": "170,430원"
                 },
                 {
-                    "area": "330㎡-495㎡",
+                    "area": "330㎡ 이상 495㎡",
                     "copyright": "92,000원",
                     "producer": "64,400원",
                     "performer": "70,840원",
                     "total": "227,240원"
                 },
                 {
-                    "area": "495㎡-660㎡",
+                    "area": "495㎡ 이상 660㎡",
                     "copyright": "115,000원",
                     "producer": "80,500원",
                     "performer": "88,550원",
                     "total": "284,050원"
                 },
                 {
-                    "area": "660㎡-990㎡",
+                    "area": "660㎡ 이상 990㎡",
                     "copyright": "138,000원",
                     "producer": "96,600원",
                     "performer": "106,260원",

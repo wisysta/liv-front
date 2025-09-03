@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { SideMenu } from "./SideMenu";
 import { MenuInteractions } from "./MenuInteractions";
 import { useScrollDetection } from "@/hooks/useScrollDetection";
@@ -20,7 +22,7 @@ export function HeaderInteractions({
     // 스크롤 감지
     const scrollDetected = useScrollDetection({
         threshold: 50,
-        enableOnMobileOnly: true,
+        enableOnMobileOnly: false,
     });
     const isScrolled = headerOverlay ? scrollDetected : false;
 
@@ -42,8 +44,27 @@ export function HeaderInteractions({
             {/* 동적 배경 오버레이 */}
             {headerOverlay && (
                 <div
-                    className={`fixed top-0 left-0 right-0 h-[88px] lg:h-[104px] z-[79] transition-all duration-300 ease-in-out ${getBackgroundClass()}`}
+                    className={`fixed top-0 left-0 right-0 h-[64px] lg:h-[84px] z-[79] transition-all duration-300 ease-in-out ${getBackgroundClass()}`}
                 />
+            )}
+
+            {/* 동적 로고 (스크롤 시에만 표시) */}
+            {headerOverlay && isScrolled && (
+                <Link
+                    href="/"
+                    className="fixed top-6 lg:top-8 left-1/2 transform -translate-x-1/2 z-[81] hover:opacity-80 transition-opacity"
+                >
+                    <Image
+                        src={THEME_COLORS.light.logo}
+                        alt="리브뮤직 로고"
+                        width={105}
+                        height={20}
+                        className="h-4 sm:h-5 w-auto transition-opacity duration-300"
+                        sizes="(max-width: 640px) 80px, 105px"
+                        quality={90}
+                        priority
+                    />
+                </Link>
             )}
 
             {/* 햄버거 메뉴 버튼 */}

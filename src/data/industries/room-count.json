@@ -1,115 +1,115 @@
 {
-  "type": "room_count",
-  "industries": [
-    {
-      "id": "hotel",
-      "name": "호텔",
-      "data": [
+    "type": "room_count",
+    "industries": [
         {
-          "rooms": "0-50개",
-          "copyright": "20,000원",
-          "producer": "11,000원",
-          "performer": "10,000원",
-          "total": "41,000원"
+            "id": "hotel",
+            "name": "호텔",
+            "data": [
+                {
+                    "rooms": "0 이상 50개 미만",
+                    "copyright": "20,000원",
+                    "producer": "11,000원",
+                    "performer": "10,000원",
+                    "total": "41,000원"
+                },
+                {
+                    "rooms": "50개 이상 100개 미만",
+                    "copyright": "22,000원",
+                    "producer": "20,000원",
+                    "performer": "20,000원",
+                    "total": "82,000원"
+                },
+                {
+                    "rooms": "100개 이상 200개 미만",
+                    "copyright": "44,000원",
+                    "producer": "40,000원",
+                    "performer": "40,000원",
+                    "total": "164,000원"
+                },
+                {
+                    "rooms": "200개 이상 300개 미만",
+                    "copyright": "77,000원",
+                    "producer": "70,000원",
+                    "performer": "70,000원",
+                    "total": "287,000원"
+                },
+                {
+                    "rooms": "300개 이상 400개 미만",
+                    "copyright": "115,500원",
+                    "producer": "105,000원",
+                    "performer": "105,000원",
+                    "total": "430,500원"
+                },
+                {
+                    "rooms": "400개 이상 500개 미만",
+                    "copyright": "154,000원",
+                    "producer": "140,000원",
+                    "performer": "140,000원",
+                    "total": "574,000원"
+                },
+                {
+                    "rooms": "500개 이상",
+                    "copyright": "192,500원",
+                    "producer": "175,000원",
+                    "performer": "175,000원",
+                    "total": "717,500원"
+                }
+            ]
         },
         {
-          "rooms": "50-100개",
-          "copyright": "22,000원",
-          "producer": "20,000원",
-          "performer": "20,000원",
-          "total": "82,000원"
-        },
-        {
-          "rooms": "100-200개",
-          "copyright": "44,000원",
-          "producer": "40,000원",
-          "performer": "40,000원",
-          "total": "164,000원"
-        },
-        {
-          "rooms": "200-300개",
-          "copyright": "77,000원",
-          "producer": "70,000원",
-          "performer": "70,000원",
-          "total": "287,000원"
-        },
-        {
-          "rooms": "300-400개",
-          "copyright": "115,500원",
-          "producer": "105,000원",
-          "performer": "105,000원",
-          "total": "430,500원"
-        },
-        {
-          "rooms": "400-500개",
-          "copyright": "154,000원",
-          "producer": "140,000원",
-          "performer": "140,000원",
-          "total": "574,000원"
-        },
-        {
-          "rooms": "500개 이상",
-          "copyright": "192,500원",
-          "producer": "175,000원",
-          "performer": "175,000원",
-          "total": "717,500원"
+            "id": "condo",
+            "name": "콘도미니엄",
+            "data": [
+                {
+                    "rooms": "0 이상 50개 미만",
+                    "copyright": "10,000원",
+                    "producer": "6,050원",
+                    "performer": "5,500원",
+                    "total": "21,550원"
+                },
+                {
+                    "rooms": "50개 이상 100개 미만",
+                    "copyright": "20,000원",
+                    "producer": "12,100원",
+                    "performer": "11,000원",
+                    "total": "43,100원"
+                },
+                {
+                    "rooms": "100개 이상 200개 미만",
+                    "copyright": "40,000원",
+                    "producer": "24,200원",
+                    "performer": "22,000원",
+                    "total": "86,200원"
+                },
+                {
+                    "rooms": "200개 이상 300개 미만",
+                    "copyright": "70,000원",
+                    "producer": "42,350원",
+                    "performer": "38,500원",
+                    "total": "150,850원"
+                },
+                {
+                    "rooms": "300개 이상 400개 미만",
+                    "copyright": "105,000원",
+                    "producer": "63,525원",
+                    "performer": "57,750원",
+                    "total": "226,275원"
+                },
+                {
+                    "rooms": "400개 이상 500개 미만",
+                    "copyright": "140,000원",
+                    "producer": "84,700원",
+                    "performer": "77,000원",
+                    "total": "301,700원"
+                },
+                {
+                    "rooms": "500개 이상",
+                    "copyright": "175,000원",
+                    "producer": "105,875원",
+                    "performer": "96,250원",
+                    "total": "377,125원"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "id": "condo",
-      "name": "콘도미니엄",
-      "data": [
-        {
-          "rooms": "0-50개",
-          "copyright": "10,000원",
-          "producer": "6,050원",
-          "performer": "5,500원",
-          "total": "21,550원"
-        },
-        {
-          "rooms": "50-100개",
-          "copyright": "20,000원",
-          "producer": "12,100원",
-          "performer": "11,000원",
-          "total": "43,100원"
-        },
-        {
-          "rooms": "100-200개",
-          "copyright": "40,000원",
-          "producer": "24,200원",
-          "performer": "22,000원",
-          "total": "86,200원"
-        },
-        {
-          "rooms": "200-300개",
-          "copyright": "70,000원",
-          "producer": "42,350원",
-          "performer": "38,500원",
-          "total": "150,850원"
-        },
-        {
-          "rooms": "300-400개",
-          "copyright": "105,000원",
-          "producer": "63,525원",
-          "performer": "57,750원",
-          "total": "226,275원"
-        },
-        {
-          "rooms": "400-500개",
-          "copyright": "140,000원",
-          "producer": "84,700원",
-          "performer": "77,000원",
-          "total": "301,700원"
-        },
-        {
-          "rooms": "500개 이상",
-          "copyright": "175,000원",
-          "producer": "105,875원",
-          "performer": "96,250원",
-          "total": "377,125원"
-        }
-      ]
-    }
-  ]
+    ]
 }
