@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { SiteStructure } from "@/components/seo/SiteStructure";
-import { PopupModal } from "@/components/ui/popup-modal";
-import { getActivePopups } from "@/actions/popup-actions";
 import { siteConfig } from "@/config/site";
 
 export const viewport = {
@@ -67,16 +65,11 @@ export const metadata: Metadata = {
     },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    // 활성화된 팝업 데이터 가져오기
-    const popups = await getActivePopups();
-    // 첫 번째 팝업만 사용 (단일 팝업 시스템)
-    const activePopup = popups?.[0] ?? null;
-
     return (
         <html lang="ko">
             <head>
@@ -97,8 +90,6 @@ export default async function RootLayout({
                 <StructuredData type="website" />
                 <SiteStructure />
                 {children}
-                {/* 팝업 모달 */}
-                <PopupModal popup={activePopup} />
             </body>
         </html>
     );

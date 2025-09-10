@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { HeroSection } from "@/components/home/HeroSection";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { PopupModal } from "@/components/ui/popup-modal";
+import { getActivePopups } from "@/actions/popup-actions";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -24,7 +26,12 @@ export const metadata: Metadata = {
     },
 };
 
-export default function Home() {
+export default async function Home() {
+    // 활성화된 팝업 데이터 가져오기 (홈페이지에서만)
+    const popups = await getActivePopups();
+    // 첫 번째 팝업만 사용 (단일 팝업 시스템)
+    const activePopup = popups?.[0] ?? null;
+
     return (
         <PageLayout headerOverlay={true} fullHeight={true}>
             <StructuredData
@@ -63,6 +70,8 @@ export default function Home() {
                 }}
             />
             <HeroSection />
+            {/* 팝업 모달 - 홈페이지에서만 표시 */}
+            <PopupModal popup={activePopup} />
         </PageLayout>
     );
 }
